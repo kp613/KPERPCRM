@@ -1,0 +1,38 @@
+<ngx-spinner>
+  <h3> Loading ...</h3>
+</ngx-spinner>
+
+<app-navbar></app-navbar>
+
+<div class="container-fluid fixed">
+  <div class="row">
+    <ng-container *ngIf="accountService.currentUser$ | async">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <app-sidebar></app-sidebar>
+      </nav>
+    </ng-container>
+    <ng-container>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3  pt-3">
+        <app-main></app-main>
+      </main>
+    </ng-container>
+  </div>
+  <!-- <ng-container *ngIf="(accountService.currentUser$ | async)===null">
+    <div class="row">
+      <main class=" ms-sm-auto px-md-4 mt-3  pt-3">
+        <app-main></app-main>
+      </main>
+    </div>
+  </ng-container> -->
+</div>
+
+
+<footer class="page-footer font-small indigo fixed-bottom bg-dark text-muted">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2009 - {{thisTime | date:'yyyy'}} Copyright:
+    <a href="http://king-pharm.com/" class="text-muted text-decoration-none"> King-Pharm.com</a>
+    <span class=" ms-2 ">南京科朗医药化工有限公司</span>
+  </div>
+  <!-- Copyright -->
+
+</footer>

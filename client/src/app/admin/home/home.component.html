@@ -1,0 +1,27 @@
+<ng-container *ngIf="accountService.currentUser$ | async">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">南京科朗</h1>
+    <!-- <div class="btn-toolbar mb-2 mb-md-0">
+      <a type="button" class="btn btn-sm btn-outline-secondary" routerLink="/register" routerLinkActive="active">
+        <i class="bi bi-plus"></i>
+        <span class="ms-1">Register</span>
+      </a>
+    </div> -->
+
+  </div>
+
+  <div>
+    <h3 class="h5">欢迎**登录</h3>
+    <h3 class="h5">我的任务</h3>
+    <h3 class="h5">我的角色 头像 照片</h3>
+    <h3 class="h5">我的学习 培训资料 业务流程</h3>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="(accountService.currentUser$ | async)===null && !registerMode">
+  <app-login (wantRegister)="regFromLoginMode($event)"></app-login>
+</ng-container>
+
+<ng-container class="bt" *ngIf="registerMode">
+  <app-register (cancelRegister)="regFromLoginMode($event)"></app-register>
+</ng-container>

@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "Name": "Active Pharmaceutical Ingredients(API)",
+    "NameCN": "原料药"
+  },
+  {
+    "Id": 2,
+    "Name": "BioChemicals",
+    "NameCN": "生化化学品"
+  },
+  {
+    "Id": 3,
+    "Name": "Natural Products",
+    "NameCN": "天然产物"
+  },
+  {
+    "Id": 4,
+    "Name": "Catalysts",
+    "NameCN": "催化剂"
+  },
+  {
+    "Id": 5,
+    "Name": "Organic Building Blocks",
+    "NameCN": "合成砌块"
+  },
+  {
+    "Id": 6,
+    "Name": "Functional Chemical",
+    "NameCN": "功能化学品"
+  }
+]

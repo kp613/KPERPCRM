@@ -1,0 +1,32 @@
+[
+  {
+    "NameEn": "Material",
+    "NameCh": "多元杂环",
+    "ProductsGroupSecondId": 2
+  },
+  {
+    "NameEn": "Cep",
+    "NameCh": "杂环",
+    "ProductsGroupSecondId": 2
+  },
+  {
+     "NameEn": "Cl",
+    "NameCh": "氯代烃",
+    "ProductsGroupSecondId": 2
+  },
+  {
+    "NameEn": "Ai",
+    "NameCh": "脂肪醇",
+    "ProductsGroupSecondId": 3
+  },
+  {
+    "NameEn": "ole",
+    "NameCh": "烯类",
+    "ProductsGroupSecondId": 6
+  },
+  {
+    "NameEn": "qikuai",
+    "NameCh": "砌块",
+    "ProductsGroupSecondId": 6
+  }
+]

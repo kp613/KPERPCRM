@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Name": "BioChemical Material",
+    "NameCN": "生化原料 | 生化化学品",
+    "ProductTypeMainId": 2
+  },
+  {
+    "Id": 2,
+    "Name": "Cephalosporin",
+    "NameCN": "头孢类 | 原料药",
+    "ProductTypeMainId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Anti-Neoplastic",
+    "NameCN": "抗肿瘤 | 原料药",
+    "ProductTypeMainId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Food & Drug Additives",
+    "NameCN": "食品药品添加剂",
+    "ProductTypeMainId": 6
+  },
+  {
+    "Id": 5,
+    "Name": "Personal Care Chemicals",
+    "NameCN": "个护化学品",
+    "ProductTypeMainId": 6
+  },
+  {
+    "Id": 6,
+    "Name": "Opto-electronics Chemicals",
+    "NameCN": "光电化学品",
+    "ProductTypeMainId": 6
+  }
+]
