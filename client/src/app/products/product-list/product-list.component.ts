@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
-import { Product } from 'src/app/_models/product';
-import { ProductsService } from 'src/app/_services/product.service';
-import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/products/product';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,35 +13,37 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  products: Product[];
-  newProduct: Product = new Product();
+  products$: Observable<Product[]>;
+  newProduct: Product[];
+  addProductForm: FormGroup;
+  model: any = {};
+  @ViewChild('addProduct') addProduct: NgForm;
 
-
-
-  constructor(private productsService: ProductsService, private httpClient: HttpClient, private title: Title) { }
+  constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title, private fb: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.title.setTitle("产品列表 - 科朗管理平台");
+    this.initializeForm();
 
-
-    this.productsService.getProductsList().subscribe(
-      (res: Product[] = []) => {
-        // this.products = (res as any).data;
-
-        this.products = res;
-        // initiate our data table
-        // this.dtTrigger.next();
-
-      });
+    this.products$ = this.productService.readAll();
   }
 
-
+  initializeForm() {
+    this.addProductForm = this.fb.group({
+      casno: ['', [Validators.required, Validators.pattern('[1-9][0-9]{1,10}-[0-9]{2}-[0-9]{1}')]]
+    })
+  }
 
   onSaveForm() {
-    this.productsService.insertProduct(this.newProduct).subscribe((res) => {
-      this.products.push(this.newProduct);
+    this.productService.create(this.addProduct.value).subscribe((res) => {
+      this.toastr.success('增加产品成功');
+      this.cancel();
     }, (error) => {
-      console.log(error);
+      this.toastr.error(error.error);
     })
+  }
+
+  cancel() {
+    this.addProduct.reset();
   }
 }

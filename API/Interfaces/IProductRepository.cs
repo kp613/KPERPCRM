@@ -10,6 +10,8 @@ namespace API.Interfaces
 {
     public interface IProductRepository
     {
+        void AddProduct(Product product);
+        void DeleteProduct(Product product);
         Task<IEnumerable<Product>> GetProductsAsync();
         Task<Product> GetProductByIdAsync(int id);
         //Task<IReadOnlyList<Product>> GetProductsAsync();
@@ -18,5 +20,7 @@ namespace API.Interfaces
         //Task<IReadOnlyList<ProductsListInGroupThird>> GetProductListInTypesAsync();
 
         Task<IEnumerable<ProductsGroupFirst>> GetGroupFirstsAsync();
+
+        Task<bool> SaveAllAsync();
     }
 }

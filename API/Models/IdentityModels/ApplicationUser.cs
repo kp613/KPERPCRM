@@ -44,6 +44,12 @@ namespace API.Models.IdentityModels
         [Display(Name = "邮编")]
         public string PostalCode { get; set; }
 
+        [Display(Name = "紧急联系人")]
+        public string ConnectPerson { get; set; }
+
+        [Display(Name = "紧急联系人手机")]
+        public string ConnectPersonPhone { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "休假")]
@@ -63,7 +69,7 @@ namespace API.Models.IdentityModels
         public DateTime LastActive { get; set; } = DateTime.Now;
 
 
-        //public ICollection<ApplicationUserRole> UserRoles { get; set; }
+        public ICollection<ApplicationUserRole> UserRoles { get; set; }
 
         //public ICollection<Photo> Photos { get; set; }
 

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/_models/product';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Product } from '../product';
+
 
 @Component({
   selector: 'app-product-form',
@@ -7,7 +8,7 @@ import { Product } from 'src/app/_models/product';
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
-  product: Product[] = []
+  @Input() product: Product[] = [];
 
 
   constructor() { }

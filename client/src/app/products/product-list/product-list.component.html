@@ -1,8 +1,10 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
   <h1 class="h2">产品列表</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
-    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
-      data-bs-target="#addProductModal">
+    <button type="button"
+            class="btn btn-sm btn-outline-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#addProductModal">
       <i class="bi bi-plus"></i>
       <span class="ms-1">增加产品</span>
     </button>
@@ -10,7 +12,8 @@
 </div>
 
 <div class="row mb-5 pb-5">
-  <div *ngFor="let product of products" class="col-4">
+  <div *ngFor="let product of products$ | async"
+       class="col-4">
     <app-product-card [product]="product"></app-product-card>
   </div>
 </div>
@@ -18,42 +21,77 @@
 
 
 <!-- Modal -->
-<form>
-  <div class="modal fade" id="addProductModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<form #addProduct="ngForm"
+      (ngSubmit)="onSaveForm()"
+      autocomplete="off">
+  <div class="modal fade"
+       id="addProductModal"
+       data-bs-backdrop="static"
+       data-bs-keyboard="false"
+       tabindex="-1"
+       aria-labelledby="staticBackdropLabel"
+       aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">增加产品</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title"
+              id="staticBackdropLabel">增加产品</h5>
+          <button type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
           <div class="mb-3">
-            <label for="CasNo" class="form-label">Cas No.</label>
-            <input type="text" class="form-control pt-1 pb-1" id="CasNo" name="casno" placeholder="CAS No: 123456-78-9"
-              [(ngModel)]="newProduct.casNo">
+            <label for="CasNo"
+                   class="form-label">Cas No.</label>
+            <input type="text"
+                   class="form-control pt-1 pb-1"
+                   id="CasNo"
+                   name="casno"
+                   placeholder="CAS No: 123456-78-9"
+                   [(ngModel)]="model.casNo">
           </div>
           <div class="mb-3">
-            <label for="ProductCode" class="form-label">产品代号</label>
-            <input type="text" class="form-control pt-1 pb-1" id="ProductCode" name="productcode"
-              placeholder="产品代号 尚未编号则可为空" [(ngModel)]="newProduct.productCode">
+            <label for="ProductCode"
+                   class="form-label">产品代号</label>
+            <input type="text"
+                   class="form-control pt-1 pb-1"
+                   id="ProductCode"
+                   name="productcode"
+                   placeholder="产品代号 尚未编号则可为空"
+                   [(ngModel)]="model.productCode">
           </div>
           <div class="mb-3">
-            <label for="ProductNameCN" class="form-label">产品名称</label>
-            <input type="text" class="form-control pt-1 pb-1" id="ProductNameCN" name="productnamecn"
-              placeholder="产品名称 可为空" [(ngModel)]="newProduct.productNameCN">{{newProduct.productNameCN}}
+            <label for="ProductNameCN"
+                   class="form-label">产品名称</label>
+            <input type="text"
+                   class="form-control pt-1 pb-1"
+                   id="ProductNameCN"
+                   name="productnamecn"
+                   placeholder="产品名称 可为空"
+                   [(ngModel)]="model.productNameCN">
           </div>
           <div class="mb-3">
-            <label for="ProductName" class="form-label">产品英文名称</label>
-            <input type="text" class="form-control pt-1 pb-1" id="ProductName" name="productname"
-              placeholder="Product Name | Can be Empty" [(ngModel)]="newProduct.productName">
+            <label for="ProductName"
+                   class="form-label">产品英文名称</label>
+            <input type="text"
+                   class="form-control pt-1 pb-1"
+                   id="ProductName"
+                   name="productname"
+                   placeholder="Product Name | Can be Empty"
+                   [(ngModel)]="model.productName">
           </div>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-          <button type="submit" class="btn btn-primary">保存</button>
+          <button type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  (click)="cancel()">取消</button>
+          <button type="submit"
+                  class="btn btn-primary">保存</button>
         </div>
       </div>
     </div>

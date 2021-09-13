@@ -18,6 +18,8 @@ namespace API.Profiles
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
             CreateMap<MemberUpdateDto, ApplicationUser>();
             CreateMap<RegisterDto, ApplicationUser>();
+            CreateMap<RoleDto, ApplicationRole>();
+            CreateMap<ApplicationRole, RoleDto>();
             CreateMap<Message, MessageDto>();
                 //.ForMember(dest => dest.SenderPhotoUrl, opt => opt.MapFrom(src =>
                 //    src.Sender.Photos.FirstOrDefault(x => x.IsMain).Url))

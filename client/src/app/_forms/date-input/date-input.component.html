@@ -1,0 +1,25 @@
+<div class="form-floating mb-1">
+  <input type="text"
+         [class.is-invalid]='ngControl.touched && ngControl.invalid'
+         class='form-control'
+         [formControl]='$any(ngControl.control)'
+         placeholder="{{label}}"
+         bsDatepicker
+         [bsConfig]='bsConfig'
+         [maxDate]='maxDate'
+         class="form-control ps-3"
+         id="dateOfBirthInput">
+  <label for="dateOfBirthInput"
+         class="ps-2">生日</label>
+  <div *ngIf="ngControl.control.errors?.required"
+       class="invalid-feedback ps-3">{{label}} is required</div>
+</div>
+
+
+<!-- <div class="form-floating mb-1">
+            <input [class.is-invalid]='registerForm.get("dateOfBirth").errors && registerForm.get("dateOfBirth").touched'
+              type="date" class="form-control ps-3" id="floatingInput" formControlName='dateOfBirth' placeholder="出生年月日">
+            <label for="floatingInput" class="ps-2">出生年月日</label>
+            <div *ngIf="registerForm.get('dateOfBirth').hasError('required')" class="invalid-feedback">
+              请输入出生年月日</div>
+          </div> -->

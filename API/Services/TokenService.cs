@@ -23,18 +23,22 @@ namespace API.Services
         }
 
         //
-        public string CreateToken(ApplicationUser user)
+        public async Task<string> CreateToken(ApplicationUser user)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.Id),
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Sid, user.StaffId.ToString())
+                //new Claim(JwtRegisteredClaimNames.FamilyName, user.Name),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.KnownAs),
+                new Claim(JwtRegisteredClaimNames.Sid, user.StaffId.ToString()),
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(ClaimTypes.Name,user.Name)
             };
 
-            //var roles = await _userManager.GetRolesAsync(user);
+            var roles = await _userManager.GetRolesAsync(user);
 
-            //claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 

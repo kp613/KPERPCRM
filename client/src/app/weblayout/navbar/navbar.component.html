@@ -1,12 +1,23 @@
 <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-  <img src="../../assets/images/logo.png" class="ms-2 " style="max-height: 56px; cursor: pointer;" alt="logo"
-    routerLink='/' routerLinkActive='active'>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+  <img src="../../assets/images/logo.png"
+       class="ms-2 "
+       style="max-height: 56px; cursor: pointer;"
+       alt="logo"
+       routerLink='/'
+       routerLinkActive='active'>
+  <button class="navbar-toggler position-absolute d-md-none collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#sidebarMenu"
+          aria-controls="sidebarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-50  justify-content-start" type="text" placeholder="Search Product"
-    aria-label="Search">
+  <input class="form-control form-control-dark w-50  justify-content-start"
+         type="text"
+         placeholder="Search Product"
+         aria-label="Search">
 
   <!-- <div class="navbar-nav pe-4" *ngIf="(accountService.currentUser$ | async)===null">
     <div class="nav-item text-nowrap">
@@ -14,16 +25,24 @@
     </div>
   </div> -->
 
-  <div class="nav-item pe-2" *ngIf="(accountService.currentUser$ | async) as user">
-    <a class="nav-link text-mute" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="../../assets/user.png" style="max-height: 39px; border-radius: 50%;"> <span class="ms-1"
-        style="color: grey;">{{user.username | titlecase}}</span>
+  <div class="nav-item pe-2"
+       *ngIf="(accountService.currentUser$ | async) as user">
+    <a class="nav-link text-mute"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+      <img src="../../assets/user.png"
+           style="max-height: 39px; border-radius: 50%;"> <span class="ms-1"
+            style="color: grey;">{{user.name | titlecase}}</span>
       <!--uppercase lowercase  titlecase-->
     </a>
     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" routerLink='/member/edit'>编辑档案</a></li>
-      <li><a class="dropdown-item" href="#">Menu item</a></li>
-      <li><a class="dropdown-item" routerLink="/" (click)="logout()">Logout</a></li>
+      <li><a class="dropdown-item"
+           routerLink='/member/edit'>编辑档案</a></li>
+      <li><a class="dropdown-item"
+           href="#">Menu item</a></li>
+      <li><a class="dropdown-item"
+           routerLink="/"
+           (click)="logout()">Logout</a></li>
     </ul>
   </div>
 

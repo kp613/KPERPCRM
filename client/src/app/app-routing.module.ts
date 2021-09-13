@@ -5,7 +5,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { HomeComponent } from './admin/home/home.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MessageComponent } from './admin/message/message.component';
-import { UserComponent } from './admin/user/user.component';
+import { UserComponent } from './members/user/user.component';
 import { OrderListComponent } from './business/order-list/order-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
@@ -18,6 +18,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "admin", component: AdminRoleComponent, canActivate: [AdminGuard] },
-      { path: "members/:username", component: MemberDetailComponent },
+      { path: "members/:username", component: MemberDetailComponent, resolve: { member: MemberDetailedResolver } },
       { path: "member/edit", component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
       { path: "product/edit", component: ProductEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
       { path: "products", component: ProductListComponent },
@@ -35,9 +36,10 @@ const routes: Routes = [
     ]
   },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
-  // { path: "register", component: RegisterComponent },
+  // { path: "messages", component: MessageComponent },
   { path: "members", component: MemberListComponent },
   { path: "users", component: UserComponent },
+  { path: "roles", component: AdminRoleComponent },
   { path: "orders", component: OrderListComponent },
 
   { path: "product/new", component: ProductFormComponent },

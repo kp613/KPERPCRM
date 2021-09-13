@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace API.Repository
 {
@@ -33,6 +34,10 @@ namespace API.Repository
 
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
+            //var query = _context.ApplicationUser
+            //    .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+            //    .AsNoTracking();
+            //return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
             var query = _context.ApplicationUser.AsQueryable();
 
             query = query.Where(u => u.UserName != userParams.CurrentUsername);
@@ -46,6 +51,7 @@ namespace API.Repository
             query = userParams.OrderBy switch
             {
                 "created" => query.OrderByDescending(u => u.Created),
+                //"lastActive" => query.OrderBy(u => u.LastActive),
                 _ => query.OrderByDescending(u => u.LastActive)
             };
 

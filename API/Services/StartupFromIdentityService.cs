@@ -32,10 +32,10 @@ namespace API.Services
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF32.GetBytes(config["Authentication:SecretKey"])),
 
+                        ValidIssuer = config["Authentication:Issuer"],
                         ValidateIssuer = false,
-                        //ValidIssuer = config["Authentication:Issuer"],
 
-                        ValidateAudience = false,
+                        ValidateAudience = false,       //重要：Microsoft的缺省设置取消，以免影响本次设置而出错
                         //ValidAudience = config["Authentication:Audience"],
                     };
 

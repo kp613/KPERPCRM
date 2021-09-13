@@ -1,5 +1,6 @@
 {
     "editor.fontSize": 18,
     "csharpextensions.privateMemberPrefix": "_",
-    "csharpextensions.useThisForCtorAssignments": false
+    "csharpextensions.useThisForCtorAssignments": false,
+    "editor.linkedEditing": true
 }

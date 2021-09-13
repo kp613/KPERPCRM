@@ -32,8 +32,9 @@ namespace API.DTOs
         public string Country { get; set; } 
 
         public string PostalCode { get; set; }
+        //public DateTime LockoutEnd { get; set; }        //大于现在为 不能登录，设置很大的值表示离职（+1000年)。可设置登录几次错误要暂停多少时间 https://www.yogihosting.com/aspnet-core-identity-user-lockout/
 
-        public DateTime BeOnLeaveEnd { get; set; }      //休假中
+        public DateTime BeOnLeaveEnd { get; set; }      //大于现在为 休假中
 
         public string ProfilePicture { get; set; }      //个人照片
 

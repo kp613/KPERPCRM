@@ -2,6 +2,7 @@
 using API.DTOs.AdminDtos;
 using API.Models.IdentityModels;
 using API.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,38 +21,51 @@ namespace API.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
 
-        public AccountController(AppIdentityDbContext context,UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenService tokenService)
+        public AccountController(AppIdentityDbContext context,UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenService tokenService,IMapper mapper)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _mapper = mapper;
         }
-
-
-
 
         [HttpPost("register")]
         public async Task<ActionResult<LoggedDto>> Register(RegisterDto registerDto)
         {
             if (await UserExists(registerDto.Username)) return BadRequest("该用户名已经使用");
 
+            //if (CheckEmailExistsAsync(registerDto.Email).Result.Value) return BadRequest("邮箱已经使用");
+
+
+            var user = _mapper.Map<ApplicationUser>(registerDto);
+
             var staffId = _context.ApplicationUser.Max(p => p.StaffId);
 
-            var user = new ApplicationUser
-            {
-                UserName = registerDto.Username,
-                StaffId = staffId + 1,       //员工工号自动编号
-            };
+            user.UserName = registerDto.Username;
+            user.StaffId = staffId + 1;       //员工工号自动编号
 
-            await _userManager.CreateAsync(user,registerDto.Password);
-            await _context.SaveChangesAsync();
+
+            var result = await _userManager.CreateAsync(user,registerDto.Password);
+
+            if (!result.Succeeded) return BadRequest(result.Errors);
+
+            var roleResult = await _userManager.AddToRoleAsync(user, "Member");
+
+            if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
+
+            //await _context.SaveChangesAsync();
 
             return new LoggedDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Name = user.Name,
+                KnownAs = user.KnownAs,
+                StaffId = user.StaffId,
+                Gender=user.Gender,
+                Token = await _tokenService.CreateToken(user)
             };
         }
 
@@ -67,10 +81,15 @@ namespace API.Controllers
 
             if (!result.Succeeded) return Unauthorized("密码不对");
 
+ 
             return new LoggedDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Name = user.Name,
+                KnownAs = user.KnownAs,
+                StaffId=user.StaffId,
+                Gender = user.Gender,
+                Token = await _tokenService.CreateToken(user)
             };
         }
 
@@ -140,6 +159,12 @@ namespace API.Controllers
         private async Task<bool> UserExists(string username)
         {
             return await _context.ApplicationUser.AnyAsync(x => x.UserName == username.ToLower());
+        }
+
+        [HttpGet("emailexists")]
+        private async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
+        {
+            return await _userManager.FindByEmailAsync(email) != null;
         }
     }
 }

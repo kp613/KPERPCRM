@@ -1,5 +1,5 @@
 <ngx-spinner>
-  <h3> Loading ...</h3>
+  <h2 style="color: gray;"> Loading ...</h2>
 </ngx-spinner>
 
 <app-navbar></app-navbar>
@@ -7,7 +7,8 @@
 <div class="container-fluid fixed">
   <div class="row">
     <ng-container *ngIf="accountService.currentUser$ | async">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu"
+           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <app-sidebar></app-sidebar>
       </nav>
     </ng-container>
@@ -30,7 +31,8 @@
 <footer class="page-footer font-small indigo fixed-bottom bg-dark text-muted">
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2009 - {{thisTime | date:'yyyy'}} Copyright:
-    <a href="http://king-pharm.com/" class="text-muted text-decoration-none"> King-Pharm.com</a>
+    <a href="http://king-pharm.com/"
+       class="text-muted text-decoration-none"> King-Pharm.com</a>
     <span class=" ms-2 ">南京科朗医药化工有限公司</span>
   </div>
   <!-- Copyright -->

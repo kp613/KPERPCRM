@@ -13,9 +13,9 @@ export class BusyService {
   busy() {
     this.busyRequestCount++;
     this.spinnerService.show(undefined, {
-      type: 'line-scale-pulse-out-rapid',
+      type: 'timer',
       //ball-scale-multiple,line-scale-party,ball-spin-fade,ball-spin-clockwise-fade,pacman,ball-newton-cradle,
-      //ball-elastic-dots,ball-clip-rotate-multiple,ball-pulse-sync,ball-scale-multiple,ball-spin-clockwise,line-scale-pulse-out-rapid
+      //ball-elastic-dots,ball-clip-rotate-multiple,ball-pulse-sync,ball-scale-multiple,ball-spin-clockwise,line-scale-pulse-out-rapid, timer, pacman
       bdColor: 'rgba(255,255,255,0)',
       color: 'gray'
     });

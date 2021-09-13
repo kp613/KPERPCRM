@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using API.Services;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -32,6 +33,12 @@ namespace API
             services.AddScoped<IDbInitializer, DbInitializer>();
 
             services.AddControllers();
+
+            //services.AddSingleton<IConnectionMultiplexer>(c =>
+            //{
+            //    var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"), true);
+            //    return ConnectionMultiplexer.Connect(configuration);
+            //});
 
             services.AddControllers().AddNewtonsoftJson(option =>
                 option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore

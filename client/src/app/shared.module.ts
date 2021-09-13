@@ -14,13 +14,18 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TimeagoModule } from 'ngx-timeago';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 @NgModule({
   declarations: [
   ],
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
@@ -34,9 +39,14 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatSortModule,
     TabsModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
+    TimeagoModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   exports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule,
@@ -48,6 +58,10 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatSortModule,
     TabsModule,
+    BsDatepickerModule,
+    PaginationModule,
+    TimeagoModule,
+    ButtonsModule
   ]
 })
 export class SharedModule { }

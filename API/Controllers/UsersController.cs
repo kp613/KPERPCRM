@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using API.Helpers;
+using API.DTOs.AdminDtos;
 
 namespace API.Controllers
 {
@@ -20,20 +22,33 @@ namespace API.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public UsersController(IUserRepository userRepository,IMapper mapper)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             _mapper = mapper;
             _userRepository = userRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
-            var users= await _userRepository.GetUsersAsync();
+            //var users = await _userRepository.GetMembersAsync(userParams);
 
-            var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
+            //Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
 
-            return Ok(usersToReturn);
+            //var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
+
+            //return Ok(usersToReturn);
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            userParams.CurrentUsername = user.UserName;
+
+            if (string.IsNullOrEmpty(userParams.Gender))
+                userParams.Gender = user.Gender == "male" ? "female" : "male";
+
+            var users = await _userRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+
+            return Ok(users);
         }
 
         //[Authorize]
@@ -51,8 +66,8 @@ namespace API.Controllers
             ////return _mapper.Map<MemberDto>(user);
             ///
 
-           return   await _userRepository.GetMemberAsync(username);
-            
+            return await _userRepository.GetMemberAsync(username);
+
         }
 
         //[HttpGet]

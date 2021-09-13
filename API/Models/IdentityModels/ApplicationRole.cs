@@ -27,6 +27,6 @@ namespace API.Models.IdentityModels
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdentityId { get; set; }
 
-        //public ICollection<ApplicationUserRole> UserRoles { get; set; }
+        public ICollection<ApplicationUserRole> UserRoles { get; set; }
     }
 }

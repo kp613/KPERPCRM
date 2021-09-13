@@ -19,6 +19,16 @@ namespace API.Repository
             _context = context;
         }
 
+        public void AddProduct(Product product)
+        {
+            _context.Products.Add(product);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            _context.Products.Remove(product);
+        }
+
         public async Task<Product> GetProductByIdAsync(int id)
         {
             return await _context.Products.FindAsync(id);
@@ -40,6 +50,8 @@ namespace API.Repository
                 .AsNoTracking()
                 .ToListAsync();
         }
+
+
 
         //async Task<IReadOnlyList<ProductsGroupFirst>> IProductRepository.GetProductTypeMainsAsync()
         //{
@@ -64,6 +76,9 @@ namespace API.Repository
         //        .ToListAsync();
         //}
 
-
+        public async Task<bool> SaveAllAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }
