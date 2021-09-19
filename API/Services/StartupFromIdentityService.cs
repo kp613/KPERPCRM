@@ -33,7 +33,7 @@ namespace API.Services
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF32.GetBytes(config["Authentication:SecretKey"])),
 
                         ValidIssuer = config["Authentication:Issuer"],
-                        ValidateIssuer = false,
+                        ValidateIssuer = false,      //选择true，则usercontroller中列表出错
 
                         ValidateAudience = false,       //重要：Microsoft的缺省设置取消，以免影响本次设置而出错
                         //ValidAudience = config["Authentication:Audience"],

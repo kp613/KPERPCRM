@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { ILoggedUser } from 'src/app/_models/loggedUser';
+import { ILoggedUser } from 'src/app/account/loggedUser';
 import { IMember } from 'src/app/members/member';
 import { IPagination } from 'src/app/_models/pagination';
-import { UserParams } from 'src/app/_models/userParams';
+import { UserParams } from 'src/app/members/userParams';
 import { MembersService } from 'src/app/members/members.service';
 
 @Component({

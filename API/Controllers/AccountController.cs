@@ -37,14 +37,16 @@ namespace API.Controllers
         {
             if (await UserExists(registerDto.Username)) return BadRequest("该用户名已经使用");
 
-            //if (CheckEmailExistsAsync(registerDto.Email).Result.Value) return BadRequest("邮箱已经使用");
+            if (CheckEmailExistsAsync(registerDto.Email).Result.Value) return BadRequest("邮箱已经使用");
+
+            if (await PhoneNumberExists(registerDto.PhoneNumber)) return BadRequest("手机号已经使用");
 
 
             var user = _mapper.Map<ApplicationUser>(registerDto);
 
             var staffId = _context.ApplicationUser.Max(p => p.StaffId);
 
-            user.UserName = registerDto.Username;
+            //user.UserName = registerDto.Username;
             user.StaffId = staffId + 1;       //员工工号自动编号
 
 
@@ -156,12 +158,18 @@ namespace API.Controllers
         //    };
         //}
 
+        [HttpGet("usernameExists")]
         private async Task<bool> UserExists(string username)
         {
             return await _context.ApplicationUser.AnyAsync(x => x.UserName == username.ToLower());
         }
 
-        [HttpGet("emailexists")]
+        private async Task<bool> PhoneNumberExists(string phoneNumber)
+        {
+            return await _userManager.Users.AnyAsync(p=>p.PhoneNumber == phoneNumber);
+        }
+
+        [HttpGet("emailExists")]
         private async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
         {
             return await _userManager.FindByEmailAsync(email) != null;

@@ -6,11 +6,11 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { MemberCardComponent } from './member-card/member-card.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberEditComponent } from './member-edit/member-edit.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from '../account/login/login.component';
+import { RegisterComponent } from '../account/register/register.component';
 import { UserComponent } from './user/user.component';
-import { GeneralModule } from '../_forms/general.module';
-import { MemberMessagesComponent } from './member-messages/member-messages.component';
+import { GeneralModule } from '../_shared/general.module';
+import { MemberMessagesComponent } from '../admin/message/member-messages/member-messages.component';
 
 @NgModule({
   declarations: [

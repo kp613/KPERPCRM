@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ILoggedUser } from 'src/app/_models/loggedUser';
-import { AccountService } from 'src/app/_services/account.service';
+import { ILoggedUser } from 'src/app/account/loggedUser';
+import { AccountService } from 'src/app/account/account.service';
 
 
 @Component({

@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+
 @NgModule({
   declarations: [
   ],
@@ -42,7 +44,8 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     TimeagoModule.forRoot(),
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    CdkStepperModule
   ],
   exports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     BsDatepickerModule,
     PaginationModule,
     TimeagoModule,
-    ButtonsModule
+    ButtonsModule,
+    CdkStepperModule
   ]
 })
 export class SharedModule { }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AdminRoleComponent } from './admin-role/admin-role.component';
+import { AdminRoleComponent } from '../account/role/role.component';
 import { HomeComponent } from './home/home.component';
-import { MessageComponent } from './message/message.component';
+import { MessageComponent } from './message/message/message.component';
 import { SharedModule } from '../shared.module';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';

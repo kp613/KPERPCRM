@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using API.Services;
 using StackExchange.Redis;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace API
 {
@@ -123,11 +125,17 @@ namespace API
                 .WithOrigins("https://localhost:4200"));
 
             app.UseDefaultFiles();
-            app.UseStaticFiles();
+            app.UseStaticFiles();       //wwwroot，用来存储angular文件
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider=new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Content")), 
+                RequestPath = "/content"
+            });         //content用来存储如图片等
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");     //
             });
         }
     }

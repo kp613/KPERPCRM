@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminRoleComponent } from './admin/admin-role/admin-role.component';
+import { AdminRoleComponent } from './account/role/role.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { HomeComponent } from './admin/home/home.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
-import { MessageComponent } from './admin/message/message.component';
+import { MessageComponent } from './admin/message/message/message.component';
 import { UserComponent } from './members/user/user.component';
 import { OrderListComponent } from './business/order-list/order-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
@@ -47,6 +47,8 @@ const routes: Routes = [
   { path: "customers", component: CustomerListComponent },
   { path: "customers/:id", component: CustomerDetailComponent },
 
+  { path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule), data: { breadcrumb: { skip: true } } },
+  
   { path: '**', component: HomeComponent, pathMatch: 'full' }
   // { path: "", redirectTo: "", pathMatch: "full" },
 ];

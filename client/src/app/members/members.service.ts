@@ -3,12 +3,12 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { IMember } from './member';
 import { map, take } from 'rxjs/operators';
-import { UserParams } from '../_models/userParams';
-import { AccountService } from '../_services/account.service';
+import { UserParams } from './userParams';
+import { AccountService } from '../account/account.service';
 import { getPaginatedResult, getPaginationHeaders } from '../_services/paginationHelper';
 import { of } from 'rxjs';
 import { PaginatedResult } from '../_models/pagination';
-import { ILoggedUser } from '../_models/loggedUser';
+import { ILoggedUser } from '../account/loggedUser';
 
 @Injectable({
   providedIn: 'root'

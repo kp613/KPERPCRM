@@ -2,9 +2,9 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
-import { ILoggedUser } from 'src/app/_models/loggedUser';
+import { ILoggedUser } from 'src/app/account/loggedUser';
 import { IMember } from 'src/app/members/member';
-import { AccountService } from 'src/app/_services/account.service';
+import { AccountService } from 'src/app/account/account.service';
 import { MembersService } from 'src/app/members/members.service';
 
 @Component({

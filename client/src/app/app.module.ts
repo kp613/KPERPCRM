@@ -15,7 +15,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { AdminModule } from './admin/admin.module';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { MemberModule } from './members/member.module';
-import { GeneralModule } from './_forms/general.module';
+import { GeneralModule } from './_shared/general.module';
 import { SharedModule } from './shared.module';
 
 @NgModule({

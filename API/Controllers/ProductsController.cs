@@ -51,6 +51,7 @@ namespace API.Controllers
         public async Task<ActionResult<Product>> AddProduct([FromBody]Product product)
         {
             if (await CasNoExists(product.CasNo)) return BadRequest("该Cas No已经存在");
+            
             product.UpdateDay = DateTime.Now;
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
