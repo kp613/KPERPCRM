@@ -1,6 +1,6 @@
 ﻿using API.Data;
 using API.Models.ProductModels;
-using API.Interfaces;
+using API.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,9 +19,21 @@ namespace API.Repository
             _context = context;
         }
 
+        public async Task<ICollection<Product>> GetProductsAsync()
+        {
+            return await _context.Products
+                .Include(p => p.ProductsGroupThirdProducts)
+                .ToListAsync();
+        }
+
         public void AddProduct(Product product)
         {
             _context.Products.Add(product);
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _context.Products.Update(product);
         }
 
         public void DeleteProduct(Product product)
@@ -34,14 +46,13 @@ namespace API.Repository
             return await _context.Products.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync()
+        public async Task<Product> GetProductByCasNoAsync(string casno)
         {
-            return await _context.Products
-                .Include(p => p.ProductsGroupThirdProducts)
-                .ToListAsync();
+            //return await _context.Products.FindAsync(casno);
+            return await _context.Products.FirstOrDefaultAsync(c=>c.CasNo.Trim() == casno.Trim());
         }
 
-        async Task<IEnumerable<ProductsGroupFirst>> IProductRepository.GetGroupFirstsAsync()
+        async Task<ICollection<ProductsGroupFirst>> IProductRepository.GetGroupFirstsAsync()
         {
             return await _context.ProductsGroupFirst
                 .Include(g => g.ProductsGroupSeconds)
@@ -78,7 +89,14 @@ namespace API.Repository
 
         public async Task<bool> SaveAllAsync()
         {
-            return await _context.SaveChangesAsync() > 0;
+            //return await _context.SaveChangesAsync() > 0;
+            return await _context.SaveChangesAsync() >= 0 ? true : false;
+        }
+
+        public bool ProductExists(string casno)
+        {
+            bool value = _context.Products.Any(c => c.CasNo.Trim() == casno.Trim());
+            return value;
         }
     }
 }

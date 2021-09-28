@@ -1,7 +1,7 @@
 ﻿using API.Data;
 using API.DTOs.ProductsDtos;
-using API.Interfaces;
 using API.Models.ProductModels;
+using API.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;

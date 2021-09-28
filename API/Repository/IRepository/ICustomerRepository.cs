@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Models.BusinessModels
+namespace API.Repository.IRepository
 {
-    public class PriceFromSupplier
+    public interface ICustomerRepository
     {
     }
 }

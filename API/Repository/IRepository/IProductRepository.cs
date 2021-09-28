@@ -6,20 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace API.Interfaces
+namespace API.Repository.IRepository
 {
     public interface IProductRepository
     {
         void AddProduct(Product product);
         void DeleteProduct(Product product);
-        Task<IEnumerable<Product>> GetProductsAsync();
+        void UpdateProduct(Product product);
+
+        bool ProductExists(string casno);
+
+        Task<ICollection<Product>> GetProductsAsync();
         Task<Product> GetProductByIdAsync(int id);
+        Task<Product> GetProductByCasNoAsync(string casno);
+
         //Task<IReadOnlyList<Product>> GetProductsAsync();
         //Task<IReadOnlyList<ProductsGroupFirst>> GetProductTypeMainsAsync();
         //Task<IReadOnlyList<ProductsGroupSecond>> GetProductTypesAsync();
         //Task<IReadOnlyList<ProductsListInGroupThird>> GetProductListInTypesAsync();
 
-        Task<IEnumerable<ProductsGroupFirst>> GetGroupFirstsAsync();
+        Task<ICollection<ProductsGroupFirst>> GetGroupFirstsAsync();
 
         Task<bool> SaveAllAsync();
     }

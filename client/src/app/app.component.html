@@ -13,7 +13,8 @@
       </nav>
     </ng-container>
     <ng-container>
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3  pt-3">
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3  pt-3"
+            [ngClass]="{'col-md-12 col-lg-12':!(accountService.currentUser$ | async)}">
         <app-main></app-main>
       </main>
     </ng-container>

@@ -1,6 +1,8 @@
 ﻿using API.Models.AdminModels;
 using API.Models.CommonModels;
+using API.Models.CustomerModels;
 using API.Models.ProductModels;
+using API.Models.ProjectModels;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -26,6 +28,7 @@ namespace API.Data
         //public DbSet<CommonSubCategory> CommonSubCategory { get; set; }
         //public DbSet<CommonContent> CommonContent { get; set; }
 
+        public DbSet<Project> Projects { get; set; }
 
         //public DbSet<Message> Messages { get; set; }
         //public DbSet<AuditAndAuthorization> AuditAndAuthorization { get; set; }
@@ -35,7 +38,7 @@ namespace API.Data
         //public DbSet<BusinessPorfolio> BusinessPorfolio { get; set; }
         //public DbSet<BusinessUserGroup> BusinessUserGroup { get; set; }
 
-
+        public DbSet<Customer> Customers { get; set; }
 
 
         //产品相关

@@ -9,6 +9,7 @@ namespace API.Models.CustomerModels
 {
     public class CustomerRelateAnother
     {
+        [Key]
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
         public Customer Customer { get; set; }

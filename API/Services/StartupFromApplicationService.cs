@@ -1,9 +1,9 @@
 using System;
 using API.Data;
 using API.Helpers;
-using API.Interfaces;
 using API.Profiles;
 using API.Repository;
+using API.Repository.IRepository;
 using API.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
@@ -26,12 +26,11 @@ namespace API.Services
 
             services.AddScoped<IProductRepository, ProductRepository>();
 
-            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
-            services.AddAutoMapper(typeof(ProductsProfiles).Assembly);
+            //services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+            //services.AddAutoMapper(typeof(ProductsProfiles).Assembly);
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //从profiles文件夹中扫描profile文件(profiles文件夹必须有)，取代上面一句？
 
-            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //扫描profile文件，取代上面一句？
 
-            
             return services;
         }
     }

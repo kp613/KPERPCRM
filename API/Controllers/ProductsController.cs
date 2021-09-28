@@ -1,5 +1,4 @@
 using API.Models.ProductModels;
-using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +8,8 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs.ProductsDtos;
 using System;
+using API.Repository.IRepository;
+using AutoMapper;
 
 namespace API.Controllers
 {
@@ -17,11 +18,13 @@ namespace API.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _repo;
+        private readonly IMapper _mapper;
         private readonly ApplicationDbContext _context;
 
-        public ProductsController(IProductRepository repo,ApplicationDbContext context)
+        public ProductsController(IProductRepository repo, IMapper mapper, ApplicationDbContext context)
         {
             _repo = repo;
+            _mapper = mapper;
             _context = context;
         }
 

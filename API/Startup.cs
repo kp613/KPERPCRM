@@ -57,7 +57,7 @@ namespace API
 
 
             services.AddCors();
-
+            //services.AddCors(options=>options.AddPolicy("AllowAll",p=>p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
             services.AddMvc();
             services.AddSwaggerGen();

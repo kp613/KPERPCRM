@@ -13,7 +13,8 @@ namespace API.Profiles
     {
         public ProductsProfiles()
         {
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDto>().ReverseMap();
+
             CreateMap<ProductsGroupFirst, ProductsGroupFirstDto>();
             CreateMap<ProductsGroupSecond, ProductsGroupSecondDto>();
             CreateMap<ProductsGroupThird, ProductsGroupThirdDto>();

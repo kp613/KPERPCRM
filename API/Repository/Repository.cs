@@ -1,4 +1,4 @@
-﻿using API.Interfaces;
+﻿using API.Repository.IRepository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Repository
+namespace API.Interface
 {
     public class Repository<TDbContext> : IRepository where TDbContext : DbContext
     {

@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   title = '南京科朗医药化工有限公司';
   thisTime = Date.now();
 
-
   constructor(public accountService: AccountService) { }
 
   ngOnInit() {
@@ -23,4 +22,5 @@ export class AppComponent implements OnInit {
     const user: ILoggedUser = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
+
 }

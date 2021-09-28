@@ -12,27 +12,44 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Content\cas\101-97-3.png" />
+    <Content Include="Content\cas\1122-28-7.png" />
+    <Content Include="Content\cas\13292-22-3.png" />
+    <Content Include="Content\cas\2230788-65-3.png" />
+    <Content Include="Content\cas\2512195-98-9.png" />
+    <Content Include="Content\cas\33155-90-7.png" />
+    <Content Include="Content\cas\38916-34-6.png" />
+    <Content Include="Content\cas\4926-55-0.png" />
+    <Content Include="Content\cas\534-85-0.png" />
+    <Content Include="Content\cas\589-87-7.png" />
+    <Content Include="Content\cas\591-18-4.png" />
+    <Content Include="Content\cas\89797-68-2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.9" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.9" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>

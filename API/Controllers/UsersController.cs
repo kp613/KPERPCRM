@@ -2,7 +2,6 @@
 using API.DTOs;
 using API.Models.IdentityModels;
 using API.Extensions;
-using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using API.Helpers;
 using API.DTOs.AdminDtos;
+using API.Repository.IRepository;
 
 namespace API.Controllers
 {

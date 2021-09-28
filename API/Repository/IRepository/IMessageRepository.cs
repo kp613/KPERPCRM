@@ -5,7 +5,7 @@ using API.DTOs;
 using API.Models;
 using API.Helpers;
 
-namespace API.Interfaces
+namespace API.Repository.IRepository
 {
     public interface IMessageRepository
     {

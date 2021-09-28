@@ -32,7 +32,6 @@ namespace API.Models.BusinessModels
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
 
-        public ICollection<PriceFromSupplier> PriceFromSupplier { get; set; }
         public PriceForCustomer PriceForCustomer { get; set; }
     }
 }

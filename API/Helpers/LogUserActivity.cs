@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using API.Extensions;
-using API.Interfaces;
+using API.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 

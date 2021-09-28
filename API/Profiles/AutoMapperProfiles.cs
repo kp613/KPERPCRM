@@ -18,14 +18,14 @@ namespace API.Profiles
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
             CreateMap<MemberUpdateDto, ApplicationUser>();
             CreateMap<RegisterDto, ApplicationUser>();
-            CreateMap<RoleDto, ApplicationRole>();
-            CreateMap<ApplicationRole, RoleDto>();
-            CreateMap<Message, MessageDto>();
+            CreateMap<RoleDto, ApplicationRole>().ReverseMap();
+            //CreateMap<ApplicationRole, RoleDto>();
+            CreateMap<Message, MessageDto>().ReverseMap();
                 //.ForMember(dest => dest.SenderPhotoUrl, opt => opt.MapFrom(src =>
                 //    src.Sender.Photos.FirstOrDefault(x => x.IsMain).Url))
                 //.ForMember(dest => dest.RecipientPhotoUrl, opt => opt.MapFrom(src =>
                 //    src.Recipient.Photos.FirstOrDefault(x => x.IsMain).Url));
-            CreateMap<MessageDto, Message>();
+            //CreateMap<MessageDto, Message>();
             CreateMap<Photo, PhotoDto>();
         }
     }

@@ -2,7 +2,6 @@
 using API.DTOs;
 using API.Models.IdentityModels;
 using API.Helpers;
-using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using API.Repository.IRepository;
 
 namespace API.Repository
 {
