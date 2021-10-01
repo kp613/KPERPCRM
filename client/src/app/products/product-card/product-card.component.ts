@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
+
   baseUrl = environment.apiUrl;
+  imageUrl = environment.url;
 
   constructor() { }
 

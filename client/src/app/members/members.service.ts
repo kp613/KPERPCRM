@@ -15,6 +15,8 @@ import { ILoggedUser } from '../account/loggedUser';
 })
 export class MembersService {
   baseUrl = environment.apiUrl;
+  imageUrl = environment.url;
+
   members: IMember[] = [];
   // paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]>();
   loggerUser: ILoggedUser;
@@ -77,7 +79,7 @@ export class MembersService {
     params = params.append('gender', userParams.gender);
     params = params.append('orderBy', userParams.orderBy);
 
-    return getPaginatedResult<IMember[]>(this.baseUrl + 'api/users', params, this.http)
+    return getPaginatedResult<IMember[]>(this.baseUrl + 'users', params, this.http)
       .pipe(map(response => {
         this.memberCache.set(Object.values(userParams).join('-'), response);
         return response;
@@ -95,11 +97,11 @@ export class MembersService {
       return of(member);
     }
 
-    return this.http.get<IMember>(this.baseUrl + 'api/users/' + username)
+    return this.http.get<IMember>(this.baseUrl + 'users/' + username)
   }
 
   updateMember(member: IMember) {
-    return this.http.put(this.baseUrl + 'api/users', member).pipe(
+    return this.http.put(this.baseUrl + 'users', member).pipe(
       map(() => {
         const index = this.members.indexOf(member);
         this.members[index] = member;

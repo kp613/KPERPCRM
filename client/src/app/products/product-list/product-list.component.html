@@ -12,6 +12,7 @@
 </div>
 
 <div class="row mb-5 pb-5">
+  <!-- style="position: relative; z-index: -1;" -->
   <div *ngFor="let product of products$ | async"
        class="col-4">
     <app-product-card [product]="product"></app-product-card>

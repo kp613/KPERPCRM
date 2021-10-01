@@ -14,7 +14,9 @@ using AutoMapper;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/products")]
+    [ApiVersion("2.0")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _repo;

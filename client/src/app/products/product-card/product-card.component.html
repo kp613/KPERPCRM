@@ -1,7 +1,7 @@
 <div class="card mb-4  sticky-top">
   <div class="card-img-wrapper mx-auto"
        style="display: table-cell;">
-    <img src="{{baseUrl}}content/cas/{{product.casNo}}.png"
+    <img src="{{imageUrl}}content/cas/{{product.casNo}}.png"
          class="m-3 p-3 "
          style="object-fit: auto; "
          alt="{{product.casNo}}">
@@ -13,12 +13,22 @@
       <p class="card-text text-muted ">{{product.productName}}</p>
       <p class="card-text text-muted">{{product.productNameCN}}</p>
 
-      <li class="list-inline-item"><button class="btn btn-primary">
-          <i class="fa fa-user"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-primary">
-          <i class="fa fa-heart"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-primary">
-          <i class="fa fa-envelope"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-success"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="产品信息">
+          <i class="fas fa-file-alt"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-success"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="编辑">
+          <i class="fas fa-edit"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-success"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="库存">
+          <i class="fas fa-warehouse"
+             style="width: 16px;"></i></button></li>
     </div>
   </div>
 
