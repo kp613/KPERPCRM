@@ -56,8 +56,8 @@ namespace API.Models.CustomerModels
         public ICollection<CustomerAddress> CustomerAddresses { get; set; }
         public ICollection<CustomerContacter> CustomerContacters { get; set; }
         public ICollection<CustomerBank> CustomerBanks { get; set; }
-        public ICollection<Warehouse> Warehouses { get; set; }
-        public ICollection<ProductInAndOut> ProductInAndOuts { get; set; }
+        //public ICollection<Warehouse> Warehouses { get; set; }
+        //public ICollection<ProductInAndOut> ProductInAndOuts { get; set; }
 
         [ForeignKey("AreaId")]
         public Area SysArea { get; set; }

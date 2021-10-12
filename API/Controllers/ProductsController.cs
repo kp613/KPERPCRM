@@ -15,6 +15,7 @@ namespace API.Controllers
 {
     [ApiController]
     //[Route("api/[controller]")]
+    //[Route("api/products")]
     [Route("api/v{version:apiVersion}/products")]
     [ApiVersion("2.0")]
     public class ProductsController : ControllerBase
@@ -31,23 +32,26 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult> GetProducts()
         {
             var products = await _repo.GetProductsAsync();
             if(products==null || products.Count() <= 0)
             {
                 return NotFound("没有产品信息");
             }
-            return Ok(products);
+
+            var productsDto = _mapper.Map<ICollection<ProductDto>>(products);
+
+            return Ok(productsDto);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        [HttpGet("{casno}")]
+        public async Task<ActionResult<ProductDto>> GetProductByCasNoAsync(string casno)
         {
-            var product= await _repo.GetProductByIdAsync(id);
+            var product= await _repo.GetProductByCasNoAsync(casno);
             if (product==null)             
             { 
-                return NotFound($"没有该产品{id}") ;
+                return NotFound($"没有该产品{casno}") ;
             }
             return Ok(product);
         }
@@ -58,11 +62,26 @@ namespace API.Controllers
             if (await CasNoExists(product.CasNo)) return BadRequest("该Cas No已经存在");
             
             product.UpdateDay = DateTime.Now;
-            await _context.Products.AddAsync(product);
-            await _context.SaveChangesAsync();
+            _repo.AddProduct(product);
+            await _repo.SaveAllAsync();
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var product = await _repo.GetProductByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _repo.DeleteProduct(product);
+
+            await _repo.SaveAllAsync();
+
+            return NoContent();
+        }
         //[HttpGet("producttypemain")]
         //public async Task<ActionResult<List<ProductsGroupFirst>>> GetTypeMains()
         //{

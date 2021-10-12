@@ -1,0 +1,16 @@
+<ng-container *ngIf="product">
+  <div class="card-img card-img-wrapper w-100">
+    <img src="{{productImg}}"
+         style="display: table-cell; object-fit: auto; margin: 0 auto; padding: 26px;"
+         alt="{{product.casNo}}">
+  </div>
+  <div>
+    <div class="card-body">
+      <h2 class="card-title">{{product.casNo}} <span
+              class="badge rounded-pill bg-secondary float-end fw-light">{{product.productCode}}</span>
+      </h2>
+      <p class="card-text text-muted ">{{product.productNameCN}}</p>
+      <p class="card-text text-muted">{{product.productName}}</p>
+    </div>
+  </div>
+</ng-container>

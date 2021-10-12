@@ -52,15 +52,15 @@ namespace API.Repository
             return await _context.Products.FirstOrDefaultAsync(c=>c.CasNo.Trim() == casno.Trim());
         }
 
-        async Task<ICollection<ProductsGroupFirst>> IProductRepository.GetGroupFirstsAsync()
-        {
-            return await _context.ProductsGroupFirst
-                .Include(g => g.ProductsGroupSeconds)
-                .ThenInclude(gs => gs.ProductsGroupThirds)
-                .AsSingleQuery()
-                .AsNoTracking()
-                .ToListAsync();
-        }
+        //async Task<ICollection<ProductsGroupFirst>> IProductRepository.GetGroupFirstsAsync()
+        //{
+        //    return await _context.ProductsGroupFirst
+        //        .Include(g => g.ProductsGroupSeconds)
+        //        .ThenInclude(gs => gs.ProductsGroupThirds)
+        //        .AsSingleQuery()
+        //        .AsNoTracking()
+        //        .ToListAsync();
+        //}
 
 
 
@@ -98,5 +98,7 @@ namespace API.Repository
             bool value = _context.Products.Any(c => c.CasNo.Trim() == casno.Trim());
             return value;
         }
+
+
     }
 }

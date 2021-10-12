@@ -20,11 +20,13 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CdkStepperModule } from '@angular/cdk/stepper';
+import { MaterialModule } from './_shared/material.module';
 
 @NgModule({
   declarations: [
   ],
   imports: [
+    RouterModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -36,18 +38,17 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    MatSliderModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     TimeagoModule.forRoot(),
     ButtonsModule.forRoot(),
-    CdkStepperModule
+    CdkStepperModule,
+    MaterialModule
   ],
   exports: [
+    RouterModule,
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -56,16 +57,13 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     DataTablesModule,
     Ng2SmartTableModule,
     ToastrModule,
-    MatSliderModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
     TabsModule,
     BsDatepickerModule,
     PaginationModule,
     TimeagoModule,
     ButtonsModule,
-    CdkStepperModule
+    CdkStepperModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }

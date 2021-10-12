@@ -1,1 +1,126 @@
-<p>product-detail works!</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap row mb-5 pb-5 ">
+  <div class="row col-10 ">
+    <div class="col-6 ">
+      <div class="card mb-4 w-100">
+        <app-product-item [casno]="getCasno"></app-product-item>
+      </div>
+
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">安全信息 产品重要提示</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件{{productImg}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">物理常数</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">上游产品 下游产品</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">其他名称 关键词 产品用途</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-6 ">
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">库存 报价指导</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">规格I II III</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">业务处理状态</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4 ">
+        <div>
+          <div class="card-body">
+            <h2 class="card-title">COA I II III</h2>
+            <p class="card-text text-muted ">模块下的所有组件</p>
+            <p class="card-text text-muted">模块下的所有组件</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-2 border-start">
+    <nav class="position-sticky mb-4">
+      <h2 class="text-center">目录</h2>
+      <ul class="list-group list-group-flush ps-3">
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/101-97-3"
+            routerLinkActive="bg-grey text-white">各种谱图</li>
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/1122-28-7"
+            routerLinkActive="bg-grey text-white">供应商报价</li>
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/89797-68-2"
+            routerLinkActive="bg-grey text-white">客户报价</li>
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/33155-90-7"
+            routerLinkActive="bg-grey text-white">采购列表</li>
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/534-85-0"
+            routerLinkActive="bg-grey text-white">销售列表</li>
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/589-87-7"
+            routerLinkActive="bg-grey text-white">供应商列表</li>
+        <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
+            routerLink="/products/4926-55-0"
+            routerLinkActive="bg-grey text-white">市场报告</li>
+      </ul>
+      <div class="btn-toolbar mt-3  justify-content-center">
+        <button type="button"
+                class="btn btn-sm btn-outline-secondary justify-content-center">
+          <i class="bi bi-pencil-square"></i>
+          <span class="ms-1">修改产品</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+</div>

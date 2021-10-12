@@ -38,7 +38,7 @@ namespace API.Data
         //public DbSet<BusinessPorfolio> BusinessPorfolio { get; set; }
         //public DbSet<BusinessUserGroup> BusinessUserGroup { get; set; }
 
-        public DbSet<Customer> Customers { get; set; }
+        
 
 
         //产品相关

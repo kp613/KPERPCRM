@@ -14,7 +14,7 @@
     <h3 class="h5">欢迎**登录</h3>
     <h3 class="h5">我的任务</h3>
     <h3 class="h5">我的角色 头像 照片</h3>
-    <h3 class="h5">我的学习 培训资料 业务流程</h3>
+    <h3 class="h5">我的学习 培训资料 业务流程 inventory-management存货管理</h3>
   </div>
 </ng-container>
 
@@ -22,6 +22,7 @@
   <app-login (wantRegister)="regFromLoginMode($event)"></app-login>
 </ng-container>
 
-<ng-container class="bt" *ngIf="registerMode">
+<ng-container class="bt"
+              *ngIf="registerMode">
   <app-register (cancelRegister)="regFromLoginMode($event)"></app-register>
 </ng-container>

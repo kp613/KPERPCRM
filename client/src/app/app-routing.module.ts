@@ -9,16 +9,14 @@ import { UserComponent } from './members/user/user.component';
 import { OrderListComponent } from './business/order-list/order-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductFormComponent } from './products/product-form/product-form.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
-import { ProductEditComponent } from './products/product-edit/product-edit.component';
 import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
+import { ProductRoutingModule } from './products/product-routing.module';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,8 +28,7 @@ const routes: Routes = [
       { path: "admin", component: AdminRoleComponent, canActivate: [AdminGuard] },
       { path: "members/:username", component: MemberDetailComponent, resolve: { member: MemberDetailedResolver } },
       { path: "member/edit", component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
-      { path: "product/edit", component: ProductEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
-      { path: "products", component: ProductListComponent },
+
       { path: 'messages', component: MessageComponent },
     ]
   },
@@ -42,19 +39,23 @@ const routes: Routes = [
   { path: "roles", component: AdminRoleComponent },
   { path: "orders", component: OrderListComponent },
 
-  { path: "product/new", component: ProductFormComponent },
-  { path: "products/:id", component: ProductDetailComponent },
   { path: "customers", component: CustomerListComponent },
   { path: "customers/:id", component: CustomerDetailComponent },
 
   { path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule), data: { breadcrumb: { skip: true } } },
-  
+
   { path: '**', component: HomeComponent, pathMatch: 'full' }
   // { path: "", redirectTo: "", pathMatch: "full" },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes),
+    ProductRoutingModule
+  ],
+  exports: [
+    RouterModule,
+    ProductRoutingModule
+  ]
 })
 export class AppRoutingModule { }

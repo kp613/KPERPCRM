@@ -40,7 +40,6 @@ export class ProductListComponent implements OnInit {
       this.cancel();
     }, (error) => {
       this.toastr.error(error.error);
-      this.productService.readAll();
     })
   }
 

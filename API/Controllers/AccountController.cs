@@ -67,6 +67,7 @@ namespace API.Controllers
                 KnownAs = user.KnownAs,
                 StaffId = user.StaffId,
                 Gender=user.Gender,
+                ProfilePicture=user.ProfilePicture,
                 Token = await _tokenService.CreateToken(user)
             };
         }
@@ -91,6 +92,7 @@ namespace API.Controllers
                 KnownAs = user.KnownAs,
                 StaffId=user.StaffId,
                 Gender = user.Gender,
+                ProfilePicture = user.ProfilePicture,
                 Token = await _tokenService.CreateToken(user)
             };
         }

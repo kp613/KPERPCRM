@@ -20,16 +20,16 @@ namespace API.Controllers
             _repository = repository;
         }
 
-        [HttpGet("/api/groupfirst")]
-        public async Task<ActionResult<IEnumerable<ProductsGroupFirstDto>>> GetGroupFirst()
-        {
-            var productsGroupFirst = await _repository.GetGroupFirstsAsync();
+        //[HttpGet("/api/groupfirst")]
+        //public async Task<ActionResult<IEnumerable<ProductsGroupFirstDto>>> GetGroupFirst()
+        //{
+        //    var productsGroupFirst = await _repository.GetGroupFirstsAsync();
 
-            if (productsGroupFirst == null || productsGroupFirst.Count()<=0)
-            {
-                return NotFound("没有该类别");
-            }
-            return Ok(productsGroupFirst);
-        }
+        //    if (productsGroupFirst == null || productsGroupFirst.Count()<=0)
+        //    {
+        //        return NotFound("没有该类别");
+        //    }
+        //    return Ok(productsGroupFirst);
+        //}
     }
 }

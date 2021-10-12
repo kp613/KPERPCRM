@@ -12,10 +12,13 @@ namespace API.Repository.IRepository
     {
         void Update(ApplicationUser user);
         Task<bool> SaveAllAsync();
-        Task<IEnumerable<ApplicationUser>> GetUsersAsync();
-        Task<ApplicationUser> GetUserByIdAsync(string id);
-        Task<ApplicationUser> GetUserByUsernameAsync(string username);
+
         Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string username);
+
+        Task<ICollection<ApplicationUser>> GetUsersAsync();
+        Task<ApplicationUser> GetUserByIdAsync(string id);
+        Task<ApplicationUser> GetUserByUsernameAsync(string username);
+
     }
 }

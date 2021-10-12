@@ -1,7 +1,6 @@
 <div class="card mb-4  sticky-top">
-  <div class="card-img-wrapper mx-auto"
-       style="display: table-cell;">
-    <img src="{{imageUrl}}content/cas/{{product.casNo}}.png"
+  <div class="card-img-wrapper mx-auto">
+    <img src="{{imageUrl}}/content/cas/{{product.casNo}}.png"
          class="m-3 p-3 "
          style="object-fit: auto; "
          alt="{{product.casNo}}">
@@ -9,26 +8,36 @@
   <div>
     <div class="card-body">
       <h2 class="card-title"
-          routerLink='/products/{{product.casNo}}'>{{product.casNo}}</h2>
-      <p class="card-text text-muted ">{{product.productName}}</p>
-      <p class="card-text text-muted">{{product.productNameCN}}</p>
-
+          routerLink='/products/{{product.casNo}}'>{{product.casNo}}<span
+              class="badge rounded-pill bg-secondary float-end fw-light">{{product.productCode}}</span></h2>
+      <p class="card-text text-muted ">{{product.productNameCN}}</p>
+      <p class="card-text text-muted">{{product.productName}}</p>
       <li class="list-inline-item"><button class="btn btn-success"
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title="产品信息">
+                title="产品信息"
+                routerLink="{{product.casNo}}">
           <i class="fas fa-file-alt"></i></button></li>
       <li class="list-inline-item"><button class="btn btn-success"
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title="编辑">
-          <i class="fas fa-edit"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-success"
+                title="编辑"
+                routerLink="edit/{{product.casNo}}">
+          <i class="fas fa-edit"
+             style="max-width: 13px;"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-success "
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="删除"
+                (click)="removeProduct(product.id)">
+          <i class="far fa-trash-alt"></i></button></li>
+      <li class="list-inline-item "><button class="btn btn-success"
+                style="padding-left: 14px; padding-right: 20px;"
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 title="库存">
           <i class="fas fa-warehouse"
-             style="width: 16px;"></i></button></li>
+             style="max-width: 13px;"></i></button></li>
     </div>
   </div>
 

@@ -1,19 +1,19 @@
-<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-  <img src="../../assets/images/logo.png"
-       class="ms-2 "
-       style="max-height: 56px; cursor: pointer;"
-       alt="logo"
-       routerLink='/'
-       routerLinkActive='active'>
-  <button class="navbar-toggler position-absolute d-md-none collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#sidebarMenu"
-          aria-controls="sidebarMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header class="navbar sticky-top navbar-light bg-light flex-md-nowrap p-0 shadow">
+  <div class="float-start row">
+    <div class="col align-self-center ms-3 pe-1"
+         style="cursor: pointer;">
+      <span class="material-icons pt-2">
+        reorder
+      </span>
+    </div>
+    <div class="col ps-0">
+      <img src="../../assets/images/logo.png"
+           style="max-height: 56px; cursor: pointer;"
+           alt="logo"
+           routerLink='/'
+           routerLinkActive='active'>
+    </div>
+  </div>
   <!--  <input class="form-control form-control-dark w-50  justify-content-start"
          type="text"
          placeholder="Search Product"
@@ -30,7 +30,7 @@
     <a class="nav-link text-mute"
        data-bs-toggle="dropdown"
        aria-expanded="false">
-      <img src="../../assets/images/user.png"
+      <img src="{{user.profilePicture || './assets/images/user.png'}}"
            style="max-height: 39px; border-radius: 50%;"> <span class="ms-1"
             style="color: grey;">{{user.name | titlecase}}</span>
       <!--uppercase lowercase  titlecase-->

@@ -72,7 +72,7 @@ namespace API.Repository
                 .SingleOrDefaultAsync(x => x.UserName == username);
         }
 
-        public async Task<IEnumerable<ApplicationUser>> GetUsersAsync()
+        public async Task<ICollection<ApplicationUser>> GetUsersAsync()
         {
             return await _context.ApplicationUser
                 .ToListAsync();

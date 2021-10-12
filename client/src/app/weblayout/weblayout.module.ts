@@ -15,8 +15,6 @@ import { SharedModule } from '../shared.module';
     MainComponent,
   ],
   imports: [
-    CommonModule,
-    RouterModule,
     SharedModule
   ],
   exports: [

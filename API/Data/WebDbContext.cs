@@ -1,4 +1,5 @@
-﻿using API.Models.WebModels;
+﻿using API.Models.CustomerModels;
+using API.Models.WebModels;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,6 +11,7 @@ namespace API.Data
             : base(options)
         {
         }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<ProductPublishing> ProductPublishing { get; set; }
 

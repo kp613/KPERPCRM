@@ -8,6 +8,7 @@ import { SharedModule } from '../shared.module';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberModule } from '../members/member.module';
+import { MaterialModule } from '../_shared/material.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,12 @@ import { MemberModule } from '../members/member.module';
     RouterModule,
     CommonModule,
     SharedModule,
+
   ],
   exports: [
     AdminRoleComponent,
     HomeComponent,
+
   ]
 })
 export class AdminModule { }

@@ -37,6 +37,7 @@ namespace API.Services
 
                         ValidateAudience = false,       //重要：Microsoft的缺省设置取消，以免影响本次设置而出错
                         //ValidAudience = config["Authentication:Audience"],
+                        ValidateLifetime = true,    //20211003
                     };
 
                 });
@@ -45,6 +46,8 @@ namespace API.Services
             {
                 opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
                 opt.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
+                opt.AddPolicy("IsAdmin", policy => policy.RequireClaim("age", "19"));   //使用claim设置董事会成员等
+                opt.AddPolicy("IsAdmin", policy => policy.RequireClaim("age", "19").RequireRole("Admin"));  //使用组合,roles设置CRUD或特殊的area，claim设置部门和角色？
             });
 
             return services;

@@ -14,15 +14,16 @@
 <div class="row mb-5 pb-5">
   <!-- style="position: relative; z-index: -1;" -->
   <div *ngFor="let product of products$ | async"
-       class="col-4">
+       class="col-12 col-sm-6 col-lg-4 col-xxl-3">
     <app-product-card [product]="product"></app-product-card>
+    
   </div>
 </div>
 
 
 
 <!-- Modal -->
-<div class="modal fade"
+<div class="modal fade mt-5 pt-5"
      id="addProductModal"
      data-bs-backdrop="static"
      data-bs-keyboard="false"
