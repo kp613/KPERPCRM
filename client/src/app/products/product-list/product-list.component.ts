@@ -14,36 +14,13 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
-  newProduct: Product[];
-  addProductForm: FormGroup;
-  model: any = {};
-  @ViewChild('addProduct') addProduct: NgForm;
 
-  constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title, private fb: FormBuilder, private toastr: ToastrService) { }
+  constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle("产品列表 - 科朗管理平台");
-    this.initializeForm();
-
     this.products$ = this.productService.readAll();
   }
 
-  initializeForm() {
-    this.addProductForm = this.fb.group({
-      casno: ['', [Validators.required, Validators.pattern('[1-9][0-9]{1,10}-[0-9]{2}-[0-9]{1}')]]
-    })
-  }
 
-  onSaveForm() {
-    this.productService.create(this.addProduct.value).subscribe((res) => {
-      this.toastr.success('增加产品成功');
-      this.cancel();
-    }, (error) => {
-      this.toastr.error(error.error);
-    })
-  }
-
-  cancel() {
-    this.addProduct.reset();
-  }
 }

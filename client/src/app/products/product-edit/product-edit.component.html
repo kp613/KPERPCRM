@@ -1,1 +1,281 @@
-<p>product-edit works!</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">修改产品信息</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <button type="button"
+            class="btn btn-sm btn-outline-secondary me-3"
+            data-bs-toggle="modal"
+            data-bs-target="#addProductModal">
+      <i class="bi bi-arrow-bar-up"></i>
+      <span class="ms-1">增加上游产品</span>
+    </button>
+    <button type="button"
+            class="btn btn-sm btn-outline-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#addProductModal">
+      <i class="bi bi-arrow-bar-down"></i>
+      <span class="ms-1">增加下游产品</span>
+    </button>
+  </div>
+</div>
+
+<form [formGroup]='editProductForm'
+      (ngSubmit)="editProductForm.valid && onUpdateProduct()"
+      autocomplete="off">
+  <input type="hidden"
+         formControlName='id'>
+  <div class="row mb-5 pb-5">
+    <div class="col-12 col-lg-6">
+      <div class="accordion"
+           id="accordionLeft">
+        <div class="accordion-item">
+          <div class="accordion-body">
+
+            <!-- {{editProductForm.value | json}}
+            {{editProductForm.status | json}} -->
+
+            <div class="modal-body">
+
+              <div class="row mb-3">
+                <div class="col-12 col-lg-7 edit-left">
+                  <div class=" w-100">
+                    <img src="{{productImg}}"
+                         alt="{{casno}}"
+                         style="max-width: 99%;">
+                  </div>
+                </div>
+                <div class="col-12 col-lg-5 edit-right">
+                  <div class="form-floating edit-right-position">
+                    <div>
+                      <div class="form-floating ">
+                        <input [class.is-invalid]='(editProductForm.get("casNo").errors && editProductForm.get("casNo").touched) '
+                               type="text"
+                               class="form-control ps-3"
+                               id="casNoInput"
+                               placeholder="CAS Number"
+                               formControlName='casNo'>
+                        <label for="casNoInput"
+                               class="form-label">Cas No.</label>
+                        <div *ngIf="editProductForm.get('casNo').hasError('required')"
+                             class="invalid-feedback">
+                          请输入产品的CAS Number</div>
+                        <div *ngIf="editProductForm.get('casNo').hasError('pattern')"
+                             class="invalid-feedback">
+                          CAS Number格式不对</div>
+                      </div>
+
+                      <div class="form-floating">
+                        <input type="text"
+                               class="form-control ps-3"
+                               id="productCodeInput"
+                               placeholder="产品代号可以为空"
+                               formControlName='productCode'>
+                        <label for="productCodeInput"
+                               class="form-label">产品代号</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-floating mb-1">
+                <input class="form-control"
+                       type="file"
+                       id="fileupdate"
+                       placeholder="上传产品结构"
+                       formControlName='Structure'>
+                <label for="fileupdate"
+                       class="form-label">上传产品结构</label>
+              </div>
+
+              <div class="form-floating mb-1">
+                <input type="text"
+                       class="form-control ps-3"
+                       id="productNameCNInput"
+                       placeholder="产品名称可以为空"
+                       formControlName='productNameCN'>
+                <label for="productNameCNInput"
+                       class="form-label">产品名称</label>
+              </div>
+
+              <div class="form-floating mb-1">
+                <input type="text"
+                       class="form-control ps-3"
+                       id="productNameInput"
+                       placeholder="英文名称可以为空"
+                       formControlName='productName'>
+                <label for="productNameInput"
+                       class="form-label">Product Name</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header"
+              id="headingA">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseA"
+                    aria-expanded="false"
+                    aria-controls="collapseA">
+              重要提示 用途 业务注意点
+            </button>
+          </h2>
+          <div id="collapseA"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingA"
+               data-bs-parent="#accordionLeft">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance, as
+              well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding
+              our
+              default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"
+              id="headingB">
+            <button class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseB"
+                    aria-expanded="true"
+                    aria-controls="collapseB">
+              关键词
+            </button>
+          </h2>
+          <div id="collapseB"
+               class="accordion-collapse collapse show"
+               aria-labelledby="headingB"
+               data-bs-parent="#accordionLeft"
+               style="">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance, as
+              well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding
+              our
+              default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="accordion"
+           id="accordionRight">
+        <div class="accordion-item">
+          <h2 class="accordion-header"
+              id="headingC">
+            <button class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseC"
+                    aria-expanded="true"
+                    aria-controls="collapseC">
+              物理常数
+            </button>
+          </h2>
+          <div id="collapseC"
+               class="accordion-collapse collapse show"
+               aria-labelledby="headingC"
+               data-bs-parent="#accordionRight"
+               style="">
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
+              plugin
+              adds
+              the appropriate classes that we use to style each element. These classes control the overall appearance,
+              as
+              well
+              as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+              our
+              default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"
+              id="headingD">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseD"
+                    aria-expanded="false"
+                    aria-controls="collapseD">
+              规格增删改
+            </button>
+          </h2>
+          <div id="collapseD"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingD"
+               data-bs-parent="#accordionRight"
+               style="">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance, as
+              well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding
+              our
+              default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"
+              id="headingE">
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseE"
+                    aria-expanded="false"
+                    aria-controls="collapseE">
+              上下游产品列表 增删
+            </button>
+          </h2>
+          <div id="collapseE"
+               class="accordion-collapse collapse"
+               aria-labelledby="headingE"
+               data-bs-parent="#accordionRight"
+               style="">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance, as
+              well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding
+              our
+              default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit"
+                  class="btn btn-primary"
+                  [disabled]='!editProductForm.valid || !editProductForm.dirty'>保存</button>
+          <button type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  routerLink="../../{{casno}}">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

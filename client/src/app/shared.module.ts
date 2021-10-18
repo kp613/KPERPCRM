@@ -44,7 +44,8 @@ import { MaterialModule } from './_shared/material.module';
     TimeagoModule.forRoot(),
     ButtonsModule.forRoot(),
     CdkStepperModule,
-    MaterialModule
+    MaterialModule,
+
   ],
   exports: [
     RouterModule,
@@ -63,7 +64,7 @@ import { MaterialModule } from './_shared/material.module';
     TimeagoModule,
     ButtonsModule,
     CdkStepperModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class SharedModule { }

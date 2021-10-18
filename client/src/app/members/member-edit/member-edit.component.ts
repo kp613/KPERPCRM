@@ -23,7 +23,11 @@ export class MemberEditComponent implements OnInit {
     }
   }
 
-  constructor(private accountService: AccountService, private memberService: MembersService, private toastr: ToastrService) {
+  constructor(
+    private accountService: AccountService,
+    private memberService: MembersService,
+    private toastr: ToastrService
+  ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 

@@ -11,6 +11,42 @@
       </h2>
       <p class="card-text text-muted ">{{product.productNameCN}}</p>
       <p class="card-text text-muted">{{product.productName}}</p>
+
+
+      <li class="list-inline-item">
+        <button class="btn btn-secondary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="编辑"
+                routerLink="../edit/{{product.id}}">
+          <i class="fas fa-edit"
+             style="max-width: 13px; color: gray;"></i></button>
+      </li>
+      <li class="list-inline-item">
+        <swal #deleteRecord
+              title="需要删除记录吗?"
+              text="删除不可逆转，请确认！"
+              icon="question"
+              [showCancelButton]="true"
+              [focusCancel]="true"
+              (confirm)="removeProduct(product.id)">
+        </swal>
+        <button class="btn btn-secondary "
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="删除"
+                (click)="deleteRecord.fire()">
+          <i class="far fa-trash-alt"
+             style=" color: gray;"></i></button>
+      </li>
+      <li class="list-inline-item "><button class="btn btn-secondary"
+                style="padding-left: 14px; padding-right: 20px; "
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="库存">
+          <i class="fas fa-warehouse"
+             style="max-width: 13px; color: gray; "></i></button></li>
     </div>
   </div>
+
 </ng-container>

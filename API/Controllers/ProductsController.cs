@@ -45,6 +45,7 @@ namespace API.Controllers
             return Ok(productsDto);
         }
 
+        //products/12345-12-1
         [HttpGet("{casno}")]
         public async Task<ActionResult<ProductDto>> GetProductByCasNoAsync(string casno)
         {
@@ -56,15 +57,65 @@ namespace API.Controllers
             return Ok(product);
         }
 
+        [HttpGet("edit/{id}")]
+        public async Task<ActionResult> GetProductById(int id)
+        {
+            var product = await _repo.GetProductByIdAsync(id);
+            if (product == null )
+            {
+                return NotFound("没有该产品");
+            }
+
+            return Ok(product);
+        }
+
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<ProductDto>> GetProductByIdAsync(int id)
+        //{
+        //    var product = await _repo.GetProductByIdAsync(id);
+        //    if (product == null)
+        //    {
+        //        return NotFound($"没有该产品{id}");
+        //    }
+        //    return Ok(product);
+        //}
+
         [HttpPost("add")]
-        public async Task<ActionResult<Product>> AddProduct([FromBody]Product product)
+        public async Task<ActionResult<ProductDto>> AddProduct([FromBody]Product product)
         {
             if (await CasNoExists(product.CasNo)) return BadRequest("该Cas No已经存在");
-            
+            if (await ProductCodeExists(product.ProductCode)) return BadRequest("该产品的代号已经存在");
+
             product.UpdateDay = DateTime.Now;
+
             _repo.AddProduct(product);
+
             await _repo.SaveAllAsync();
-            return Ok();
+
+            if (product.ProductCode == null || product.ProductCode == "" )
+            {
+                product.ProductCode = product.Id.ToString();
+                await _repo.SaveAllAsync();
+            }
+
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateProduct(int id,[FromBody] Product product)
+        {
+            if ((!await NoChangedCasNo(product.CasNo, product.Id)) && await CasNoExists(product.CasNo)) return BadRequest("该Cas No已经存在");
+            if (product.ProductCode == "") return BadRequest("产品代号不能为空");
+            if ((!await NoChangedCode(product.ProductCode, product.Id)) && await ProductCodeExists(product.ProductCode)) return BadRequest("该产品的代号已经存在");
+           
+
+            product.UpdateDay = DateTime.Now;
+
+            _repo.UpdateProduct(product);
+
+            await _repo.SaveAllAsync();
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -106,6 +157,21 @@ namespace API.Controllers
         private async Task<bool> CasNoExists(string casNo)
         {
             return await _context.Products.AnyAsync(x => x.CasNo == casNo);
+        }
+
+        private async Task<bool> NoChangedCasNo(string casNo, int id)
+        {
+            return await _context.Products.AnyAsync(x => x.CasNo == casNo && x.Id == id);
+        }
+
+        private async Task<bool> ProductCodeExists(string productCode)
+        {
+            return await _context.Products.AnyAsync(x => x.ProductCode == productCode);
+        }
+
+        private async Task<bool> NoChangedCode(string productCode,int id)
+        {
+            return await _context.Products.AnyAsync(x => x.ProductCode == productCode && x.Id == id);
         }
     }
 }

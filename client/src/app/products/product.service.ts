@@ -33,7 +33,13 @@ export class ProductService {
   // }
 
   getProductByCasNo(casno): Observable<any> {
-    return this.httpClient.get(this.baseUrl + "/products" + "/" + `${casno}`);
+    // return this.httpClient.get(this.baseUrl + "/products" + "/edit");
+    return this.httpClient.get(this.baseUrl + "/products/" + `${casno}`);
+  }
+
+  getProductById(id): Observable<any> {
+    return this.httpClient.get(this.baseUrl + "/products/edit/" + id);
+    // return this.httpClient.get(this.baseUrl + "/products/" + `${id}`);
   }
 
   create(data: any) {
@@ -41,7 +47,7 @@ export class ProductService {
   }
 
   update(id, data): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl + "/products"}/${id}`, data);
+    return this.httpClient.put(this.baseUrl + "/products/" + id, data);
   }
 
   delete(id): Observable<any> {

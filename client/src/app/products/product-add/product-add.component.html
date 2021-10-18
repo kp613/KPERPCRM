@@ -1,0 +1,66 @@
+<form [formGroup]='addProductForm'
+      (ngSubmit)="addProductForm.valid && onSaveForm()"
+      autocomplete="off">
+
+  <!-- <form #addProduct="ngForm"
+      (ngSubmit)="onSaveForm()"
+      autocomplete="off"> -->
+
+  <div class="modal-body">
+
+    <div class="form-floating mb-1">
+      <input [class.is-invalid]='(addProductForm.get("casno").errors && addProductForm.get("casno").touched) || !addProductForm.get("casno").dirty'
+             type="text"
+             class="form-control ps-3"
+             id="casNoInput"
+             placeholder="CAS Number"
+             formControlName='casno'>
+      <label for="casNoInput"
+             class="form-label">Cas No.</label>
+      <div *ngIf="addProductForm.get('casno').hasError('required')"
+           class="invalid-feedback">
+        请输入产品的CAS Number</div>
+      <div *ngIf="addProductForm.get('casno').hasError('pattern')"
+           class="invalid-feedback">
+        CAS Number格式不对</div>
+    </div>
+
+    <div class="form-floating mb-1">
+      <input type="text"
+             class="form-control ps-3"
+             id="productCodeInput"
+             placeholder="产品代号可以为空"
+             formControlName='productCode'>
+      <label for="productCodeInput"
+             class="form-label">产品代号</label>
+    </div>
+
+    <div class="form-floating mb-1">
+      <input type="text"
+             class="form-control ps-3"
+             id="productNameCNInput"
+             placeholder="产品名称可以为空"
+             formControlName='productnamecn'>
+      <label for="productNameCNInput"
+             class="form-label">产品名称</label>
+    </div>
+
+    <div class="form-floating mb-1">
+      <input type="text"
+             class="form-control ps-3"
+             id="productNameInput"
+             placeholder="英文名称可以为空"
+             formControlName='productname'>
+      <label for="productNameInput"
+             class="form-label">Product Name</label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit"
+            class="btn btn-primary">保存</button>
+    <button type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="cancel()">取消</button>
+  </div>
+</form>

@@ -12,22 +12,24 @@ import { ProductService } from '../product.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
-
   // baseUrl = environment.apiUrl;
   imageUrl = environment.url;
 
-  constructor(private productService: ProductService, private toastr: ToastrService, private route: ActivatedRoute) { }
+  constructor(
+    private productService: ProductService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
 
-  removeProduct(id) {
-    this.productService.delete(id).subscribe(res => {
-      this.product = res;
-      this.toastr.success("产品已删除");
-    }, (error) => {
-      this.toastr.error(error.error);
-    })
-  }
+  // removeProduct(id) {
+  //   this.productService.delete(id).subscribe(res => {
+  //     this.toastr.success("产品已删除");
+  //   }, (error) => {
+  //     this.toastr.error(error.error);
+  //   })
+  // }
 
 }

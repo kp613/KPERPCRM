@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Product } from '../product';
 import { ProductItemComponent } from '../product-item/product-item.component';
@@ -12,15 +13,27 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailComponent implements OnInit {
   getCasno: string;
+  product: Product;
+  // productId: number;
   @ViewChild('imgtest') productImg: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getCasNo();
+    // this.getProductId();
   }
 
   getCasNo() {
     return this.getCasno = this.route.snapshot.params['casno'];
   }
+
+  // getProductId() {
+  //   this.productService.getProductByCasNo(this.getCasno).subscribe(res => {
+  //     this.product = res;
+  //     this.productId = this.product.id;
+  //   }, (error) => {
+  //     this.toastr.error(error.error);
+  //   })
+  // }
 }

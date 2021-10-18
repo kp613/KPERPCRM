@@ -7,7 +7,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
   { path: "products/:casno", component: ProductDetailComponent },
-  { path: "products/edit/:casno", component: ProductEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
+  { path: "products/edit/:id", component: ProductEditComponent },
+  // { path: "products/edit/:id", component: ProductEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
   { path: "products", component: ProductListComponent },
 ];
 

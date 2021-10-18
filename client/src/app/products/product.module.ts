@@ -9,7 +9,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductItemComponent } from './product-item/product-item.component';
-
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
+import { ProductAddComponent } from './product-add/product-add.component';
 
 
 @NgModule({
@@ -18,12 +19,15 @@ import { ProductItemComponent } from './product-item/product-item.component';
     ProductDetailComponent,
     ProductCardComponent,
     ProductEditComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    ProductAddComponent
   ],
   imports: [
     MemberModule,
     SharedModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+
+    SweetAlert2Module.forRoot(),
   ],
   exports: [
   ]

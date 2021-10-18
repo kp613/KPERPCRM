@@ -29,6 +29,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@popperjs/core": "^2.9.3",
+    "@sweetalert2/ngx-sweetalert2": "^10.0.0",
     "angular-datatables": "^12.0.0",
     "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0",
@@ -45,6 +46,7 @@
     "ngx-toastr": "^14.1.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.1.7",
     "themify-icons-scss": "^1.0.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
