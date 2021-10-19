@@ -21,6 +21,7 @@ import { TimeagoModule } from 'ngx-timeago';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MaterialModule } from './_shared/material.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { MaterialModule } from './_shared/material.module';
     ButtonsModule.forRoot(),
     CdkStepperModule,
     MaterialModule,
-
+    NgxPaginationModule
   ],
   exports: [
     RouterModule,
@@ -65,6 +66,7 @@ import { MaterialModule } from './_shared/material.module';
     ButtonsModule,
     CdkStepperModule,
     MaterialModule,
+    NgxPaginationModule
   ]
 })
 export class SharedModule { }

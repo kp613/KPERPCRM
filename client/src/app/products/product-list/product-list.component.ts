@@ -14,13 +14,29 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
+  currentPage: any;
+  perPageItems = [6, 12, 24, 36, 48];
+  itemsPerPage: number = 6;
 
   constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle("产品列表 - 科朗管理平台");
+    this.loadProducts();
+  }
+
+  loadProducts() {
     this.products$ = this.productService.readAll();
   }
 
+  pageChanged(event) {
+    this.currentPage = event;
+  }
+
+  onPageItemsChange(event): void {
+    this.itemsPerPage = event.target.value;
+    this.currentPage = 1;
+    this.loadProducts();
+  }
 
 }

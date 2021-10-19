@@ -13,15 +13,40 @@
 
 <div class="row mb-5 pb-5">
   <!-- style="position: relative; z-index: -1;" -->
-  <div *ngFor="let product of products$ | async"
+  <div *ngFor="let product of products$ | async | paginate:{
+    itemsPerPage: itemsPerPage,
+    currentPage: currentPage} "
        class="col-12 col-sm-6 col-lg-4 col-xxl-3">
     <app-product-card [product]="product"
                       *ngIf="product"></app-product-card>
 
   </div>
+
 </div>
+<div class="container mb-5">
+  <div class="row justify-content-center"
+       style="text-align: center; ">
 
+    <pagination-controls (pageChange)="pageChanged($event)"
+                         (pageBoundsCorrection)="pageChanged($event)"
+                         previousLabel="Previous"
+                         nextLabel="Next"
+                         class="col align-items-center">
+    </pagination-controls>
 
+    <div class="col-4 align-items-center pageSelect ">
+      <select (change)="onPageItemsChange($event)"
+              class="w-100"
+              style="height: 30px; margin: 0 10px; padding: 0 10px;">
+        <option *ngFor="let item of perPageItems"
+                [ngValue]="item">
+          {{ item }}
+        </option>
+      </select>
+    </div>
+
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade mt-5 pt-5"
