@@ -10,14 +10,17 @@ using API.DTOs.ProductsDtos;
 using System;
 using API.Repository.IRepository;
 using AutoMapper;
+using API.Helpers;
+using API.Extensions;
 
 namespace API.Controllers
 {
     [ApiController]
     //[Route("api/[controller]")]
-    //[Route("api/products")]
-    [Route("api/v{version:apiVersion}/products")]
-    [ApiVersion("2.0")]
+    [Route("api/products")]
+
+    //[Route("api/v{version:apiVersion}/products")]
+    //[ApiVersion("3.0")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _repo;
@@ -31,11 +34,11 @@ namespace API.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("lists")]
         public async Task<ActionResult> GetProducts()
         {
             var products = await _repo.GetProductsAsync();
-            if(products==null || products.Count() <= 0)
+            if (products == null || products.Count() <= 0)
             {
                 return NotFound("没有产品信息");
             }
@@ -44,6 +47,19 @@ namespace API.Controllers
 
             return Ok(productsDto);
         }
+
+
+        //[HttpGet("lists")]
+        //public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts([FromQuery] ProductParams productParams)
+        //{
+        //    var products = await _repo.GetProductsAsync(productParams);
+
+        //    Response.AddPaginationHeader(products.CurrentPage, products.PageSize, products.TotalCount, products.TotalPages);
+
+        //    return Ok(products);
+        //}
+
+
 
         //products/12345-12-1
         [HttpGet("{casno}")]

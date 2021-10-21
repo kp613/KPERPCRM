@@ -3,8 +3,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-import * as internal from 'stream';
-import { Product } from '../product';
+import { IProduct } from '../product';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class ProductItemComponent implements OnInit {
   imageUrl = environment.url;
   id: number;
   @Input() casno: string;
-  product: Product;
+  product: IProduct;
   productImg: string;
 
   constructor(

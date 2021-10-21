@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { Product } from 'src/app/products/product';
+import { IProduct } from 'src/app/products/product';
+import { IPagination } from 'src/app/_models/pagination';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,10 +14,12 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  products$: Observable<Product[]>;
+  products$: Observable<IProduct[]>;
   currentPage: any;
-  perPageItems = [6, 12, 24, 36, 48];
-  itemsPerPage: number = 6;
+  pagination: IPagination;
+  perPageItems = [12, 24, 36, 48];
+  itemsPerPage: number = 12;  //Initial items perPage
+
 
   constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title) { }
 
@@ -26,7 +29,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProducts() {
-    this.products$ = this.productService.readAll();
+    this.products$ = this.productService.getProducts();
   }
 
   pageChanged(event) {

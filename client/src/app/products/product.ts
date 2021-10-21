@@ -1,4 +1,4 @@
-export class Product {
+export interface IProduct {
   id: number;
   casNo: string;
   productName: string;
@@ -7,15 +7,15 @@ export class Product {
   updateDay: string;
   structureUrl: string;
 
-  constructor() {
-    this.id = 0;
-    this.casNo = "";
-    this.productName = "";
-    this.productNameCN = "";
-    this.productCode = "";
-    this.updateDay = "";
-    this.structureUrl = "";
-  }
+  // constructor() {
+  //   this.id = 0;
+  //   this.casNo = "";
+  //   this.productName = "";
+  //   this.productNameCN = "";
+  //   this.productCode = "";
+  //   this.updateDay = "";
+  //   this.structureUrl = "";
+  // }
 }
 
 

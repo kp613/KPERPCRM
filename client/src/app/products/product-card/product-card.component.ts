@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/products/product';
+import { IProduct } from 'src/app/products/product';
 import { environment } from 'src/environments/environment';
 import { ProductService } from '../product.service';
 
@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product: Product;
+  @Input() product: IProduct;
   // baseUrl = environment.apiUrl;
   imageUrl = environment.url;
 

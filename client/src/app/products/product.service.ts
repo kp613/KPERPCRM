@@ -2,30 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Product } from './product';
+import { IProduct } from './product';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  // baseUrl = environment.apiUrl;
-  baseUrl = environment.apiUrlVer2;
+  baseUrl = environment.apiUrl;
+  // baseUrl = environment.apiUrlVer2;
   // imageUrl = environment.url;
-  products: Product[] = [];
+  products: IProduct[] = [];
 
 
   constructor(private httpClient: HttpClient) { }
 
-  readAll(): Observable<Product[]> {
+  getProducts(): Observable<IProduct[]> {
     if (this.products.length > 0) return of(this.products);
-    return this.httpClient.get<Product[]>(this.baseUrl + "/products").pipe(
+    return this.httpClient.get<IProduct[]>(this.baseUrl + "/products/lists").pipe(
       map(products => {
         this.products = products;
         return products;
       })
     )
-    // return this.httpClient.get<Product[]>(this.baseURL + "products");
+    // return this.httpClient.get<Product[]>(this.baseUrl + "/products");
   }
 
   // getProductByCasNo(casno): Observable<any> {

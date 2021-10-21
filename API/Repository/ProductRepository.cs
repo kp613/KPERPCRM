@@ -1,6 +1,10 @@
 ﻿using API.Data;
+using API.DTOs.ProductsDtos;
+using API.Helpers;
 using API.Models.ProductModels;
 using API.Repository.IRepository;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,17 +17,36 @@ namespace API.Repository
     public class ProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductRepository(ApplicationDbContext context)
+        public ProductRepository(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<ICollection<Product>> GetProductsAsync()
+
+        //public async Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams)
         {
             return await _context.Products
                 .Include(p => p.ProductsGroupThirdProducts)
                 .ToListAsync();
+
+            //var query = _context.Products.AsQueryable();
+
+            //query = query.Where(u => u.CasNo == productrParams.CasNo);
+
+            //query = productrParams.OrderBy switch
+            //{
+            //    "updateDay" => query.OrderByDescending(u => u.UpdateDay),
+            //    //"lastActive" => query.OrderBy(u => u.LastActive),
+            //    _ => query.OrderByDescending(u => u.UpdateDay)
+            //};
+
+            //return await PagedList<ProductDto>.CreateAsync(query.ProjectTo<ProductDto>(_mapper
+            //    .ConfigurationProvider).AsNoTracking(),
+            //        productrParams.PageNumber, productrParams.PageSize);
         }
 
         public void AddProduct(Product product)

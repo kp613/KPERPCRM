@@ -1,4 +1,6 @@
-﻿using API.Models.ProductModels;
+﻿using API.DTOs.ProductsDtos;
+using API.Helpers;
+using API.Models.ProductModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,9 @@ namespace API.Repository.IRepository
 {
     public interface IProductRepository
     {
+        //Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams);
         Task<ICollection<Product>> GetProductsAsync();
+
         Task<Product> GetProductByIdAsync(int id);
         Task<Product> GetProductByCasNoAsync(string casno);
 

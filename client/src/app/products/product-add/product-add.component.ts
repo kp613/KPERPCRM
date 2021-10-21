@@ -3,8 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { environment } from 'src/environments/environment';
-import { Product } from '../product';
+import { IProduct } from '../product';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -14,7 +13,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductAddComponent implements OnInit {
   casno: string;
-  product: Product;
+  product: IProduct;
   addProductForm: FormGroup;
 
   constructor(

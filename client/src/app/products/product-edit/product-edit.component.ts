@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-import { Product } from '../product';
+import { IProduct } from '../product';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
-  product: Product;
+  product: IProduct;
   id: number;
   casno: string;
   imageUrl = environment.url;

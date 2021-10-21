@@ -4,7 +4,6 @@ import { map } from 'jquery';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ILoggedUser } from '../loggedUser';
-import { Product } from '../../products/product';
 import { IRole } from '../role';
 
 @Injectable({
