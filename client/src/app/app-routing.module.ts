@@ -17,6 +17,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
 import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
 import { ProductRoutingModule } from './products/product-routing.module';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { SettingRoutingModule } from './settings/setting-routing.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,11 +52,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    ProductRoutingModule
+    ProductRoutingModule,
+    SettingRoutingModule
   ],
   exports: [
-    RouterModule,
-    ProductRoutingModule
+    RouterModule
   ]
 })
 export class AppRoutingModule { }

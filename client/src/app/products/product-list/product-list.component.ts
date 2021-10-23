@@ -15,10 +15,14 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<IProduct[]>;
-  currentPage: any;
-  pagination: IPagination;
+  products: IProduct[] = [];
+
+  currentPage: 1;
+  count = 0;
   perPageItems = [12, 24, 36, 48];
   itemsPerPage: number = 12;  //Initial items perPage
+
+  searchItem = '';
 
 
   constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title) { }
@@ -27,6 +31,39 @@ export class ProductListComponent implements OnInit {
     this.title.setTitle("产品列表 - 科朗管理平台");
     this.loadProducts();
   }
+
+  getRequestParams(searchItem: string, currentPage: number, itemsPerPage: number): any {
+    let params: any = {};
+
+    if (searchItem) {
+      params[`searchItem`] = searchItem;
+    }
+
+    if (currentPage) {
+      params[`currentPage`] = currentPage - 1;
+      params[`itemsPerPage`] = itemsPerPage;
+      params[`searchItem`] = searchItem;
+    }
+
+    if (itemsPerPage) {
+      params[`itemsPerPage`] = itemsPerPage;
+    }
+
+    return params;
+  }
+
+  // loadProducts(): void {
+  //   const params = this.getRequestParams(this.searchItem, this.itemsPerPage, this.currentPage);
+
+  //   this.productService.getProducts(params).subscribe(response => {
+  //     const { products, totalItems } = response;
+  //     this.products = products;
+  //     this.count = totalItems;
+  //     // console.log(response);
+  //   }, error => {
+  //     console.log(error);
+  //   })
+  // }
 
   loadProducts() {
     this.products$ = this.productService.getProducts();

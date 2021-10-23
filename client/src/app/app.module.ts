@@ -17,6 +17,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { MemberModule } from './members/member.module';
 import { GeneralModule } from './_shared/general.module';
 import { SharedModule } from './shared.module';
+import { SettingModule } from './settings/setting.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SharedModule } from './shared.module';
     ProductModule,
     CustomerModule,
     MemberModule,
-    WeblayoutModule
+    WeblayoutModule,
+    SettingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

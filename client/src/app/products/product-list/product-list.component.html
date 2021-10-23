@@ -19,7 +19,8 @@
        class="col-12 col-sm-6 col-lg-4 col-xxl-3">-->
   <div *ngFor="let product of products$ | async | paginate:{
             itemsPerPage: itemsPerPage,
-            currentPage: currentPage} "
+            currentPage: currentPage,
+          totalItems: count} "
        class="col-12 col-sm-6 col-lg-4 col-xxl-3">
     <app-product-card [product]="product"
                       *ngIf="product"></app-product-card>
@@ -33,8 +34,9 @@
 
     <pagination-controls (pageChange)="pageChanged($event)"
                          (pageBoundsCorrection)="pageChanged($event)"
-                         previousLabel="Previous"
+                         previousLabel="Prev"
                          nextLabel="Next"
+                         [responsive]="true"
                          class="col align-items-center">
     </pagination-controls>
 

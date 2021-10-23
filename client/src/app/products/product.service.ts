@@ -28,6 +28,10 @@ export class ProductService {
     // return this.httpClient.get<Product[]>(this.baseUrl + "/products");
   }
 
+  // getProducts(params: any): Observable<any> {
+  //   return this.httpClient.get<any>(this.baseUrl + "/products/lists", { params });
+  // }
+
   // getProductByCasNo(casno): Observable<any> {
   //   return this.httpClient.get(`${this.baseUrl + "/products"}/${casno}`);
   // }
