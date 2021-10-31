@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IOurCompany } from './ourcompany';
 import { OurcompanyService } from './ourcompany.service';
@@ -11,7 +12,12 @@ import { OurcompanyService } from './ourcompany.service';
 export class OurcompanyComponent implements OnInit {
   ourCompanies$: Observable<IOurCompany[]>;
 
-  constructor(private ourcompanyService: OurcompanyService) { }
+  add: boolean = false;
+  edit: boolean = false;
+  detail: boolean = false;
+  crudTitle: string;
+
+  constructor(private ourcompanyService: OurcompanyService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadOurCompanies();
@@ -19,6 +25,39 @@ export class OurcompanyComponent implements OnInit {
 
   loadOurCompanies() {
     this.ourCompanies$ = this.ourcompanyService.getOurCompanies();
+  }
+
+  addOurCompany() {
+    this.router.navigate(["/settinghome/company/form"], {
+      queryParams: {
+        add: true,
+        edit: false,
+        detail: false,
+        crudTitle: "增加新公司"
+      }
+    });
+  }
+
+  editOurCompany() {
+    this.router.navigate(["/settinghome/company/form"], {
+      queryParams: {
+        add: false,
+        edit: true,
+        detail: false,
+        crudTitle: "修改公司信息"
+      }
+    });
+  }
+
+  detailOurCompany() {
+    this.router.navigate(["/settinghome/company/form"], {
+      queryParams: {
+        add: false,
+        edit: false,
+        detail: true,
+        crudTitle: "公司信息"
+      }
+    });
   }
 
 }

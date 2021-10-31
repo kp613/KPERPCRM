@@ -1,11 +1,12 @@
-﻿using System;
+﻿using API.Models.AdminModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Models.AdminModels
+namespace API.Models.Settings
 {
     public class OurCompany
     {

@@ -1,6 +1,6 @@
 <div class="form-floating mb-3">
-  <input [class.is-invalid]="ngControl.touched && ngControl.invalid || ngControl.untouched"
-         [class.is-valid]="ngControl.control.valid"
+  <input [class.is-invalid]="ngControl.touched && ngControl.invalid "
+         [class.is-valid]="ngControl.control.valid && !ngControl.untouched"
          type={{type}}
          class="form-control ps-3"
          id="{{label}}Input"
@@ -8,7 +8,8 @@
          placeholder={{label}}>
   <label for="{{label}}Input"
          class="ps-2">{{label}}
-    <span class="text-danger">*</span>
+    <span class="text-danger"
+          *ngIf="ngControl.control.errors?.required">*</span>
   </label>
 
   <div *ngIf="ngControl.control.errors?.required"

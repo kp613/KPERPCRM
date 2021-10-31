@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.Models.AdminModels;
+using API.Models.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;

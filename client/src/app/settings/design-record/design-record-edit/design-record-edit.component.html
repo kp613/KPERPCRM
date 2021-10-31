@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">修改网站设计笔记</h1>
+
+</div>
+
+<div class=" container mb-5">
+  <div class=" row justify-content-center align-items-center">
+
+    <form [formGroup]='editGroupForm'
+          (ngSubmit)="editGroupForm.valid && onSubmit(editGroupForm)"
+          autocomplete="off">
+      <div class="col-12 row">
+        <input type="hidden"
+               [value]='editGroupForm.get("id")'>
+        <div class="form-floating mb-1 col-3">
+          <select class="form-select ps-3"
+                  [class.is-invalid]='editGroupForm.get("folderName").errors && editGroupForm.get("folderName").touched'
+                  [class.is-valid]='!editGroupForm.get("folderName").errors && !editGroupForm.get("folderName").untouched'
+                  id="folderNameSelect"
+                  formControlName='folderName'
+                  placeholder="Folder Name"
+                  required>
+            <option *ngFor="let folderName of folderNames"
+                    [value]="folderName">{{folderName}}</option>
+          </select>
+          <label for="folderNameSelect"
+                 class="ps-3">Folder Name</label>
+        </div>
+
+        <app-text-input [formControl]='$any(editGroupForm.controls["componentName"])'
+                        [label]='"Component Name"'
+                        class="col-6"></app-text-input>
+
+        <div class="form-floating mb-1 col-3">
+          <select class="form-select ps-3"
+                  [class.is-invalid]='editGroupForm.get("crudState").errors && editGroupForm.get("crudState").touched'
+                  [class.is-valid]='!editGroupForm.get("crudState").errors && !editGroupForm.get("crudState").untouched'
+                  id="crud"
+                  formControlName='crudState'>
+            <option *ngFor="let record of crudRecords"
+                    [value]="record">{{record}}</option>
+          </select>
+          <label for="crud"
+                 class="ps-3">CRUD State</label>
+        </div>
+
+      </div>
+      <app-text-input [formControl]='$any(editGroupForm.controls["progressAndProblem"])'
+                      [label]='"进程和存在的问题"'></app-text-input>
+      <div class="float-end">
+        <button type="submit"
+                class="btn btn-primary pt-2 pb-2 me-2"
+                [disabled]="editGroupForm.invalid || (!editGroupForm.dirty && !editGroupForm.pristine) || editGroupForm.untouched ">修改</button>
+        <button type="button"
+                class="btn btn-secondary pt-2 pb-2"
+                (click)="goBack()">Back</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>

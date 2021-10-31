@@ -17,6 +17,8 @@ export class OurcompanyService {
     return this.httpClient.get<IOurCompany[]>(this.baseUrl + "/OurCompanies");
   }
 
-
+  addOurCompany(data: any) {
+    return this.httpClient.post(this.baseUrl + "/OurCompanies", data);
+  }
 
 }

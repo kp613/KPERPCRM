@@ -6,10 +6,10 @@
       <div class="btn-toolbar mb-2 mb-md-0">
         <button type="button"
                 class="btn btn-sm btn-outline-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#addCompanyModal">
+                (click)="addOurCompany()">
           <i class="bi bi-plus"></i>
           <span class="ms-1">新增公司</span>
+          <!-- [routerLink]='["/settinghome/company",add]' (click)="addOurCompany()"-->
         </button>
       </div>
     </div>
@@ -28,15 +28,21 @@
       </thead>
       <tbody>
         <tr *ngFor="let company of ourCompanies$ | async">
-          <th scope="row">{{company.serviceFeature}}</th>
+          <th scope="row"
+              style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{company.serviceFeature}}</th>
           <td>{{company.companyName}}</td>
-          <td>{{company.taxNumber}}</td>
+          <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{company.taxNumber}}</td>
           <td>{{company.bankName}}</td>
-          <td>{{company.bankAccount}}</td>
-          <td>{{company.registeredCapital | number}}</td>
-          <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap"><i class="bi bi-book me-1"></i>
-            <i class="bi bi-pen me-1"></i>
-            <i class="bi bi-trash"></i>
+          <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{company.bankAccount}}</td>
+          <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{company.registeredCapital |
+            number}}</td>
+          <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
+            <i class="bi bi-book me-2"
+               type="button"
+               (click)="detailOurCompany()"></i>
+            <i class="bi bi-pen"
+               type="button"
+               (click)="editOurCompany()"></i>
           </td>
         </tr>
       </tbody>
@@ -48,40 +54,6 @@
   <div class="col-sm-4 col-md-3 col-lg-2 border-start">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap row mb-5 pb-5 ">
       <app-setting-sidebar></app-setting-sidebar>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Modal -->
-<div class="modal fade"
-     id="addCompanyModal"
-     data-bs-backdrop="static"
-     data-bs-keyboard="false"
-     tabindex="-1"
-     aria-labelledby="addCompanyModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"
-            id="addCompanyModalLabel">Modal title</h5>
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal">Close</button>
-        <button type="button"
-                class="btn btn-primary">Understood</button>
-      </div>
     </div>
   </div>
 </div>

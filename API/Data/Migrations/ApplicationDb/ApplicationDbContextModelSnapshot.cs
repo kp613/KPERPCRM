@@ -16,81 +16,8 @@ namespace API.data.migrations.applicationdb
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.8")
+                .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("API.Models.AdminModels.OurCompany", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Abbr")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BankAccount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BankAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BankName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Constitution")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JuridicalPerson")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OfficeAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OtherInf")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("PaidInCapital")
-                        .HasColumnType("float");
-
-                    b.Property<string>("RegAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RegTel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("RegisteredCapital")
-                        .HasColumnType("float");
-
-                    b.Property<string>("ServiceFeature")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ShareTotal")
-                        .HasColumnType("float");
-
-                    b.Property<string>("StockComment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SwiftCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TaxNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Web")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OurCompany");
-                });
 
             modelBuilder.Entity("API.Models.AdminModels.OurDeliveryAddress", b =>
                 {
@@ -546,7 +473,7 @@ namespace API.data.migrations.applicationdb
                     b.ToTable("ProductsGroupThird");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThirdProduct", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThirdProducts", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -596,9 +523,131 @@ namespace API.data.migrations.applicationdb
                     b.ToTable("ProductNoPublicity");
                 });
 
+            modelBuilder.Entity("API.Models.ProjectModels.Project", b =>
+                {
+                    b.Property<int>("ProjectID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateOfStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeamSize")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProjectID");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("API.Models.Setting.KPErpCrmDesignRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ComponentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CrudState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Finished")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FolderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProgressAndProblem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KPErpCrmDesignRecord");
+                });
+
+            modelBuilder.Entity("API.Models.Settings.OurCompany", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Abbr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankAccount")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Constitution")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JuridicalPerson")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OfficeAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtherInf")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PaidInCapital")
+                        .HasColumnType("float");
+
+                    b.Property<string>("RegAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegTel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("RegisteredCapital")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ServiceFeature")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ShareTotal")
+                        .HasColumnType("float");
+
+                    b.Property<string>("StockComment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SwiftCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaxNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Web")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OurCompany");
+                });
+
             modelBuilder.Entity("API.Models.AdminModels.ShareInvestment", b =>
                 {
-                    b.HasOne("API.Models.AdminModels.OurCompany", "OurCompany")
+                    b.HasOne("API.Models.Settings.OurCompany", "OurCompany")
                         .WithMany()
                         .HasForeignKey("OurCompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -617,14 +666,14 @@ namespace API.data.migrations.applicationdb
 
             modelBuilder.Entity("API.Models.AdminModels.Shareholder", b =>
                 {
-                    b.HasOne("API.Models.AdminModels.OurCompany", null)
+                    b.HasOne("API.Models.Settings.OurCompany", null)
                         .WithMany("Shareholders")
                         .HasForeignKey("OurCompanyId");
                 });
 
             modelBuilder.Entity("API.Models.AdminModels.ShareholderForCompany", b =>
                 {
-                    b.HasOne("API.Models.AdminModels.OurCompany", "OurCompany")
+                    b.HasOne("API.Models.Settings.OurCompany", "OurCompany")
                         .WithMany()
                         .HasForeignKey("OurCompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -740,7 +789,7 @@ namespace API.data.migrations.applicationdb
                     b.Navigation("ProductsGroupSecond");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThirdProduct", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThirdProducts", b =>
                 {
                     b.HasOne("API.Models.ProductModels.Product", "Product")
                         .WithMany("ProductsGroupThirdProducts")
@@ -768,11 +817,6 @@ namespace API.data.migrations.applicationdb
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.AdminModels.OurCompany", b =>
-                {
-                    b.Navigation("Shareholders");
                 });
 
             modelBuilder.Entity("API.Models.ProductModels.Product", b =>
@@ -812,6 +856,11 @@ namespace API.data.migrations.applicationdb
             modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThird", b =>
                 {
                     b.Navigation("ProductsGroupThirdProducts");
+                });
+
+            modelBuilder.Entity("API.Models.Settings.OurCompany", b =>
+                {
+                    b.Navigation("Shareholders");
                 });
 #pragma warning restore 612, 618
         }

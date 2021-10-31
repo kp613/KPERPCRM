@@ -30,7 +30,6 @@ import { SettingModule } from './settings/setting.module';
     NgxSpinnerModule,
     DataTablesModule,
 
-
     AppRoutingModule,
     GeneralModule,
     AdminModule,
@@ -38,7 +37,7 @@ import { SettingModule } from './settings/setting.module';
     CustomerModule,
     MemberModule,
     WeblayoutModule,
-    SettingModule
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

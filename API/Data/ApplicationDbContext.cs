@@ -1,8 +1,9 @@
 ﻿using API.Models.AdminModels;
 using API.Models.CommonModels;
-using API.Models.CustomerModels;
 using API.Models.ProductModels;
 using API.Models.ProjectModels;
+using API.Models.Setting;
+using API.Models.Settings;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -15,6 +16,8 @@ namespace API.Data
             : base(options)
         {
         }
+
+        public DbSet<KPErpCrmDesignRecord> KPErpCrmDesignRecord { get; set; }   //记录软件开发进程
 
         public DbSet<Shareholder> Shareholder { get; set; }
         public DbSet<ShareholderForCompany> ShareholderForCompany { get; set; }

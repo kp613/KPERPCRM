@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">{{crudTitle}}</h1>
+
+</div>
+
+<div class=" container mb-5">
+  <div class=" row justify-content-center align-items-center">
+
+    <form [formGroup]='setOurCompanyForm'
+          (ngSubmit)="setOurCompanyForm.valid && onSaveForm()"
+          autocomplete="off">
+      <app-text-input [formControl]='$any(setOurCompanyForm.controls["companyName"])'
+                      [label]='"公司名称"'></app-text-input>
+      <app-text-input [formControl]='$any(setOurCompanyForm.controls["juridicalPerson"])'
+                      [label]='"公司法人"'></app-text-input>
+    </form>
+
+
+  </div>
+
+  <div>
+    <div style="clear:both">
+      <button type="button"
+              class="btn btn-primary pt-2 pb-2"
+              *ngIf="add">增加</button>
+      <button type="button"
+              class="btn btn-danger pt-2 pb-2"
+              *ngIf="add"
+              (click)="resetOurCompany()">重置</button>
+      <button type="button"
+              class="btn btn-primary pt-2 pb-2"
+              *ngIf="edit">编辑</button>
+      <button type="button"
+              class="btn btn-danger pt-2 pb-2"
+              *ngIf="!add && !edit">删除</button>
+    </div>
+  </div>
+</div>
