@@ -24,6 +24,9 @@
           </select>
           <label for="folderNameSelect"
                  class="ps-3">Folder Name</label>
+          <div *ngIf="addGroupForm.get('folderName').hasError('required')"
+               class="invalid-feedback ps-3">
+            不能为空，请选择</div>
         </div>
 
         <app-text-input [formControl]='$any(addGroupForm.controls["componentName"])'
@@ -41,6 +44,9 @@
           </select>
           <label for="crud"
                  class="ps-3">CRUD State</label>
+          <div *ngIf="addGroupForm.get('crudState').hasError('required')"
+               class="invalid-feedback ps-3">
+            不能为空，请选择</div>
         </div>
 
       </div>

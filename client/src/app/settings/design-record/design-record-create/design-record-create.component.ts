@@ -15,25 +15,9 @@ import { Location } from '@angular/common';
 export class DesignRecordCreateComponent implements OnInit {
   designRecord: IDesignRecord;
   addGroupForm: FormGroup;
-  crudRecords = [
-    'List',
-    'Created',
-    'Read',
-    'Updated',
-    'Deleted',
-    'Other'];
 
-  folderNames = [
-    'settings',
-    'admin',
-    'business',
-    'products',
-    'customers',
-    'members',
-    'modals',
-    'account',
-    'weblayout'
-  ];
+  crudRecords = [];
+  folderNames = [];
 
 
   constructor(
@@ -54,9 +38,12 @@ export class DesignRecordCreateComponent implements OnInit {
     this.addGroupForm = this.fb.group({
       folderName: ['', [Validators.required]],
       componentName: ['', [Validators.required]],
-      progressAndProblem: [''],
-      crudState: ['']
-    })
+      progressAndProblem: ['', [Validators.required]],
+      crudState: ['', [Validators.required]]
+    });
+
+    this.crudRecords = this.designRecordService.crudRecords;
+    this.folderNames = this.designRecordService.folderNames;
   }
 
   onSaveForm() {

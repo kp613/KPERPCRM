@@ -7,13 +7,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
-import { AuthGuard } from './_guards/auth.guard';
-import { HomeComponent } from './admin/home/home.component';
-import { MatSliderModule } from '@angular/material/slider';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
@@ -22,6 +16,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MaterialModule } from './_shared/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditorModule } from './_shared/editor.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +41,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ButtonsModule.forRoot(),
     CdkStepperModule,
     MaterialModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
   ],
   exports: [
     RouterModule,
@@ -66,7 +62,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ButtonsModule,
     CdkStepperModule,
     MaterialModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
   ]
 })
 export class SharedModule { }

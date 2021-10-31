@@ -47,6 +47,11 @@ bld/
 wwwroot/
 Content/
 
+# API:
+API/Data/Migrations/
+API/Data/Initializer/
+
+
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
@@ -253,7 +258,7 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
-API/Data/Migrations/
+
 
 
 # Including strong name files can present a security risk

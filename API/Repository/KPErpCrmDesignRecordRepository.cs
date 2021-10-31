@@ -52,7 +52,7 @@ namespace API.Repository
             return await _context.SaveChangesAsync() > 0 ? true : false;
         }
 
-        public bool DesignRecordExists(string folderName, string componentName, int id)
+        public bool DesignRecordExists(string folderName, string componentName, int? id)
         {
             if (id == null)
             {

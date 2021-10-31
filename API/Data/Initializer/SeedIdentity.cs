@@ -40,7 +40,6 @@ namespace API.Data.Initializer
                 //{
                 //    await userManager.AddToRoleAsync(user, "Member");
                 //}
-
                 await userManager.AddToRoleAsync(user, "Member");
             }
 

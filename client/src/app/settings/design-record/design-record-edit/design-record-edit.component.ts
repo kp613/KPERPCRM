@@ -16,25 +16,9 @@ export class DesignRecordEditComponent implements OnInit {
   id: number;
   designRecord: IDesignRecord;
   editGroupForm: FormGroup;
-  crudRecords = [
-    'List',
-    'Created',
-    'Read',
-    'Updated',
-    'Deleted',
-    'Other'];
 
-  folderNames = [
-    'settings',
-    'admin',
-    'business',
-    'products',
-    'customers',
-    'members',
-    'modals',
-    'account',
-    'weblayout'
-  ];
+  crudRecords = [];
+  folderNames = [];
 
   constructor(
     private designRecordService: DesignRecordService,
@@ -55,9 +39,13 @@ export class DesignRecordEditComponent implements OnInit {
       id: [''],
       folderName: ['', [Validators.required]],
       componentName: ['', [Validators.required]],
-      progressAndProblem: [''],
+      progressAndProblem: ['', [Validators.required]],
       crudState: ['', [Validators.required]]
     });
+
+
+    this.crudRecords = this.designRecordService.crudRecords;
+    this.folderNames = this.designRecordService.folderNames;
 
     this.id = this.route.snapshot.params['id'];
     this.designRecordService.getRecordById(this.id).subscribe(response => {

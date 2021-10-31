@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Editor, Toolbar } from 'ngx-editor';
 import { Observable } from 'rxjs';
 import { DesignRecordService } from '../design-record.service';
 import { IDesignRecord } from '../design-recore';
@@ -9,7 +10,6 @@ import { IDesignRecord } from '../design-recore';
   styleUrls: ['./design-record-list.component.scss']
 })
 export class DesignRecordListComponent implements OnInit {
-  // designRecords$: Observable<IDesignRecord[]>;
 
   designRecords: IDesignRecord[];
 
@@ -27,4 +27,5 @@ export class DesignRecordListComponent implements OnInit {
       console.log(error);
     })
   }
+
 }

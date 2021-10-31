@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared.module';
 import { ViColorComponent } from './vi-color/vi-color.component';
 import { SettingHomeComponent } from './setting-home/setting-home.component';

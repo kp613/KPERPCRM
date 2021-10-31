@@ -4,7 +4,6 @@ import { CustomerModule } from './customers/customer.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -37,7 +36,7 @@ import { SettingModule } from './settings/setting.module';
     CustomerModule,
     MemberModule,
     WeblayoutModule,
-
+    SettingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

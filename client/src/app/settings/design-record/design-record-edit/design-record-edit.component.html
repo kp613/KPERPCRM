@@ -36,7 +36,8 @@
                   [class.is-invalid]='editGroupForm.get("crudState").errors && editGroupForm.get("crudState").touched'
                   [class.is-valid]='!editGroupForm.get("crudState").errors && !editGroupForm.get("crudState").untouched'
                   id="crud"
-                  formControlName='crudState'>
+                  formControlName='crudState'
+                  required>
             <option *ngFor="let record of crudRecords"
                     [value]="record">{{record}}</option>
           </select>

@@ -13,6 +13,26 @@ export class DesignRecordService {
   baseUrl = environment.apiUrl;
   designRecords: IDesignRecord[] = [];
 
+  crudRecords = [
+    'List',
+    'Created',
+    'Read',
+    'Updated',
+    'Deleted',
+    'Other'];
+
+  folderNames = [
+    'settings',
+    'admin',
+    'business',
+    'products',
+    'customers',
+    'members',
+    'modals',
+    'account',
+    'weblayout'
+  ];
+
   constructor(private httpClient: HttpClient) { }
 
   getLists(): Observable<IDesignRecord[]> {
