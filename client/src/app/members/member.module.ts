@@ -24,8 +24,6 @@ import { MemberMessagesComponent } from '../admin/message/member-messages/member
     MemberMessagesComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule,
     SharedModule,
 
     GeneralModule

@@ -22,7 +22,7 @@ export class DesignRecordCreateComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
     private location: Location,
@@ -35,10 +35,10 @@ export class DesignRecordCreateComponent implements OnInit {
 
 
   createForm() {
-    this.addGroupForm = this.fb.group({
+    this.addGroupForm = this.formBuilder.group({
       folderName: ['', [Validators.required]],
       componentName: ['', [Validators.required]],
-      progressAndProblem: ['', [Validators.required]],
+      progressAndProblem: [''],
       crudState: ['', [Validators.required]]
     });
 
@@ -63,4 +63,7 @@ export class DesignRecordCreateComponent implements OnInit {
     this.location.back();
   }
 
+
 }
+
+

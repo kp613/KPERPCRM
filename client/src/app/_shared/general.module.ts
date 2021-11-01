@@ -11,6 +11,7 @@ import { ConfirmDialogComponent } from './components/forms/confirm-dialog/confir
 import { RolesModalComponent } from './components/forms/roles-modal/roles-modal.component';
 import { HasRoleDirective } from '../_directives/has-role.directive';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { AngularEditorComponent } from './RichText/angular-editor/angular-editor.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,18 @@ import { StepperComponent } from './components/stepper/stepper.component';
     RolesModalComponent,
     HasRoleDirective,
     StepperComponent,
+
+
+    AngularEditorComponent,
   ],
   imports: [
-    CommonModule,
     SharedModule,
-
-
   ],
   exports: [
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+
+    AngularEditorComponent,
   ]
 
 })

@@ -16,12 +16,20 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MaterialModule } from './_shared/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { EditorModule } from './_shared/editor.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
   ],
   imports: [
+    HttpClientModule,
+    FontAwesomeModule,
+    NgxSpinnerModule,
+    DataTablesModule,
     RouterModule,
     CommonModule,
     BrowserModule,
@@ -42,9 +50,14 @@ import { EditorModule } from './_shared/editor.module';
     CdkStepperModule,
     MaterialModule,
     NgxPaginationModule,
+    SweetAlert2Module.forRoot(),
 
   ],
   exports: [
+    HttpClientModule,
+    FontAwesomeModule,
+    NgxSpinnerModule,
+    DataTablesModule,
     RouterModule,
     CommonModule,
     BrowserModule,
@@ -63,6 +76,7 @@ import { EditorModule } from './_shared/editor.module';
     CdkStepperModule,
     MaterialModule,
     NgxPaginationModule,
+    SweetAlert2Module,
 
   ]
 })

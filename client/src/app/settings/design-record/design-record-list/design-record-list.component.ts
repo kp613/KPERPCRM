@@ -1,6 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Editor, Toolbar } from 'ngx-editor';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { DesignRecordService } from '../design-record.service';
 import { IDesignRecord } from '../design-recore';
 

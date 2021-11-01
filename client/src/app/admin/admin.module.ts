@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberModule } from '../members/member.module';
 import { MaterialModule } from '../_shared/material.module';
+import { GeneralModule } from '../_shared/general.module';
 
 @NgModule({
   declarations: [
@@ -19,15 +20,10 @@ import { MaterialModule } from '../_shared/material.module';
   ],
   imports: [
     MemberModule,
-
-    RouterModule,
-    CommonModule,
     SharedModule,
-
+    GeneralModule
   ],
   exports: [
-    AdminRoleComponent,
-    HomeComponent,
 
   ]
 })

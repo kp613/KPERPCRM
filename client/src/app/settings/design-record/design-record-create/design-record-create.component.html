@@ -50,8 +50,32 @@
         </div>
 
       </div>
-      <app-text-input [formControl]='$any(addGroupForm.controls["progressAndProblem"])'
-                      [label]='"进程和存在的问题"'></app-text-input>
+      <!-- <app-text-input [formControl]='$any(addGroupForm.controls["progressAndProblem"])'
+                      [label]='"进程和存在的问题"'></app-text-input> -->
+
+      <!-- <angular-editor formControlName="progressAndProblem"
+                      config="editorConfig"></angular-editor> -->
+
+      <div class="form-floating mb-1">
+        <!-- <input [class.is-invalid]='addGroupForm.get("progressAndProblem").errors && addGroupForm.get("progressAndProblem").touched'
+               type="text"
+               class="form-control ps-3"
+               formControlName="progressAndProblem"
+               id="progressAndProblemInput"
+               placeholder="Progress And Problem"> -->
+        <!-- <angular-editor class="form-control ps-3"
+                        ngDefaultControl
+                        formControlName="progressAndProblem"
+                        id="progressAndProblemInput"
+                        placeholder="Progress And Problem"
+                        [config]="editorConfig"></angular-editor> -->
+        <label for="progressAndProblemInput"
+               class="ps-2">
+          Progress And Problem
+          <span class="text-danger">*</span>
+        </label>
+      </div>
+
       <div class="float-end">
         <button type="submit"
                 class="btn btn-primary pt-2 pb-2 me-2"
