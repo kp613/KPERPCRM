@@ -1,0 +1,7 @@
+<p class="mt-3">ckeditor works!</p>
+
+<ckeditor [editor]="Editor"
+          data="<p>Hello, world!</p>"
+          (ready)="onReady($event)"></ckeditor>
+
+<!-- [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic','link','image', ] }" -->

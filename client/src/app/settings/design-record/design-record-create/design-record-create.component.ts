@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DesignRecordService } from '../design-record.service';
 import { IDesignRecord } from '../design-recore';
 import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-design-record-create',
@@ -19,6 +20,9 @@ export class DesignRecordCreateComponent implements OnInit {
   crudRecords = [];
   folderNames = [];
 
+  editParam = {
+    selector: 'textarea'  //tinymce的最基本的组件
+  };
 
   constructor(
     private httpClient: HttpClient,
@@ -30,6 +34,7 @@ export class DesignRecordCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.createForm();
   }
 
@@ -62,6 +67,7 @@ export class DesignRecordCreateComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
 
 
 }

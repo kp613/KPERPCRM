@@ -52,19 +52,21 @@ namespace API.Repository
             return await _context.SaveChangesAsync() > 0 ? true : false;
         }
 
-        public bool DesignRecordExists(string folderName, string componentName, int? id)
+        public bool AddDesignRecordExists(string folderName, string componentName)
         {
-            if (id == null)
-            {
             bool value = _context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName);
-                return value;
-            }
-            else
-            {
-           bool value = !_context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName && e.Id==id);
-                return value;
-            }
-     
+
+            return value;
+        }
+
+
+
+        public bool DesignRecordExists(string folderName, string componentName, int id)
+        {
+            bool value = _context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName && e.Id == id);
+
+            return value;
+
         }
     }
 }

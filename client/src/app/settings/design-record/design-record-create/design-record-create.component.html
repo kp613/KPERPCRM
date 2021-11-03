@@ -69,11 +69,19 @@
                         id="progressAndProblemInput"
                         placeholder="Progress And Problem"
                         [config]="editorConfig"></angular-editor> -->
-        <label for="progressAndProblemInput"
-               class="ps-2">
+        <div class="ps-2">
           Progress And Problem
           <span class="text-danger">*</span>
-        </label>
+        </div>
+        <!-- <div>
+          <ngx-editor-menu [editor]="editor"
+                           [toolbar]="toolbar"> </ngx-editor-menu>
+          <ngx-editor [editor]="editor"
+                      formControlName="progressAndProblem"></ngx-editor>
+        </div> -->
+
+        <editor [init]=editParam
+                formControlName="progressAndProblem"></editor>
       </div>
 
       <div class="float-end">

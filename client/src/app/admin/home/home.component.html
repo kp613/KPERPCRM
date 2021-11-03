@@ -11,11 +11,21 @@
   </div>
 
   <div>
-    <h3 class="h5">欢迎**登录</h3>
-    <h3 class="h5">我的任务</h3>
-    <h3 class="h5">我的角色 头像 照片</h3>
+    <h3 class="h5">我的任务 我的角色 头像 照片</h3>
     <h3 class="h5">我的学习 培训资料 业务流程 inventory-management存货管理</h3>
   </div>
+
+  <app-tinymce-angular></app-tinymce-angular>
+
+  <app-ckeditor></app-ckeditor>
+
+  <app-ngx-editor></app-ngx-editor>
+
+  <app-angular-editor></app-angular-editor>
+
+  <h3 class="mb-5 mt-3 text-center"> ------ END ------</h3>
+
+
 </ng-container>
 
 <ng-container *ngIf="(accountService.currentUser$ | async)===null && !registerMode">
@@ -26,6 +36,3 @@
               *ngIf="registerMode">
   <app-register (cancelRegister)="regFromLoginMode($event)"></app-register>
 </ng-container>
-
-
-<app-angular-editor></app-angular-editor>

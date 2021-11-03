@@ -15,7 +15,9 @@
           style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{record.folderName}}</th>
       <!-- <td>{{record.componentFolder}}</td> -->
       <td>{{record.componentName}}</td>
-      <td>{{record.progressAndProblem}}</td>
+      <td>
+        <div [innerHTML]="record.progressAndProblem"></div>
+      </td>
       <td>{{record.crudState}}</td>
       <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
 
