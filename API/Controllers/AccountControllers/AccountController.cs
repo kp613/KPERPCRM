@@ -1,4 +1,5 @@
-﻿using API.Data;
+﻿using API.Controllers;
+using API.Data;
 using API.DTOs.AdminDtos;
 using API.Models.IdentityModels;
 using API.Services;
@@ -13,7 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Controllers
+namespace API.AccountControllers.Controllers
 {
     public class AccountController : BaseApiController
     {

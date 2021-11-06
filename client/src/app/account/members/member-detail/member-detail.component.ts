@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
-import { IMember } from 'src/app/members/member';
-import { MembersService } from 'src/app/members/members.service';
+import { IMember } from 'src/app/account/members/member';
+import { MembersService } from 'src/app/account/members/members.service';
 import { MessageService } from 'src/app/admin/message/message.service';
 import { IMessage } from 'src/app/admin/message/message';
 

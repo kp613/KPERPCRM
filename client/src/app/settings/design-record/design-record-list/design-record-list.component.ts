@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DesignRecordService } from '../design-record.service';
 import { IDesignRecord } from '../design-recore';
@@ -11,12 +12,14 @@ import { IDesignRecord } from '../design-recore';
 export class DesignRecordListComponent implements OnInit {
   id: number;
   isFinished: boolean = false;
+  formData;
 
   designRecords: IDesignRecord[];
 
   constructor(
     private designRecordService: DesignRecordService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,11 +35,13 @@ export class DesignRecordListComponent implements OnInit {
     })
   }
 
-  // getFinished(id, isFinished) {
-  //   this.designRecordService.setFinished(this.id, this.isFinished).subscribe(res => {
-  //     this.toastr.success('该条目状态设置成功');
-  //   }, (error) => {
-  //     this.toastr.error(error.error);
-  //   })
-  // }
+  getFinished() {
+    this.designRecordService.update(this.id, this.formData.value).subscribe((res) => {
+      this.router.navigateByUrl('/webdesign');
+      this.toastr.success('修改finished成功');
+    }, (error) => {
+      this.toastr.error(error.error);
+    })
+  }
+
 }

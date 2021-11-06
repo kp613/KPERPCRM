@@ -1,4 +1,4 @@
-import { ILoggedUser } from "../account/loggedUser";
+import { ILoggedUser } from "../loggedUser";
 
 
 export class UserParams {

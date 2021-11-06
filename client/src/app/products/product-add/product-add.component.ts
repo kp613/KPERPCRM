@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IProduct } from '../product';
+import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductService } from '../product.service';
+import { ProductParams } from '../productParams';
 
 @Component({
   selector: 'app-product-add',
@@ -13,7 +15,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductAddComponent implements OnInit {
   casno: string;
-  product: IProduct;
+  // product: IProduct;
   addProductForm: FormGroup;
 
   constructor(
@@ -49,5 +51,6 @@ export class ProductAddComponent implements OnInit {
   cancel() {
     this.addProductForm.reset();
   }
+
 
 }

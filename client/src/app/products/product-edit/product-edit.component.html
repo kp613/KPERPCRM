@@ -46,10 +46,10 @@
                 <div class="col-12 col-lg-5 edit-right">
                   <div class="form-floating edit-right-position">
                     <div>
-                      <div class="form-floating ">
+                      <div class="form-floating">
                         <input [class.is-invalid]='(editProductForm.get("casNo").errors && editProductForm.get("casNo").touched) '
                                type="text"
-                               class="form-control ps-3"
+                               class="form-control"
                                id="casNoInput"
                                placeholder="CAS Number"
                                formControlName='casNo'>
@@ -63,9 +63,9 @@
                           CAS Number格式不对</div>
                       </div>
 
-                      <div class="form-floating">
+                      <div class="form-floating mt-2">
                         <input type="text"
-                               class="form-control ps-3"
+                               class="form-control"
                                id="productCodeInput"
                                placeholder="产品代号可以为空"
                                formControlName='productCode'>
@@ -77,7 +77,7 @@
                 </div>
               </div>
 
-              <div class="form-floating mb-1">
+              <div class="form-floating mt-2">
                 <input class="form-control"
                        type="file"
                        id="fileupdate"
@@ -87,7 +87,7 @@
                        class="form-label">上传产品结构</label>
               </div>
 
-              <div class="form-floating mb-1">
+              <div class="form-floating mt-2">
                 <input type="text"
                        class="form-control ps-3"
                        id="productNameCNInput"
@@ -97,7 +97,7 @@
                        class="form-label">产品名称</label>
               </div>
 
-              <div class="form-floating mb-1">
+              <div class="form-floating mt-2">
                 <input type="text"
                        class="form-control ps-3"
                        id="productNameInput"

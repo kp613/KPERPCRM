@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminRoleComponent } from './account/role/role.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { HomeComponent } from './admin/home/home.component';
-import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberDetailComponent } from './account/members/member-detail/member-detail.component';
 import { MessageComponent } from './admin/message/message/message.component';
-import { UserComponent } from './members/user/user.component';
+import { UserComponent } from './account/members/user/user.component';
 import { OrderListComponent } from './business/order-list/order-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
-import { MemberListComponent } from './members/member-list/member-list.component';
-import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberListComponent } from './account/members/member-list/member-list.component';
+import { MemberEditComponent } from './account/members/member-edit/member-edit.component';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
 import { ProductRoutingModule } from './products/product-routing.module';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { SettingRoutingModule } from './settings/setting-routing.module';
+import { AccountRoutingModule } from './account/account-routing.module';
+import { RoleListComponent } from './account/role/role-list/role-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +26,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: "admin", component: AdminRoleComponent, canActivate: [AdminGuard] },
+      { path: "admin", component: RoleListComponent, canActivate: [AdminGuard] },
       { path: "members/:username", component: MemberDetailComponent, resolve: { member: MemberDetailedResolver } },
       { path: "member/edit", component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
 
@@ -37,7 +37,7 @@ const routes: Routes = [
   // { path: "messages", component: MessageComponent },
   { path: "members", component: MemberListComponent },
   { path: "users", component: UserComponent },
-  { path: "roles", component: AdminRoleComponent },
+
   { path: "orders", component: OrderListComponent },
 
   { path: "customers", component: CustomerListComponent },
@@ -53,6 +53,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
+    AccountRoutingModule,
     ProductRoutingModule,
     SettingRoutingModule
   ],

@@ -4,11 +4,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { IMember } from './member';
 import { map, take } from 'rxjs/operators';
 import { UserParams } from './userParams';
-import { AccountService } from '../account/account.service';
-import { getPaginatedResult, getPaginationHeaders } from '../_services/paginationHelper';
+import { AccountService } from '../account.service';
+import { getPaginatedResult, getPaginationHeaders } from '../../_services/paginationHelper';
 import { of } from 'rxjs';
-import { PaginatedResult } from '../_models/pagination';
-import { ILoggedUser } from '../account/loggedUser';
+import { PaginatedResult } from '../../_models/pagination';
+import { ILoggedUser } from '../loggedUser';
 
 @Injectable({
   providedIn: 'root'

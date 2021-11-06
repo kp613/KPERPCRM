@@ -48,19 +48,6 @@ namespace API.Controllers
             return Ok(productsDto);
         }
 
-
-        //[HttpGet("lists")]
-        //public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts([FromQuery] ProductParams productParams)
-        //{
-        //    var products = await _repo.GetProductsAsync(productParams);
-
-        //    Response.AddPaginationHeader(products.CurrentPage, products.PageSize, products.TotalCount, products.TotalPages);
-
-        //    return Ok(products);
-        //}
-
-
-
         //products/12345-12-1
         [HttpGet("{casno}")]
         public async Task<ActionResult<ProductDto>> GetProductByCasNoAsync(string casno)
@@ -84,17 +71,6 @@ namespace API.Controllers
 
             return Ok(product);
         }
-
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<ProductDto>> GetProductByIdAsync(int id)
-        //{
-        //    var product = await _repo.GetProductByIdAsync(id);
-        //    if (product == null)
-        //    {
-        //        return NotFound($"没有该产品{id}");
-        //    }
-        //    return Ok(product);
-        //}
 
         [HttpPost("add")]
         public async Task<ActionResult<ProductDto>> AddProduct([FromBody]Product product)
@@ -133,6 +109,7 @@ namespace API.Controllers
 
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProduct(int id)

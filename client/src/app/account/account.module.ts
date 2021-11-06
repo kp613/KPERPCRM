@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AccountRoutingModule } from './account-routing.module';
 import { SharedModule } from '../shared.module';
+import { RoleListComponent } from './role/role-list/role-list.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RoleListComponent
+  ],
   imports: [
     SharedModule
   ]

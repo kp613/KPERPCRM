@@ -1,4 +1,5 @@
-﻿using API.Data;
+﻿using API.Controllers;
+using API.Data;
 using API.DTOs.AdminDtos;
 using API.Models.IdentityModels;
 using AutoMapper;
@@ -10,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Controllers
+namespace API.AccountControllers.Controllers
 {
     public class RoleManageController : BaseApiController
     {

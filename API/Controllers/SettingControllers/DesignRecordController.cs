@@ -87,7 +87,8 @@ namespace API.Controllers.SettingControllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateDesignRecordWithPatch(int id, [FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
         {
-      
+            if (_repo.DesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.CrudState, kpErpCrmDesignRecord.Id)) return BadRequest("修改成重复的项目了，请检查！");
+
             _repo.Update(kpErpCrmDesignRecord);
 
             await _repo.SaveAllAsync();

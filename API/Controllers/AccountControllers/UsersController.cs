@@ -13,8 +13,9 @@ using System.Security.Claims;
 using API.Helpers;
 using API.DTOs.AdminDtos;
 using API.Repository.IRepository;
+using API.Controllers;
 
-namespace API.Controllers
+namespace API.AccountControllers.Controllers
 {
 
     public class UsersController : BaseApiController

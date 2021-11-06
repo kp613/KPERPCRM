@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { IRole } from 'src/app/account/role';
-import { AdminService } from 'src/app/account/role/role.service';
+import { IRole } from '../role';
+import { AdminService } from '../role.service';
 
 @Component({
-  selector: 'app-admin-role',
-  templateUrl: './role.component.html',
-  styleUrls: ['./role.component.scss']
+  selector: 'app-role-list',
+  templateUrl: './role-list.component.html',
+  styleUrls: ['./role-list.component.scss']
 })
-export class AdminRoleComponent implements OnInit {
+export class RoleListComponent implements OnInit {
   model: any = {};
   @ViewChild('addRoleForm') addRoleForm: NgForm;
   roles: IRole[] = [];

@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { ILoggedUser } from 'src/app/account/loggedUser';
-import { IMember } from 'src/app/members/member';
+import { IMember } from 'src/app/account/members/member';
 import { AccountService } from 'src/app/account/account.service';
-import { MembersService } from 'src/app/members/members.service';
+import { MembersService } from 'src/app/account/members/members.service';
 
 @Component({
   selector: 'app-member-edit',

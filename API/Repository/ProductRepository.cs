@@ -31,6 +31,7 @@ namespace API.Repository
         {
             return await _context.Products
                 .Include(p => p.ProductsGroupThirdProducts)
+                .OrderByDescending(p=>p.UpdateDay)
                 .ToListAsync();
 
             //var query = _context.Products.AsQueryable();

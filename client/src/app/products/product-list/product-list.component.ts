@@ -16,6 +16,7 @@ import { ProductService } from '../product.service';
 export class ProductListComponent implements OnInit {
   products$: Observable<IProduct[]>;
   products: IProduct[] = [];
+  product: IProduct;
 
   currentPage: 1;
   count = 0;
