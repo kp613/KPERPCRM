@@ -21,7 +21,10 @@ export class DesignRecordCreateComponent implements OnInit {
   folderNames = [];
 
   editParam = {
-    selector: 'textarea'  //tinymce的最基本的组件
+    selector: 'textarea',  //tinymce的最基本的组件
+    language_url: '../../../assets/tinymce-lang/zh_CN.js',
+    language: 'zh_CN',
+    height: 500
   };
 
   constructor(

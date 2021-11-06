@@ -18,7 +18,7 @@ namespace API.Repository.IRepository
 
         Task<bool> SaveAllAsync();
 
-        bool AddDesignRecordExists(string folderName, string componentName);
-        bool DesignRecordExists(string folderName, string componentName, int id);
+        bool AddDesignRecordExists(string folderName, string componentName, string crudState);
+        bool DesignRecordExists(string folderName, string componentName, string crudState, int id);
     }
 }

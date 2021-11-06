@@ -43,6 +43,10 @@ export class DesignRecordService {
     return this.httpClient.get(this.baseUrl + "/DesignRecord/" + id);
   }
 
+  // setFinished(id, finished): Observable<any> {
+  //   return this.httpClient.patch(this.baseUrl + "/DesignRecord/" + id, finished);
+  // }
+
   create(data: any) {
     return this.httpClient.post(this.baseUrl + "/DesignRecord", data);
   }

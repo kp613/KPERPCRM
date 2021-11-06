@@ -14,6 +14,6 @@ namespace API.Models.Setting
         public string ProgressAndProblem { get; set; }
         public string CrudState { get; set; }
         public bool Finished { get; set; } = false;
-        public DateTime UpdateDay { get; set; } = DateTime.UtcNow;
+        public DateTime UpdateDay { get; set; } = DateTime.Now;
     }
 }

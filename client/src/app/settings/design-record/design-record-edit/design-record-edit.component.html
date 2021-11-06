@@ -31,6 +31,7 @@
                         [label]='"Component Name"'
                         class="col-6"></app-text-input>
 
+
         <div class="form-floating mb-1 col-3">
           <select class="form-select ps-3"
                   [class.is-invalid]='editGroupForm.get("crudState").errors && editGroupForm.get("crudState").touched'
@@ -46,9 +47,13 @@
         </div>
 
       </div>
-      <app-text-input [formControl]='$any(editGroupForm.controls["progressAndProblem"])'
-                      [label]='"进程和存在的问题"'></app-text-input>
-      <div class="float-end">
+      <!-- <app-text-input [formControl]='$any(editGroupForm.controls["progressAndProblem"])'
+                      [label]='"进程和存在的问题"'></app-text-input> -->
+
+      <editor [init]=editParam
+              formControlName="progressAndProblem"></editor>
+
+      <div class="float-end mt-2">
         <button type="submit"
                 class="btn btn-primary pt-2 pb-2 me-2"
                 [disabled]="editGroupForm.invalid || (!editGroupForm.dirty && !editGroupForm.pristine) || editGroupForm.untouched ">修改</button>

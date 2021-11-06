@@ -4,21 +4,24 @@
       <th scope="col">Folder</th>
       <!-- <th scope="col">Component Folder</th> -->
       <th scope="col">Component Name</th>
-      <th scope="col">建设过程和存在的问题</th>
       <th scope="col">CRUD状态</th>
+      <th scope="col">修改时间</th>
+
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let record of designRecords">
+    <tr *ngFor="let record of designRecords;let i=index">
       <th scope="row"
           style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{record.folderName}}</th>
       <!-- <td>{{record.componentFolder}}</td> -->
       <td>{{record.componentName}}</td>
-      <td>
+      <!-- <td>
         <div [innerHTML]="record.progressAndProblem"></div>
-      </td>
+      </td> -->
       <td>{{record.crudState}}</td>
+      <td>{{record.updateDay | timeago }}</td>
+
       <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
 
         <div class="form-check form-switch">

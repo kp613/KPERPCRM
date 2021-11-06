@@ -50,7 +50,7 @@ namespace API.Controllers.SettingControllers
         [HttpPost]
         public async Task<IActionResult>AddDesignRecord([FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
         {
-            if (_repo.AddDesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName)) return BadRequest("新增了重复条目，请检查！");
+            if (_repo.AddDesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.CrudState)) return BadRequest("新增了重复条目，请检查！");
 
             _repo.Create(kpErpCrmDesignRecord);
 
@@ -75,8 +75,19 @@ namespace API.Controllers.SettingControllers
         [HttpPut("{id}")]
         public async Task<IActionResult>UpdateDesignRecord(int id,[FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
         {
-            if (_repo.DesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.Id)) return BadRequest("修改成重复的项目了，请检查！");
+            if (_repo.DesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.CrudState, kpErpCrmDesignRecord.Id)) return BadRequest("修改成重复的项目了，请检查！");
 
+            _repo.Update(kpErpCrmDesignRecord);
+
+            await _repo.SaveAllAsync();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateDesignRecordWithPatch(int id, [FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
+        {
+      
             _repo.Update(kpErpCrmDesignRecord);
 
             await _repo.SaveAllAsync();

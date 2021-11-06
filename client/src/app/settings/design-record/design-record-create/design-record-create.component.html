@@ -4,13 +4,12 @@
 </div>
 
 <div class=" container mb-5">
-  <div class=" row justify-content-center align-items-center">
+  <div class=" row">
 
     <form [formGroup]='addGroupForm'
           (ngSubmit)="addGroupForm.valid && onSaveForm()"
           autocomplete="off">
-      <div class="col-12 row">
-
+      <div class="form-floating justify-content-between row">
         <div class="form-floating mb-1 col-3">
           <select class="form-select ps-3"
                   [class.is-invalid]='addGroupForm.get("folderName").errors && addGroupForm.get("folderName").touched'
@@ -34,7 +33,7 @@
                         class="col-6"></app-text-input>
 
         <div class="form-floating mb-1 col-3">
-          <select class="form-select ps-3"
+          <select class="form-select"
                   [class.is-invalid]='addGroupForm.get("crudState").errors && addGroupForm.get("crudState").touched'
                   [class.is-valid]='!addGroupForm.get("crudState").errors && !addGroupForm.get("crudState").untouched'
                   id="crud"
@@ -57,18 +56,6 @@
                       config="editorConfig"></angular-editor> -->
 
       <div class="form-floating mb-1">
-        <!-- <input [class.is-invalid]='addGroupForm.get("progressAndProblem").errors && addGroupForm.get("progressAndProblem").touched'
-               type="text"
-               class="form-control ps-3"
-               formControlName="progressAndProblem"
-               id="progressAndProblemInput"
-               placeholder="Progress And Problem"> -->
-        <!-- <angular-editor class="form-control ps-3"
-                        ngDefaultControl
-                        formControlName="progressAndProblem"
-                        id="progressAndProblemInput"
-                        placeholder="Progress And Problem"
-                        [config]="editorConfig"></angular-editor> -->
         <div class="ps-2">
           Progress And Problem
           <span class="text-danger">*</span>
@@ -79,23 +66,25 @@
           <ngx-editor [editor]="editor"
                       formControlName="progressAndProblem"></ngx-editor>
         </div> -->
+        <div class="form-floating">
+          <editor [init]=editParam
+                  formControlName="progressAndProblem"></editor>
 
-        <editor [init]=editParam
-                formControlName="progressAndProblem"></editor>
+          <div class="float-end mt-2">
+            <button type="submit"
+                    class="btn btn-primary pt-2 pb-2 me-2"
+                    [disabled]="addGroupForm.invalid">增加</button>
+            <button type="button"
+                    class="btn btn-danger pt-2 pb-2 me-2"
+                    (click)="cancel()">重置</button>
+            <button type="button"
+                    class="btn btn-secondary pt-2 pb-2"
+                    (click)="goBack()">Back</button>
+
+          </div>
+        </div>
       </div>
 
-      <div class="float-end">
-        <button type="submit"
-                class="btn btn-primary pt-2 pb-2 me-2"
-                [disabled]="addGroupForm.invalid">增加</button>
-        <button type="button"
-                class="btn btn-danger pt-2 pb-2 me-2"
-                (click)="cancel()">重置</button>
-        <button type="button"
-                class="btn btn-secondary pt-2 pb-2"
-                (click)="goBack()">Back</button>
-
-      </div>
     </form>
   </div>
 </div>

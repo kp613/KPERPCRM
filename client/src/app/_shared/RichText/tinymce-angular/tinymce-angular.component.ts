@@ -19,7 +19,7 @@ export class TinymceAngularComponent implements OnInit {
     textcolor wordcount contextmenu codesample importcss media preview print
     textpattern tabfocus hr directionality imagetools autosave paste`,
     // //语言包可以使用tinymce提供的网址,但是墙的原因,会连不上,所以还是自行下载,放到assets里面
-    // language_url: '../../../assets/tinymce/langs/zh_CN.js',
+    language_url: '../../../assets/tinymce-lang/zh_CN.js',
     language: 'zh_CN',
     // //toolbar定义快捷栏的操作, | 用来分隔显示
     toolbar: 'undo redo  removeformat paste  bold italic underline strikethrough  | fontsizeselect |  forecolor backcolor | bullist numlist h2 h3 h4| '

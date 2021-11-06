@@ -20,9 +20,10 @@ namespace API.Repository
         public async Task<ICollection<KPErpCrmDesignRecord>> GetDesignRecordsAsync()
         {
             return await _context.KPErpCrmDesignRecord
-                .OrderBy(r => r.CrudState)
-                //.OrderBy(r=>r.ComponentName)
-                //.OrderByDescending(r=>r.UpdateDay)
+                .OrderBy(r => r.FolderName)
+                .ThenBy(r=>r.ComponentName)
+                //.ThenBy(r => r.CrudState)
+                .ThenByDescending(r => r.UpdateDay)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -52,18 +53,18 @@ namespace API.Repository
             return await _context.SaveChangesAsync() > 0 ? true : false;
         }
 
-        public bool AddDesignRecordExists(string folderName, string componentName)
+        public bool AddDesignRecordExists(string folderName, string componentName, string crudState)
         {
-            bool value = _context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName);
+            bool value = _context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName && e.CrudState == crudState);
 
             return value;
         }
 
 
 
-        public bool DesignRecordExists(string folderName, string componentName, int id)
+        public bool DesignRecordExists(string folderName, string componentName, string crudState, int id)
         {
-            bool value = _context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName && e.Id == id);
+            bool value = _context.KPErpCrmDesignRecord.Any(e => e.FolderName == folderName && e.ComponentName == componentName && e.CrudState==crudState && e.Id != id);
 
             return value;
 
