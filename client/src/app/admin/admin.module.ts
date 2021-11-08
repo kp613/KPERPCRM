@@ -4,8 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message/message.component';
 import { SharedModule } from '../shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MemberModule } from '../account/members/member.module';
 import { GeneralModule } from '../_shared/general.module';
+import { AccountModule } from '../account/account.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +14,9 @@ import { GeneralModule } from '../_shared/general.module';
     DashboardComponent,
   ],
   imports: [
-    MemberModule,
     SharedModule,
-    GeneralModule
+    GeneralModule,
+    AccountModule
   ],
   exports: [
 

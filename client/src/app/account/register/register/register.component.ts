@@ -1,9 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, CheckboxRequiredValidator, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, ValidatorFn, AbstractControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
-import { AccountService } from 'src/app/account/account.service';
+import { AccountService } from '../../account.service';
 
 @Component({
   selector: 'app-register',

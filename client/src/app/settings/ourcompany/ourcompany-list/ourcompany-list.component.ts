@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IOurCompany } from './ourcompany';
-import { OurcompanyService } from './ourcompany.service';
+import { IOurCompany } from '../ourcompany';
+import { OurcompanyService } from '../ourcompany.service';
 
 @Component({
-  selector: 'app-ourcompany',
-  templateUrl: './ourcompany.component.html',
-  styleUrls: ['./ourcompany.component.scss']
+  selector: 'app-ourcompany-list',
+  templateUrl: './ourcompany-list.component.html',
+  styleUrls: ['./ourcompany-list.component.scss']
 })
-export class OurcompanyComponent implements OnInit {
+export class OurcompanyListComponent implements OnInit {
   ourCompanies$: Observable<IOurCompany[]>;
 
   add: boolean = false;

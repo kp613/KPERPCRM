@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-  <h1 class="h2">修改网站设计笔记</h1>
-
+  <h1 class="h2"
+      *ngIf="!isEdit">网站设计笔记</h1>
+  <h1 class="h2"
+      *ngIf="isEdit">网站设计笔记 - 修改</h1>
 </div>
 
 <div class=" container mb-5">
@@ -11,35 +13,38 @@
           autocomplete="off">
       <div class="col-12 row">
         <input type="hidden"
-               [value]='editGroupForm.get("id")'>
+               [value]='id'>
         <div class="form-floating mb-1 col-3">
           <select class="form-select ps-3"
-                  [class.is-invalid]='editGroupForm.get("folderName").errors && editGroupForm.get("folderName").touched'
-                  [class.is-valid]='!editGroupForm.get("folderName").errors && !editGroupForm.get("folderName").untouched'
+                  [class.is-invalid]='editGroupForm.get("folderName").errors && editGroupForm.get("folderName").touched && isEdit'
+                  [class.is-valid]='!editGroupForm.get("folderName").errors && !editGroupForm.get("folderName").untouched && isEdit'
                   id="folderNameSelect"
                   formControlName='folderName'
                   placeholder="Folder Name"
                   required>
-            <option *ngFor="let folderName of folderNames"
+            <option [disabled]="!isEdit"
+                    *ngFor="let folderName of folderNames"
                     [value]="folderName">{{folderName}}</option>
           </select>
           <label for="folderNameSelect"
                  class="ps-3">Folder Name</label>
         </div>
 
-        <app-text-input [formControl]='$any(editGroupForm.controls["componentName"])'
+        <app-text-input [disabled]="!isEdit"
+                        [formControl]='$any(editGroupForm.controls["componentName"])'
                         [label]='"Component Name"'
                         class="col-6"></app-text-input>
 
 
         <div class="form-floating mb-1 col-3">
           <select class="form-select ps-3"
-                  [class.is-invalid]='editGroupForm.get("crudState").errors && editGroupForm.get("crudState").touched'
-                  [class.is-valid]='!editGroupForm.get("crudState").errors && !editGroupForm.get("crudState").untouched'
+                  [class.is-invalid]='editGroupForm.get("crudState").errors && editGroupForm.get("crudState").touched && isEdit'
+                  [class.is-valid]='!editGroupForm.get("crudState").errors && !editGroupForm.get("crudState").untouched && isEdit'
                   id="crud"
                   formControlName='crudState'
                   required>
-            <option *ngFor="let record of crudRecords"
+            <option [disabled]="!isEdit"
+                    *ngFor="let record of crudRecords"
                     [value]="record">{{record}}</option>
           </select>
           <label for="crud"
@@ -51,12 +56,23 @@
                       [label]='"进程和存在的问题"'></app-text-input> -->
 
       <editor [init]=editParam
-              formControlName="progressAndProblem"></editor>
+              formControlName="progressAndProblem"
+              [disabled]="!isEdit"></editor>
 
       <div class="float-end mt-2">
+        <div class="form-check form-switch hidden">
+          <input class="form-check-input"
+                 type="checkbox"
+                 formControlName='finished'>
+        </div>
+        <button type="button"
+                class="btn btn-primary pt-2 pb-2 me-2"
+                (click)="edit()"
+                *ngIf="!isEdit">修改</button>
         <button type="submit"
                 class="btn btn-primary pt-2 pb-2 me-2"
-                [disabled]="editGroupForm.invalid || (!editGroupForm.dirty && !editGroupForm.pristine) || editGroupForm.untouched ">修改</button>
+                *ngIf="isEdit"
+                [disabled]="editGroupForm.invalid || (!editGroupForm.dirty && !editGroupForm.pristine)  ">Update</button>
         <button type="button"
                 class="btn btn-secondary pt-2 pb-2"
                 (click)="goBack()">Back</button>

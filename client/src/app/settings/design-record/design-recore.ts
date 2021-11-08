@@ -5,7 +5,8 @@ export interface IDesignRecord {
   componentName: string;
   progressAndProblem: string;
   crudState: string;
-  updateDay: string
+  updateDay: string;
+  finished: boolean
 }
 
 

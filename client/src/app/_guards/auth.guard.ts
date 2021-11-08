@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AccountService } from '../account/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
-import { RegisterComponent } from '../account/register/register.component';
+import { RegisterComponent } from '../account/register/register/register.component';
 
 @Injectable({
   providedIn: 'root'

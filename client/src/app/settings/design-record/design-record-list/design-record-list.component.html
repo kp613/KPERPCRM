@@ -2,8 +2,8 @@
   <thead>
     <tr>
       <th scope="col">Folder</th>
-      <!-- <th scope="col">Component Folder</th> -->
       <th scope="col">Component Name</th>
+      <th scope="col">主要问题</th>
       <th scope="col">CRUD状态</th>
       <th scope="col">修改时间</th>
 
@@ -16,27 +16,27 @@
           style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{record.folderName}}</th>
       <!-- <td>{{record.componentFolder}}</td> -->
       <td>{{record.componentName}}</td>
-      <!-- <td>
-        <div [innerHTML]="record.progressAndProblem"></div>
-      </td> -->
+      <td>
+        <div [innerHTML]="record.progressAndProblem | slice:0:20"></div>
+      </td>
       <td>{{record.crudState}}</td>
       <td>{{record.updateDay | timeago }}</td>
 
       <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
 
         <div class="form-check form-switch">
-          <input class="form-check-input"
+          <input (change)="isChecked(record.id)"
+                 class="form-check-input"
                  type="checkbox"
-                 value=""
-                 (click)="getFinished()">
-          <label class="form-check-label"
-                 for="flexSwitchCheckDefault">
-            <i class="bi bi-book  ms-1 me-2"
+                 [checked]="record.finished">
+
+          <label class="form-check-label">
+            <i class="bi bi-book  ms-3"
                type="button"
                [routerLink]="['../designrecord/',record.id]"></i>
-            <i class="bi bi-pen"
+            <!-- <i class="bi bi-pen"
                type="button"
-               [routerLink]="['../designrecord/',record.id]"></i>
+               [routerLink]="['../designrecord/',record.id]"></i> -->
           </label>
         </div>
 

@@ -21,8 +21,8 @@ namespace API.Repository
         {
             return await _context.KPErpCrmDesignRecord
                 .OrderBy(r => r.FolderName)
-                .ThenBy(r=>r.ComponentName)
-                //.ThenBy(r => r.CrudState)
+                //.ThenBy(r=>r.ComponentName)
+                .ThenBy(r => r.Finished)
                 .ThenByDescending(r => r.UpdateDay)
                 .AsNoTracking()
                 .ToListAsync();

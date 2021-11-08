@@ -30,6 +30,7 @@
 
 <ng-container *ngIf="(accountService.currentUser$ | async)===null && !registerMode">
   <app-login (wantRegister)="regFromLoginMode($event)"></app-login>
+
 </ng-container>
 
 <ng-container class="bt"

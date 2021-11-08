@@ -56,6 +56,7 @@ export class DesignRecordCreateComponent implements OnInit {
 
   onSaveForm() {
     this.designRecordService.create(this.addGroupForm.value).subscribe((res) => {
+      this.router.navigateByUrl('/webdesign');
       this.toastr.success('增加网站设计条目成功');
     }, (error) => {
       this.toastr.error(error.error);

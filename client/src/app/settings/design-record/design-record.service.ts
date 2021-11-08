@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { finished } from 'stream';
 import { IDesignRecord } from './design-recore';
 
 @Injectable({
@@ -28,9 +29,9 @@ export class DesignRecordService {
     'products',
     'customers',
     'members',
-    'modals',
     'account',
-    'weblayout'
+    'weblayout',
+    '0 design book'
   ];
 
   constructor(private httpClient: HttpClient) { }
@@ -43,8 +44,8 @@ export class DesignRecordService {
     return this.httpClient.get(this.baseUrl + "/DesignRecord/" + id);
   }
 
-  setFinished(id, data): Observable<any> {
-    return this.httpClient.patch(this.baseUrl + "/DesignRecord/" + id, data);
+  setFinished(id): Observable<any> {
+    return this.httpClient.patch(this.baseUrl + "/DesignRecord/patch/" + id, {});
   }
 
   create(data: any) {

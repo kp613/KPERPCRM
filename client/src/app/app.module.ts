@@ -13,10 +13,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataTablesModule } from 'angular-datatables';
 import { AdminModule } from './admin/admin.module';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
-import { MemberModule } from './account/members/member.module';
 import { GeneralModule } from './_shared/general.module';
 import { SharedModule } from './shared.module';
 import { SettingModule } from './settings/setting.module';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -30,11 +30,11 @@ import { SettingModule } from './settings/setting.module';
     DataTablesModule,
 
     AppRoutingModule,
+    AccountModule,
     GeneralModule,
     AdminModule,
     ProductModule,
     CustomerModule,
-    MemberModule,
     WeblayoutModule,
     SettingModule
   ],

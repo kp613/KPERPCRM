@@ -4,15 +4,12 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { HomeComponent } from './admin/home/home.component';
 import { MemberDetailComponent } from './account/members/member-detail/member-detail.component';
 import { MessageComponent } from './admin/message/message/message.component';
-import { UserComponent } from './account/members/user/user.component';
 import { OrderListComponent } from './business/order-list/order-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberListComponent } from './account/members/member-list/member-list.component';
-import { MemberEditComponent } from './account/members/member-edit/member-edit.component';
-import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
 import { ProductRoutingModule } from './products/product-routing.module';
 import { SettingRoutingModule } from './settings/setting-routing.module';
@@ -28,7 +25,7 @@ const routes: Routes = [
     children: [
       { path: "admin", component: RoleListComponent, canActivate: [AdminGuard] },
       { path: "members/:username", component: MemberDetailComponent, resolve: { member: MemberDetailedResolver } },
-      { path: "member/edit", component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
+
 
       { path: 'messages', component: MessageComponent },
     ]
@@ -36,7 +33,6 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   // { path: "messages", component: MessageComponent },
   { path: "members", component: MemberListComponent },
-  { path: "users", component: UserComponent },
 
   { path: "orders", component: OrderListComponent },
 

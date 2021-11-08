@@ -84,10 +84,13 @@ namespace API.Controllers.SettingControllers
             return NoContent();
         }
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateDesignRecordWithPatch(int id, [FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
+        [HttpPatch("patch/{id}")]
+        public async Task<IActionResult> UpdateDesignRecordWithPatch(int id)
         {
-            if (_repo.DesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.CrudState, kpErpCrmDesignRecord.Id)) return BadRequest("修改成重复的项目了，请检查！");
+            var kpErpCrmDesignRecord =await _repo.GetDesignRecordByIdAsync(id);
+
+            kpErpCrmDesignRecord.UpdateDay = DateTime.Now;
+            kpErpCrmDesignRecord.Finished = !kpErpCrmDesignRecord.Finished;
 
             _repo.Update(kpErpCrmDesignRecord);
 

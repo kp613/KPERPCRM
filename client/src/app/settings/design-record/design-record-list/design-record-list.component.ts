@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DesignRecordService } from '../design-record.service';
@@ -11,10 +12,15 @@ import { IDesignRecord } from '../design-recore';
 })
 export class DesignRecordListComponent implements OnInit {
   id: number;
-  isFinished: boolean = false;
-  formData;
+  // finished: boolean = false;
+
+  finishedForm = new FormGroup({
+    finished: new FormControl(''),
+    id: new FormControl('')
+  })
 
   designRecords: IDesignRecord[];
+  designRecord: IDesignRecord;
 
   constructor(
     private designRecordService: DesignRecordService,
@@ -35,13 +41,31 @@ export class DesignRecordListComponent implements OnInit {
     })
   }
 
-  getFinished() {
-    this.designRecordService.update(this.id, this.formData.value).subscribe((res) => {
+  // getFinished() {
+  //   this.designRecordService.update(this.id).subscribe((res) => {
+  //     this.router.navigateByUrl('/webdesign');
+  //     this.toastr.success('修改finished成功');
+  //   }, (error) => {
+  //     this.toastr.error(error.error);
+  //   })
+  // }
+
+  isChecked(id) {
+    // this.designRecordService.getRecordById(id).subscribe(res => {
+    //   this.designRecord = res;
+    //   this.finished = !res.finished;
+    // });
+
+    this.designRecordService.setFinished(id).subscribe((res) => {
+      // res.finished = this.finished;
       this.router.navigateByUrl('/webdesign');
       this.toastr.success('修改finished成功');
     }, (error) => {
       this.toastr.error(error.error);
     })
   }
+
+
+
 
 }

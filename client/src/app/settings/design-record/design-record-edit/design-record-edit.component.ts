@@ -16,6 +16,7 @@ export class DesignRecordEditComponent implements OnInit {
   id: number;
   designRecord: IDesignRecord;
   editGroupForm: FormGroup;
+  isEdit: boolean = false;
 
   crudRecords = [];
   folderNames = [];
@@ -24,7 +25,9 @@ export class DesignRecordEditComponent implements OnInit {
     selector: 'textarea',  //tinymce的最基本的组件
     language_url: '../../../assets/tinymce-lang/zh_CN.js',
     language: 'zh_CN',
-    plugins: "autoresize"
+    plugins: "autoresize",
+    // toolbar: 'forecolor backcolor | bullist numlist h2 h3 h4|'
+    // height: 500
   };
 
   constructor(
@@ -46,8 +49,9 @@ export class DesignRecordEditComponent implements OnInit {
       id: [''],
       folderName: ['', [Validators.required]],
       componentName: ['', [Validators.required]],
-      progressAndProblem: ['', [Validators.required]],
-      crudState: ['', [Validators.required]]
+      progressAndProblem: [''],
+      crudState: ['', [Validators.required]],
+      finished: ['']
     });
 
 
@@ -67,6 +71,10 @@ export class DesignRecordEditComponent implements OnInit {
     }, (error) => {
       this.toastr.error(error.error);
     })
+  }
+
+  edit(): void {
+    this.isEdit = true;
   }
 
   goBack(): void {
