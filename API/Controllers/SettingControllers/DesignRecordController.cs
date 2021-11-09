@@ -16,10 +16,10 @@ namespace API.Controllers.SettingControllers
     //[ApiVersion("3.0")]
     public class DesignRecordController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IKPErpCrmDesignRecordRepository _repo;
+        private readonly DevDbContext _context;
+        private readonly IDesignRecordRepository _repo;
 
-        public DesignRecordController(ApplicationDbContext context, IKPErpCrmDesignRecordRepository repo)
+        public DesignRecordController(DevDbContext context, IDesignRecordRepository repo)
         {
             _context = context;
             _repo = repo;
@@ -48,11 +48,11 @@ namespace API.Controllers.SettingControllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>AddDesignRecord([FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
+        public async Task<IActionResult>AddDesignRecord([FromBody] DesignRecord designRecord)
         {
-            if (_repo.AddDesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.CrudState)) return BadRequest("新增了重复条目，请检查！");
+            if (_repo.AddDesignRecordExists(designRecord.FolderName, designRecord.ComponentName, designRecord.CrudState)) return BadRequest("新增了重复条目，请检查！");
 
-            _repo.Create(kpErpCrmDesignRecord);
+            _repo.Create(designRecord);
 
             await _repo.SaveAllAsync();
 
@@ -73,11 +73,11 @@ namespace API.Controllers.SettingControllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult>UpdateDesignRecord(int id,[FromBody] KPErpCrmDesignRecord kpErpCrmDesignRecord)
+        public async Task<IActionResult>UpdateDesignRecord(int id,[FromBody] DesignRecord designRecord)
         {
-            if (_repo.DesignRecordExists(kpErpCrmDesignRecord.FolderName, kpErpCrmDesignRecord.ComponentName, kpErpCrmDesignRecord.CrudState, kpErpCrmDesignRecord.Id)) return BadRequest("修改成重复的项目了，请检查！");
+            if (_repo.DesignRecordExists(designRecord.FolderName, designRecord.ComponentName, designRecord.CrudState, designRecord.Id)) return BadRequest("修改成重复的项目了，请检查！");
 
-            _repo.Update(kpErpCrmDesignRecord);
+            _repo.Update(designRecord);
 
             await _repo.SaveAllAsync();
 
@@ -87,12 +87,12 @@ namespace API.Controllers.SettingControllers
         [HttpPatch("patch/{id}")]
         public async Task<IActionResult> UpdateDesignRecordWithPatch(int id)
         {
-            var kpErpCrmDesignRecord =await _repo.GetDesignRecordByIdAsync(id);
+            var designRecord =await _repo.GetDesignRecordByIdAsync(id);
 
-            kpErpCrmDesignRecord.UpdateDay = DateTime.Now;
-            kpErpCrmDesignRecord.Finished = !kpErpCrmDesignRecord.Finished;
+            designRecord.UpdateDay = DateTime.Now;
+            designRecord.Finished = !designRecord.Finished;
 
-            _repo.Update(kpErpCrmDesignRecord);
+            _repo.Update(designRecord);
 
             await _repo.SaveAllAsync();
 

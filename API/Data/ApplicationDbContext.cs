@@ -17,7 +17,7 @@ namespace API.Data
         {
         }
 
-        public DbSet<KPErpCrmDesignRecord> KPErpCrmDesignRecord { get; set; }   //记录软件开发进程
+        
 
         public DbSet<Shareholder> Shareholder { get; set; }
         public DbSet<ShareholderForCompany> ShareholderForCompany { get; set; }

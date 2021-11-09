@@ -24,7 +24,7 @@ namespace API.Services
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<LogUserActivity>();
 
-            services.AddScoped<IKPErpCrmDesignRecordRepository, KPErpCrmDesignRecordRepository>();
+            services.AddScoped<IDesignRecordRepository, DesignRecordRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
             //services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);

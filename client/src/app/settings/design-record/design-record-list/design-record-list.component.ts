@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -64,8 +64,5 @@ export class DesignRecordListComponent implements OnInit {
       this.toastr.error(error.error);
     })
   }
-
-
-
 
 }

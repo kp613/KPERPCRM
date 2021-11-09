@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace API.Repository.IRepository
 {
-    public interface IKPErpCrmDesignRecordRepository
+    public interface IDesignRecordRepository
     {
-        Task<ICollection<KPErpCrmDesignRecord>> GetDesignRecordsAsync();
+        Task<ICollection<DesignRecord>> GetDesignRecordsAsync();
 
-        Task<KPErpCrmDesignRecord> GetDesignRecordByIdAsync(int id);
+        Task<DesignRecord> GetDesignRecordByIdAsync(int id);
 
-        void Create(KPErpCrmDesignRecord kpErpCrmDesignRecord);
-        void Delete(KPErpCrmDesignRecord kpErpCrmDesignRecord);
-        void Update(KPErpCrmDesignRecord kpErpCrmDesignRecord);
+        void Create(DesignRecord designRecord);
+        void Delete(DesignRecord designRecord);
+        void Update(DesignRecord designRecord);
 
         Task<bool> SaveAllAsync();
 

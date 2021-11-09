@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Models.Setting
 {
-    public class KPErpCrmDesignRecord
+    public class DesignRecord
     {
         public int Id { get; set; }
         public string FolderName { get; set; }

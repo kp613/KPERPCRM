@@ -25,9 +25,43 @@ export class DesignRecordEditComponent implements OnInit {
     selector: 'textarea',  //tinymce的最基本的组件
     language_url: '../../../assets/tinymce-lang/zh_CN.js',
     language: 'zh_CN',
-    plugins: "autoresize",
-    // toolbar: 'forecolor backcolor | bullist numlist h2 h3 h4|'
+    // plugins: "autoresize",
+    plugins: `autoresize link lists image code table colorpicker fullscreen fullpage help
+    textcolor wordcount contextmenu codesample importcss media preview print
+    textpattern tabfocus hr directionality imagetools autosave paste`,
+    toolbar: 'undo redo  removeformat paste  bold italic underline strikethrough  | fontsizeselect |  forecolor backcolor | bullist numlist h2 h3 h4| '
+      + ' link unlink image  | alignleft aligncenter alignright alignjustify outdent indent  |'
+      + '  code blockquote fullscreen preview codesample  help',
     // height: 500
+
+
+    image_caption: true,
+    // paset 插件允许粘贴图片
+    paste_data_images: true,
+    imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+    // 这个便是自定义上传图片方法
+    images_upload_handler: function (blobInfo, success, failure) {
+      let xhr, formData;
+      xhr = new XMLHttpRequest();
+      xhr.withCredentials = false;
+      xhr.open('POST', '/api/upload');
+      xhr.onload = function () {
+        let json;
+        if (xhr.status !== 200) {
+          failure('HTTP Error: ' + xhr.status);
+          return;
+        }
+        json = JSON.parse(xhr.responseText);
+        if (!json || typeof json.location !== 'string') {
+          failure('Invalid JSON: ' + xhr.responseText);
+          return;
+        }
+        success(json.location);
+      };
+      formData = new FormData();
+      formData.append('file', blobInfo.blob(), blobInfo.filename());
+      xhr.send(formData);
+    }
   };
 
   constructor(
@@ -62,6 +96,8 @@ export class DesignRecordEditComponent implements OnInit {
     this.designRecordService.getRecordById(this.id).subscribe(response => {
       this.editGroupForm.patchValue(response);
     });
+
+    this.isEdit = this.route.snapshot.params['isEdit'];
   }
 
   onSubmit(formData) {

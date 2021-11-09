@@ -88,6 +88,10 @@ namespace API
                 options.UseSqlServer(
                     _config.GetConnectionString("WebDefaultConnection_env"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
+                services.AddDbContext<DevDbContext>(options =>
+                options.UseSqlServer(
+                    _config.GetConnectionString("DevDefaultConnection_env"), providerOptions => providerOptions.EnableRetryOnFailure()));
+
                 //services.AddDbContext<ApplicationDbContext>(x =>
                 //x.UseSqlite(_config.GetConnectionString("DefaultConnection_Sqlite")));
 

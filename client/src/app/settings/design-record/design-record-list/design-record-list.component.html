@@ -15,7 +15,9 @@
       <th scope="row"
           style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{record.folderName}}</th>
       <!-- <td>{{record.componentFolder}}</td> -->
-      <td>{{record.componentName}}</td>
+      <td class="link"
+          data-bs-toggle="modal"
+          attr.data-bs-target="#designModal{{record.id}}">{{record.componentName}}</td>
       <td>
         <div [innerHTML]="record.progressAndProblem | slice:0:20"></div>
       </td>
@@ -42,6 +44,38 @@
 
       </td>
 
+      <!-- Modal -->
+      <div class="modal fade"
+           id="designModal{{record.id}}"
+           tabindex="-1"
+           aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"
+                  id="exampleModalLabel">{{record.componentName}}</h5>
+              <button type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div [innerHTML]="record.progressAndProblem"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal">Close</button>
+              <button type="button"
+                      class="btn btn-primary"
+                      data-bs-dismiss="modal"
+                      [routerLink]="['../designrecord/',record.id,{'isEdit':true}]">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal End-->
 
     </tr>
   </tbody>

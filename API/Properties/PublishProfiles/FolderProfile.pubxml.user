@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>E:\源码发布测试</_PublishTargetUrl>
-    <History>True|2021-08-12T12:32:48.8355812Z;</History>
+    <History>True|2021-11-09T00:51:07.1320563Z;True|2021-11-09T08:19:57.4112966+08:00;True|2021-11-09T07:48:58.9541806+08:00;True|2021-11-09T07:08:38.2868490+08:00;True|2021-11-08T21:21:37.9508635+08:00;True|2021-11-08T20:22:13.8688135+08:00;True|2021-11-08T20:00:26.5123654+08:00;True|2021-11-08T19:52:25.9524554+08:00;True|2021-11-08T14:03:38.9363062+08:00;True|2021-11-08T13:56:39.5084680+08:00;True|2021-11-08T13:53:52.2901578+08:00;False|2021-11-08T13:52:27.9468284+08:00;True|2021-08-12T20:32:48.8355812+08:00;</History>
   </PropertyGroup>
 </Project>
