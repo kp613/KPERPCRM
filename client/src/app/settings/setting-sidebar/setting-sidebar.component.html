@@ -4,7 +4,8 @@
     <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
         type="button"
         routerLink="../webdesign"
-        routerLinkActive="bg-grey text-white">网站设计笔记</li>
+        routerLinkActive="bg-grey text-white"
+        *ngIf="!production">网站设计笔记</li>
     <li class="list-group-item  mt-1 fs-6 nav-link text-dark"
         type="button"
         routerLink="../ourcompany"

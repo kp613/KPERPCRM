@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-setting-sidebar',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting-sidebar.component.scss']
 })
 export class SettingSidebarComponent implements OnInit {
+  production = environment.production;  //判断是否为生产状态
 
   constructor() { }
 

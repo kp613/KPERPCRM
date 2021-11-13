@@ -1,5 +1,5 @@
 ﻿using API.Data;
-using API.DTOs;
+using API.DTOs.UserDtos;
 using API.Models.IdentityModels;
 using API.Helpers;
 using AutoMapper;
@@ -86,6 +86,11 @@ namespace API.Repository
         public void Update(ApplicationUser user)
         {
             _context.Entry(user).State = EntityState.Modified;
+        }
+
+        public void UploadImage(ApplicationUser user)
+        {
+            _context.ApplicationUser.Update(user);
         }
     }
 }

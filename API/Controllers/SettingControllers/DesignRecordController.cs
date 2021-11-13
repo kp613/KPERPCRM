@@ -69,6 +69,10 @@ namespace API.Controllers.SettingControllers
                 return BadRequest("没有该产品");
             }
 
+            _repo.Delete(designRecord);
+
+            await _repo.SaveAllAsync();
+
             return NoContent();
         }
 

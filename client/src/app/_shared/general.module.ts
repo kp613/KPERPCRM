@@ -16,6 +16,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { TinymceAngularComponent } from './RichText/tinymce-angular/tinymce-angular.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { PipeModule } from '../_pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,11 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     AngularEditorComponent,
     CkeditorComponent,
     TinymceAngularComponent,
+
   ],
   imports: [
     SharedModule,
-
+    PipeModule,
 
 
     NgxEditorModule.forRoot({
@@ -79,6 +81,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     EditorModule
   ],
   exports: [
+    PipeModule,
+
     TextInputComponent,
     DateInputComponent,
 
@@ -92,7 +96,9 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     CKEditorModule,
 
     TinymceAngularComponent,
-    EditorModule
+    EditorModule,
+
+    StepperComponent,
   ]
 
 })

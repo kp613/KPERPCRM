@@ -11,7 +11,7 @@
     <form [formGroup]='editGroupForm'
           (ngSubmit)="editGroupForm.valid && onSubmit(editGroupForm)"
           autocomplete="off">
-      <div class="col-12 row">
+      <div class="row">
         <input type="hidden"
                [value]='id'>
         <div class="form-floating mb-1 col-3">
@@ -55,6 +55,10 @@
       <!-- <app-text-input [formControl]='$any(editGroupForm.controls["progressAndProblem"])'
                       [label]='"进程和存在的问题"'></app-text-input> -->
 
+      <app-text-input [disabled]="!isEdit"
+                      [formControl]='$any(editGroupForm.controls["title"])'
+                      [label]='"Title"'></app-text-input>
+
       <editor [init]=editParam
               formControlName="progressAndProblem"
               [disabled]="!isEdit"></editor>
@@ -69,6 +73,18 @@
                 class="btn btn-primary pt-2 pb-2 me-2"
                 (click)="edit()"
                 *ngIf="!isEdit">修改</button>
+        <swal #deleteRecord
+              title="需要删除记录吗?"
+              text="删除不可逆转，请确认！"
+              icon="question"
+              [showCancelButton]="true"
+              [focusCancel]="true"
+              (confirm)="delete(id)">
+        </swal>
+        <button type="button"
+                class="btn btn-primary pt-2 pb-2 me-2"
+                (click)="deleteRecord.fire()"
+                *ngIf="!isEdit">删除</button>
         <button type="submit"
                 class="btn btn-primary pt-2 pb-2 me-2"
                 *ngIf="isEdit"

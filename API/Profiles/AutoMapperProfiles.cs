@@ -1,5 +1,6 @@
 using System.Linq;
 using API.DTOs;
+using API.DTOs.UserDtos;
 using API.Models;
 using API.Models.IdentityModels;
 using API.Extensions;

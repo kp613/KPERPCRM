@@ -14,6 +14,9 @@
       <img src="{{member.profilePicture || './assets/images/user.png'}}"
            alt="{{member.knownAs}}"
            class="card-img-top img-thumbnail">
+      <img src="data:image/jpeg;base64,{{member.profilePicture}}"
+           alt="{{member.knownAs}}"
+           class="card-img-top img-thumbnail" />
       <div class="card-body">
         <div>
           <strong>Location:</strong>
@@ -83,7 +86,37 @@
 
       </tab>
       <tab heading='照片'>
-        <p>照片展示和上传</p>
+        <!-- <angular-file-uploader [config]="afuConfig">
+        </angular-file-uploader> -->
+
+        <!-- <angular-file-uploader [config]="afuConfig2"
+                               [resetUpload]=resetVar
+                               (fileSelected)="fileSelected($event)"
+                               (ApiResponse)="docUpload($event)">
+        </angular-file-uploader> -->
+
+        <!-- <angular-file-uploader #fileUpload3
+                               [config]="afuConfig3"
+                               [resetUpload]=resetVar
+                               (ApiResponse)="DocUpload($event)">
+        </angular-file-uploader> -->
+
+        <input type="file"
+               class="btn "
+               (change)="onFileSelected($event)" />
+        <br /><br />
+
+
+        <div>即将上传的图片：</div>
+
+        <img src="data:image/jpeg;base64,{{profilePicture}}"
+             style="max-width: 30%;" />
+
+        <br /><br />
+        <button class="btn btn-success"
+                (click)="uploadImg(member.username, profilePicture)">Upload</button>
+
+        {{profilePicture}}
       </tab>
     </tabset>
   </div>

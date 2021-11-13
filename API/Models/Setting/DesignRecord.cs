@@ -9,7 +9,7 @@ namespace API.Models.Setting
     {
         public int Id { get; set; }
         public string FolderName { get; set; }
-        //public string ComponentFolder { get; set; }
+        public string Title { get; set; }
         public string ComponentName { get; set; }
         public string ProgressAndProblem { get; set; }
         public string CrudState { get; set; }

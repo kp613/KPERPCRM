@@ -1,4 +1,4 @@
-﻿using API.DTOs;
+﻿using API.DTOs.UserDtos;
 using API.Models.IdentityModels;
 using API.Helpers;
 using System;
@@ -11,6 +11,8 @@ namespace API.Repository.IRepository
     public interface IUserRepository
     {
         void Update(ApplicationUser user);
+        void UploadImage(ApplicationUser user);
+
         Task<bool> SaveAllAsync();
 
         Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
@@ -19,6 +21,8 @@ namespace API.Repository.IRepository
         Task<ICollection<ApplicationUser>> GetUsersAsync();
         Task<ApplicationUser> GetUserByIdAsync(string id);
         Task<ApplicationUser> GetUserByUsernameAsync(string username);
+
+
 
     }
 }

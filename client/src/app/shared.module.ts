@@ -20,8 +20,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { NgxEditorComponent, NgxEditorModule } from 'ngx-editor';
-
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { NgxEditorComponent, NgxEditorModule } from 'ngx-editor';
     HttpClientModule,
     FontAwesomeModule,
     NgxSpinnerModule,
-    DataTablesModule,
     RouterModule,
     CommonModule,
     BrowserModule,
@@ -52,13 +50,14 @@ import { NgxEditorComponent, NgxEditorModule } from 'ngx-editor';
     MaterialModule,
     NgxPaginationModule,
     SweetAlert2Module.forRoot(),
+    AngularFileUploaderModule,
+
 
   ],
   exports: [
     HttpClientModule,
     FontAwesomeModule,
     NgxSpinnerModule,
-    DataTablesModule,
     RouterModule,
     CommonModule,
     BrowserModule,
@@ -78,6 +77,8 @@ import { NgxEditorComponent, NgxEditorModule } from 'ngx-editor';
     MaterialModule,
     NgxPaginationModule,
     SweetAlert2Module,
+    AngularFileUploaderModule,
+
 
   ]
 })

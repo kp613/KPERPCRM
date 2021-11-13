@@ -1,5 +1,5 @@
 ﻿using API.Data;
-using API.DTOs;
+using API.DTOs.UserDtos;
 using API.Models.IdentityModels;
 using API.Extensions;
 using AutoMapper;
@@ -108,6 +108,23 @@ namespace API.AccountControllers.Controllers
             _mapper.Map(memberUpdateDto, user);
 
             _userRepository.Update(user);
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
+        }
+
+        [HttpPut("patch/{username}")]
+        public async Task<ActionResult> UploadImage(string username, [FromBody] UserImageUpdateDto userImageUpdateDto )
+        {
+            //var username = User.FindFirst(ClaimTypes.NameIdentifier)?. Value;
+            //var user = await _userRepository.GetUserByUsernameAsync(username);
+
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+
+            user.ProfilePicture = userImageUpdateDto.ProfilePicture;
+
+            _userRepository.UploadImage(user);
 
             if (await _userRepository.SaveAllAsync()) return NoContent();
 

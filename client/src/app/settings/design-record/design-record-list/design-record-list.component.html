@@ -1,82 +1,88 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Folder</th>
-      <th scope="col">Component Name</th>
-      <th scope="col">主要问题</th>
-      <th scope="col">CRUD状态</th>
-      <th scope="col">修改时间</th>
+<div class="container mb-5">
+  <table class="table table-hover"
+         datatable
+         [dtOptions]="dtOptions"
+         *ngIf="designRecords">
+    <thead>
+      <tr>
+        <th scope="col">Folder</th>
+        <th scope="col">Component Name</th>
+        <th scope="col">Title</th>
+        <th scope="col">CRUD状态</th>
+        <th scope="col">修改时间</th>
 
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let record of designRecords;let i=index">
-      <th scope="row"
-          style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{record.folderName}}</th>
-      <!-- <td>{{record.componentFolder}}</td> -->
-      <td class="link"
-          data-bs-toggle="modal"
-          attr.data-bs-target="#designModal{{record.id}}">{{record.componentName}}</td>
-      <td>
-        <div [innerHTML]="record.progressAndProblem | slice:0:20"></div>
-      </td>
-      <td>{{record.crudState}}</td>
-      <td>{{record.updateDay | timeago }}</td>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of designRecords">
+        <th scope="row"
+            style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{record.folderName}}</th>
+        <!-- <td>{{record.componentFolder}}</td> -->
+        <td class="link"
+            data-bs-toggle="modal"
+            attr.data-bs-target="#designModal{{record.id}}">{{record.componentName}}</td>
+        <td>
+          {{record.title | slice:0:20}}
+          <!-- <div [innerHTML]="record.progressAndProblem | slice:0:20"></div> -->
+        </td>
+        <td>{{record.crudState}}</td>
+        <td>{{record.updateDay | timeago }}</td>
 
-      <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
+        <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
 
-        <div class="form-check form-switch">
-          <input (change)="isChecked(record.id)"
-                 class="form-check-input"
-                 type="checkbox"
-                 [checked]="record.finished">
+          <div class="form-check form-switch">
+            <input (change)="isChecked(record.id)"
+                   class="form-check-input"
+                   type="checkbox"
+                   [checked]="record.finished">
 
-          <label class="form-check-label">
-            <i class="bi bi-book  ms-3"
-               type="button"
-               [routerLink]="['../designrecord/',record.id]"></i>
-            <!-- <i class="bi bi-pen"
-               type="button"
-               [routerLink]="['../designrecord/',record.id]"></i> -->
-          </label>
-        </div>
+            <label class="form-check-label">
+              <i class="bi bi-pen ms-3"
+                 type="button"
+                 [routerLink]="['../designrecord/',record.id,{'isEdit':true}]"></i>
+              <i class="bi bi-book  ms-3"
+                 type="button"
+                 [routerLink]="['../designrecord/',record.id]"></i>
+            </label>
+          </div>
 
-      </td>
+        </td>
 
-      <!-- Modal -->
-      <div class="modal fade"
-           id="designModal{{record.id}}"
-           tabindex="-1"
-           aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title"
-                  id="exampleModalLabel">{{record.componentName}}</h5>
-              <button type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div [innerHTML]="record.progressAndProblem"></div>
-            </div>
-            <div class="modal-footer">
-              <button type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal">Close</button>
-              <button type="button"
-                      class="btn btn-primary"
-                      data-bs-dismiss="modal"
-                      [routerLink]="['../designrecord/',record.id,{'isEdit':true}]">Edit</button>
+        <!-- Modal -->
+        <div class="modal fade"
+             id="designModal{{record.id}}"
+             tabindex="-1"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"
+                    id="exampleModalLabel">{{record.componentName}}</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div [innerHTML]="record.progressAndProblem | html"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                <button type="button"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal"
+                        [routerLink]="['../designrecord/',record.id,{'isEdit':true}]">Edit</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Modal End-->
+        <!-- Modal End-->
 
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+</div>

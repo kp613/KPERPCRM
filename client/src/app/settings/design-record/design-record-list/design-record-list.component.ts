@@ -13,7 +13,8 @@ import { IDesignRecord } from '../design-recore';
 export class DesignRecordListComponent implements OnInit {
   id: number;
   // finished: boolean = false;
-
+  dtOptions: DataTables.Settings = {};
+  
   finishedForm = new FormGroup({
     finished: new FormControl(''),
     id: new FormControl('')
@@ -29,6 +30,12 @@ export class DesignRecordListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true
+    };
+
     this.loadDesignRecordLists();
   }
 

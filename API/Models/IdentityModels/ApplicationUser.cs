@@ -53,7 +53,7 @@ namespace API.Models.IdentityModels
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "休假")]
-        public DateTime BeOnLeaveEnd { get; set; }      //休假中
+        public DateTime BeOnLeaveEnd { get; set; }      //休假结束日
 
         //public byte[] ProfilePicture { get; set; }      //个人照片
         public string ProfilePicture { get; set; }      //个人照片

@@ -6,9 +6,10 @@ import { map, take } from 'rxjs/operators';
 import { UserParams } from './userParams';
 import { AccountService } from '../account.service';
 import { getPaginatedResult, getPaginationHeaders } from '../../_services/paginationHelper';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { PaginatedResult } from '../../_models/pagination';
 import { ILoggedUser } from '../loggedUser';
+import { IUserImageUpdate } from './userImageUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,12 @@ export class MembersService {
   imageUrl = environment.url;
 
   members: IMember[] = [];
+  member: IMember;
   // paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]>();
   loggerUser: ILoggedUser;
   memberCache = new Map();
   userParams: UserParams;
+  userImageUpdate: IUserImageUpdate;
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
@@ -108,6 +111,12 @@ export class MembersService {
       })
     )
   }
+
+  uploadImage(username, date): Observable<any> {
+    return this.http.put(this.baseUrl + '/users/patch/' + username, date);
+  }
+
+  //  { 'profilePicture': profilePicture }
 
   setMainPhoto(photoId: number) {
     return this.http.put(this.baseUrl + '/users/set-main-photo/' + photoId, {});
