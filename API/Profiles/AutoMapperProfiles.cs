@@ -5,7 +5,7 @@ using API.Models;
 using API.Models.IdentityModels;
 using API.Extensions;
 using AutoMapper;
-using API.DTOs.AdminDtos;
+using API.DTOs.AccountDtos;
 
 namespace API.Profiles
 {

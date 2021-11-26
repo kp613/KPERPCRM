@@ -25,7 +25,11 @@ export class MemberListComponent implements OnInit {
   user: ILoggedUser;
   genderList = [{ value: 'male', display: '男' }, { value: 'female', display: '女' }];
 
-  constructor(private memberService: MembersService, private http: HttpClient, private title: Title) {
+  constructor(
+    private memberService: MembersService,
+    private http: HttpClient,
+    private title: Title
+  ) {
     this.userParams = this.memberService.getUserParams();
   }
 

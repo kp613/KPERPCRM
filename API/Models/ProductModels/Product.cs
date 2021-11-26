@@ -31,15 +31,7 @@ namespace API.Models.ProductModels
         [Display(Name = "结构式")]
         public string StructureUrl { get; set; }
 
-        public ProductComConstant ProductComConstant { get; set; }
-        public ProductComInfo ProductComInfo { get; set; }
-        public ProductComInstruction ProductComInstruction { get; set; }
-        public ProductComSynonym ProductComSynonym { get; set; }
-        public ProductComUse ProductComUse { get; set; }
 
-
-        public ICollection<ProductsGroupThirdProducts> ProductsGroupThirdProducts { get; set; }
-        public ICollection<ProductUpOrDown> ProductUpOrDown { get; set; }
 
     }
 }

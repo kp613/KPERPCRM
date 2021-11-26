@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using API.Helpers;
-using API.DTOs.AdminDtos;
+using API.DTOs.AccountDtos;
 using API.Repository.IRepository;
 using API.Controllers;
 
@@ -114,15 +114,15 @@ namespace API.AccountControllers.Controllers
             return BadRequest("Failed to update user");
         }
 
-        [HttpPut("patch/{username}")]
-        public async Task<ActionResult> UploadImage(string username, [FromBody] UserImageUpdateDto userImageUpdateDto )
+        [HttpPatch("{username}")]
+        public async Task<ActionResult> UploadImage(string username, [FromBody] MemberUpdateDto memberUpdateDto)
         {
             //var username = User.FindFirst(ClaimTypes.NameIdentifier)?. Value;
             //var user = await _userRepository.GetUserByUsernameAsync(username);
 
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
-            user.ProfilePicture = userImageUpdateDto.ProfilePicture;
+            user.ProfilePicture = memberUpdateDto.ProfilePicture;
 
             _userRepository.UploadImage(user);
 

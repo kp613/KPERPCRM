@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace API.Models.ProductModels
 {
-    public class ProductsGroupThird
+    public class ProductCategoryThird
     {
         //三级类别原料药中的心脑血管药、艾滋病药等；砌块中的如：吡啶类、[1,5b-]等
         public int Id { get; set; }
@@ -56,10 +56,7 @@ namespace API.Models.ProductModels
         //or like OrKeyWordEn 
         //and not like (NoKeyWordEn1 or NoKeyWordEn2 or NoKeyWordEn3 or NoKeyWordEn4 or NoKeyWordEn5)
 
-        public ICollection<ProductsGroupThirdProducts> ProductsGroupThirdProducts { get; set; }
 
-        [ForeignKey("ProductsGroupSecondId")]
-        public ProductsGroupSecond ProductsGroupSecond { get; set; }
 
 
 

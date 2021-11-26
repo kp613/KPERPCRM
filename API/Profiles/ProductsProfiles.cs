@@ -15,9 +15,9 @@ namespace API.Profiles
         {
             CreateMap<Product, ProductDto>().ReverseMap();
 
-            CreateMap<ProductsGroupFirst, ProductsGroupFirstDto>();
-            CreateMap<ProductsGroupSecond, ProductsGroupSecondDto>();
-            CreateMap<ProductsGroupThird, ProductsGroupThirdDto>();
+            CreateMap<ProductCategoryFirst, ProductCategoryFirstDto>();
+            CreateMap<ProductCategorySecond, ProductCategorySecondDto>();
+            CreateMap<ProductCategoryThird, ProductCategoryThirdDto>();
         }
     }
 }

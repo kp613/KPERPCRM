@@ -19,303 +19,6 @@ namespace API.Data.Migrations.WebDb
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("API.Models.BusinessModels.InquiriedProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("InquiryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InquiryStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PriceForCustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InquiryId");
-
-                    b.HasIndex("PriceForCustomerId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("InquiriedProduct");
-                });
-
-            modelBuilder.Entity("API.Models.BusinessModels.Inquiry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CompanyContacterId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("InquireContent")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("InquireTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TypeIn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyContacterId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("Inquiry");
-                });
-
-            modelBuilder.Entity("API.Models.BusinessModels.PriceForCustomer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("InquiryId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<float>("Quantity")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PriceForCustomer");
-                });
-
-            modelBuilder.Entity("API.Models.CommonModels.Area", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AreaCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AreaNameCh")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AreaNameEn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CountryCode")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Area");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AreaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CompanyQQ")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyTel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyWeChat")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerNameCh")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerNameEn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerWeb")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAbandoned")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModificateMan")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdateDay")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AreaId");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerAddress", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ContacterName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Mobile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telephone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("CustomerAddress");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerBank", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BankAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BankName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BankNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BankSwiftCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("IsCanceled")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("CustomerBank");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerContacter", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDimission")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Mobile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QQ")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Reference")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WeChat")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WhatsApp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("CustomerContacter");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerRelateAnother", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerRelateId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("CustomerRelateAnother");
-                });
-
             modelBuilder.Entity("API.Models.ProductModels.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -347,107 +50,7 @@ namespace API.Data.Migrations.WebDb
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductComConstant", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MolecularFormula")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MolecularWeight")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("ProductComConstant");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComInfo", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("QuoteSuggest")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("ProductComInfo");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComInstruction", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Instruction")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("ProductComInstruction");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComSynonym", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SynonymsCN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SynonymsEn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("ProductComSynonym");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComUse", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UseInCh")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UseInEn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProductId");
-
-                    b.ToTable("ProductComUse");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductUpOrDown", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("UpOrDown")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("UpOrDownId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UpOrDownId");
-
-                    b.ToTable("ProductUpOrDown");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupFirst", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryFirst", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -462,10 +65,10 @@ namespace API.Data.Migrations.WebDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductsGroupFirst");
+                    b.ToTable("ProductCategoryFirsts");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupSecond", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategorySecond", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -485,10 +88,10 @@ namespace API.Data.Migrations.WebDb
 
                     b.HasIndex("ProductsGroupFirstId");
 
-                    b.ToTable("ProductsGroupSecond");
+                    b.ToTable("ProductCategorySeconds");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThird", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryThird", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -550,6 +153,9 @@ namespace API.Data.Migrations.WebDb
                     b.Property<string>("OrKeyWordEn3")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductCategorySecondId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductsGroupSecondId")
                         .HasColumnType("int");
 
@@ -558,56 +164,29 @@ namespace API.Data.Migrations.WebDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductsGroupSecondId");
+                    b.HasIndex("ProductCategorySecondId");
 
-                    b.ToTable("ProductsGroupThird");
+                    b.ToTable("ProductCategoryThirds");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThirdProducts", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductsInCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsVerified")
-                        .HasColumnType("bit");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsGroupThirdId")
+                    b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("ProductsGroupThirdId");
-
-                    b.ToTable("ProductsGroupThirdProducts");
-                });
-
-            modelBuilder.Entity("API.Models.WebModels.ProductPublishing", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CASNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductNameCN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductPublishing");
+                    b.ToTable("ProductsInCategory");
                 });
 
             modelBuilder.Entity("API.Models.WebModels.WebMessage", b =>
@@ -694,176 +273,9 @@ namespace API.Data.Migrations.WebDb
                     b.ToTable("WebUser");
                 });
 
-            modelBuilder.Entity("API.Models.BusinessModels.InquiriedProduct", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategorySecond", b =>
                 {
-                    b.HasOne("API.Models.BusinessModels.Inquiry", "Inquiry")
-                        .WithMany("InquiriedProducts")
-                        .HasForeignKey("InquiryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Models.BusinessModels.PriceForCustomer", "PriceForCustomer")
-                        .WithMany()
-                        .HasForeignKey("PriceForCustomerId");
-
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Inquiry");
-
-                    b.Navigation("PriceForCustomer");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.BusinessModels.Inquiry", b =>
-                {
-                    b.HasOne("API.Models.CustomerModels.CustomerContacter", "CompanyContacter")
-                        .WithMany("Inquiries")
-                        .HasForeignKey("CompanyContacterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Models.CustomerModels.Customer", "Company")
-                        .WithMany("Inquiries")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("CompanyContacter");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.Customer", b =>
-                {
-                    b.HasOne("API.Models.CommonModels.Area", "SysArea")
-                        .WithMany("Customers")
-                        .HasForeignKey("AreaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SysArea");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerAddress", b =>
-                {
-                    b.HasOne("API.Models.CommonModels.Area", "CityOrDevZone")
-                        .WithMany("CustomerAddress")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Models.CustomerModels.Customer", "Customer")
-                        .WithMany("CustomerAddresses")
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("CityOrDevZone");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerBank", b =>
-                {
-                    b.HasOne("API.Models.CustomerModels.Customer", "Customer")
-                        .WithMany("CustomerBanks")
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerContacter", b =>
-                {
-                    b.HasOne("API.Models.CustomerModels.Customer", "Customer")
-                        .WithMany("CustomerContacters")
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerRelateAnother", b =>
-                {
-                    b.HasOne("API.Models.CustomerModels.Customer", "Customer")
-                        .WithMany("CustomerRelateds")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComConstant", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithOne("ProductComConstant")
-                        .HasForeignKey("API.Models.ProductModels.ProductComConstant", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComInfo", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithOne("ProductComInfo")
-                        .HasForeignKey("API.Models.ProductModels.ProductComInfo", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComInstruction", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithOne("ProductComInstruction")
-                        .HasForeignKey("API.Models.ProductModels.ProductComInstruction", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComSynonym", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithOne("ProductComSynonym")
-                        .HasForeignKey("API.Models.ProductModels.ProductComSynonym", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductComUse", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithOne("ProductComUse")
-                        .HasForeignKey("API.Models.ProductModels.ProductComUse", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductUpOrDown", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithMany("ProductUpOrDown")
-                        .HasForeignKey("UpOrDownId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupSecond", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.ProductsGroupFirst", "ProductsGroupFirst")
+                    b.HasOne("API.Models.ProductModels.ProductCategoryFirst", "ProductsGroupFirst")
                         .WithMany("ProductsGroupSeconds")
                         .HasForeignKey("ProductsGroupFirstId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -872,34 +284,22 @@ namespace API.Data.Migrations.WebDb
                     b.Navigation("ProductsGroupFirst");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThird", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryThird", b =>
                 {
-                    b.HasOne("API.Models.ProductModels.ProductsGroupSecond", "ProductsGroupSecond")
+                    b.HasOne("API.Models.ProductModels.ProductCategorySecond", null)
                         .WithMany("ProductsGroupThirds")
-                        .HasForeignKey("ProductsGroupSecondId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ProductsGroupSecond");
+                        .HasForeignKey("ProductCategorySecondId");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThirdProducts", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductsInCategory", b =>
                 {
                     b.HasOne("API.Models.ProductModels.Product", "Product")
-                        .WithMany("ProductsGroupThirdProducts")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Models.ProductModels.ProductsGroupThird", "ProductsGroupThird")
-                        .WithMany("ProductsGroupThirdProducts")
-                        .HasForeignKey("ProductsGroupThirdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Product");
-
-                    b.Navigation("ProductsGroupThird");
                 });
 
             modelBuilder.Entity("API.Models.WebModels.WebMessage", b =>
@@ -931,66 +331,14 @@ namespace API.Data.Migrations.WebDb
                     b.Navigation("WebUserPublisher");
                 });
 
-            modelBuilder.Entity("API.Models.BusinessModels.Inquiry", b =>
-                {
-                    b.Navigation("InquiriedProducts");
-                });
-
-            modelBuilder.Entity("API.Models.CommonModels.Area", b =>
-                {
-                    b.Navigation("CustomerAddress");
-
-                    b.Navigation("Customers");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.Customer", b =>
-                {
-                    b.Navigation("CustomerAddresses");
-
-                    b.Navigation("CustomerBanks");
-
-                    b.Navigation("CustomerContacters");
-
-                    b.Navigation("CustomerRelateds");
-
-                    b.Navigation("Inquiries");
-                });
-
-            modelBuilder.Entity("API.Models.CustomerModels.CustomerContacter", b =>
-                {
-                    b.Navigation("Inquiries");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.Product", b =>
-                {
-                    b.Navigation("ProductComConstant");
-
-                    b.Navigation("ProductComInfo");
-
-                    b.Navigation("ProductComInstruction");
-
-                    b.Navigation("ProductComSynonym");
-
-                    b.Navigation("ProductComUse");
-
-                    b.Navigation("ProductsGroupThirdProducts");
-
-                    b.Navigation("ProductUpOrDown");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupFirst", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryFirst", b =>
                 {
                     b.Navigation("ProductsGroupSeconds");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupSecond", b =>
+            modelBuilder.Entity("API.Models.ProductModels.ProductCategorySecond", b =>
                 {
                     b.Navigation("ProductsGroupThirds");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductsGroupThird", b =>
-                {
-                    b.Navigation("ProductsGroupThirdProducts");
                 });
 
             modelBuilder.Entity("API.Models.WebModels.WebMessageCategory", b =>

@@ -26,12 +26,12 @@ export class DesignRecordEditComponent implements OnInit {
     language_url: '../../../assets/tinymce-lang/zh_CN.js',
     language: 'zh_CN',
     // plugins: "autoresize",
-    plugins: `autoresize link lists image code table colorpicker fullpage help
+    plugins: `link lists image code table colorpicker fullpage help
     textcolor wordcount  media preview print  hr directionality imagetools autosave paste`,
-    toolbar: 'undo redo  removeformat paste  bold italic underline strikethrough  | fontsizeselect |  forecolor backcolor | bullist numlist h2 h3 h4| '
+    toolbar: 'undo redo removeformat paste  bold italic underline strikethrough  | fontsizeselect |  forecolor backcolor | bullist numlist h2 h3 h4| '
       + ' link unlink image  | alignleft aligncenter alignright outdent indent  |'
       + 'preview code help',
-    // height: 500
+    height: 700,
 
     image_caption: true,
     // paset 插件允许粘贴图片

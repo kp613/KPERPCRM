@@ -7,25 +7,20 @@ using System.Threading.Tasks;
 
 namespace API.Models.ProductModels
 {
-    public class ProductsGroupSecond
+    public class ProductCategoryFirst
     {
-        //二级类别如产品类别中的原料药、砌块等；管控产品中的如：毒品、DEC、危化品等
+         //原料药  生化化学品  天然产物 催化剂 合成砌块 对照品 功能化学品 材料化学品 杂类
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int Id { get; set; }
 
-        public int ProductsGroupFirstId { get; set; }
-
-        [Display(Name = "类别名称")]
         [Required]
         public string NameCh { get; set; }
 
-        [Display(Name = "Class Name")]
         [Required]
         public string NameEn { get; set; }
 
-        public ProductsGroupFirst ProductsGroupFirst { get; set; }
-        public ICollection<ProductsGroupThird> ProductsGroupThirds { get; set; }
+        public ICollection<ProductCategorySecond> ProductsGroupSeconds { get; set; }
 
     }
 }

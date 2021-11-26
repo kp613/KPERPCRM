@@ -20,6 +20,9 @@ export class ProductEditComponent implements OnInit {
   productImg: string;
   editProductForm: FormGroup;
 
+  fileToUpload: File = null;
+  imageToUpload: string = "/assets/images/empty.png";
+
   constructor(
     private productService: ProductService,
     private httpClient: HttpClient,
@@ -59,6 +62,21 @@ export class ProductEditComponent implements OnInit {
     }, (error) => {
       this.toastr.error(error.error);
     })
+  }
+
+  handleFileInput(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const files = target.files as FileList;
+    // console.log(files);
+    this.fileToUpload = files[0];
+
+
+    //Show image preview
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageToUpload = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
   }
 
 }

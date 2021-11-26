@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IMember } from './member';
 import { map, take } from 'rxjs/operators';
 import { UserParams } from './userParams';
 import { AccountService } from '../account.service';
 import { getPaginatedResult, getPaginationHeaders } from '../../_services/paginationHelper';
 import { Observable, of } from 'rxjs';
-import { PaginatedResult } from '../../_models/pagination';
 import { ILoggedUser } from '../loggedUser';
-import { IUserImageUpdate } from './userImageUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +22,7 @@ export class MembersService {
   loggerUser: ILoggedUser;
   memberCache = new Map();
   userParams: UserParams;
-  userImageUpdate: IUserImageUpdate;
+
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
@@ -112,8 +110,9 @@ export class MembersService {
     )
   }
 
-  uploadImage(username, date): Observable<any> {
-    return this.http.put(this.baseUrl + '/users/patch/' + username, date);
+  uploadImage(username, profilePicture): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    return this.http.patch(this.baseUrl + '/users/' + username, { 'profilePicture': profilePicture }, { 'headers': headers });
   }
 
   //  { 'profilePicture': profilePicture }

@@ -102,21 +102,19 @@
         </angular-file-uploader> -->
 
         <input type="file"
-               class="btn "
+               class="btn mt-3"
                (change)="onFileSelected($event)" />
         <br /><br />
 
+        <button class="btn btn-success ms-3"
+                (click)="uploadImg(member.username, profilePicture)"
+                [disabled]="profilePicture">Upload</button>
 
-        <div>即将上传的图片：</div>
-
-        <img src="data:image/jpeg;base64,{{profilePicture}}"
-             style="max-width: 30%;" />
-
-        <br /><br />
-        <button class="btn btn-success"
-                (click)="uploadImg(member.username, profilePicture)">Upload</button>
-
-        {{profilePicture}}
+        <div class="mt-3 ms-3">
+          <div>即将上传的图片：</div>
+          <img src="data:image/jpeg;base64,{{profilePicture}}"
+               style="max-width: 30%;" />
+        </div>
       </tab>
     </tabset>
   </div>

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace API.DTOs.ProductsDtos
 {
-    public class ProductsGroupThirdDto
+    public class ProductCategoryThirdDto
     {
         public int Id { get; set; }
 
-        public int ProductsGroupSecondId { get; set; }
+        public int ProductCategorySecondId { get; set; }
 
 
         public string NameCh { get; set; }
@@ -45,7 +45,7 @@ namespace API.DTOs.ProductsDtos
         public string NoKeyWordEn5 { get; set; }
 
 
-        public ICollection<ProductsGroupThirdProducts> ProductsGroupThirdProductsDto { get; set; }
+  
 
     }
 }

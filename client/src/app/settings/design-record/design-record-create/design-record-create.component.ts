@@ -46,6 +46,7 @@ export class DesignRecordCreateComponent implements OnInit {
     this.addGroupForm = this.formBuilder.group({
       folderName: ['', [Validators.required]],
       componentName: ['', [Validators.required]],
+      title: [''],
       progressAndProblem: [''],
       crudState: ['', [Validators.required]]
     });

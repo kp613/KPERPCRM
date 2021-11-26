@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IProduct } from './product';
 import { map } from 'rxjs/operators';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -66,5 +67,9 @@ export class ProductService {
     return this.httpClient.get(`${this.baseUrl + "/products"}?name=${name}`);
   }
 
-
+  postFile(id, fileToUpload: File) {
+    const formData: FormData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    return this.httpClient.patch(this.baseUrl + "/products/imageUpload" + id, fileToUpload)
+  }
 }

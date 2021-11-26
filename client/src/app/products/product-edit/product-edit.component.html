@@ -78,13 +78,20 @@
               </div>
 
               <div class="form-floating mt-2">
+                <img [src]="imageToUpload">
                 <input class="form-control"
                        type="file"
                        id="fileupdate"
-                       placeholder="上传产品结构"
-                       formControlName='Structure'>
+                       #Image
+                       accept="image/png"
+                       (change)="handleFileInput($event)"
+                       placeholder="上传产品结构">
                 <label for="fileupdate"
-                       class="form-label">上传产品结构</label>
+                       class="form-label">上传产品结构,点击预览结构即可完成上传</label>
+
+                <button type="submit"
+                        class="btn btn-success"
+                        [disabled]="imageToUpload">UpLoad</button>
               </div>
 
               <div class="form-floating mt-2">

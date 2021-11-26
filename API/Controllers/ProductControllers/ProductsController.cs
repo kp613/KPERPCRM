@@ -13,7 +13,7 @@ using AutoMapper;
 using API.Helpers;
 using API.Extensions;
 
-namespace API.Controllers
+namespace API.Controllers.ProductControllers
 {
     [ApiController]
     //[Route("api/[controller]")]

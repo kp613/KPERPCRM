@@ -47,7 +47,8 @@
                class="invalid-feedback ps-3">
             不能为空，请选择</div>
         </div>
-
+        <app-text-input                         [formControl]='$any(addGroupForm.controls["title"])'
+                        [label]='"Title"'></app-text-input>
       </div>
       <!-- <app-text-input [formControl]='$any(addGroupForm.controls["progressAndProblem"])'
                       [label]='"进程和存在的问题"'></app-text-input> -->

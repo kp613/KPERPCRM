@@ -1,9 +1,9 @@
 ﻿using API.Models.ProductModels;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API.Models
+namespace API.Models.ProductModels
 {
-    public class ProductListInType
+    public class ProductsInCategory
     {
         public int Id { get; set; }
         public int ProductTypeId { get; set; }
@@ -12,7 +12,5 @@ namespace API.Models
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
 
-        [ForeignKey("ProductTypeId")]
-        public ProductType ProductType { get; set; }
     }
 }

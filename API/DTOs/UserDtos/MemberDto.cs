@@ -36,7 +36,7 @@ namespace API.DTOs.UserDtos
 
         public DateTime BeOnLeaveEnd { get; set; }      //大于现在为 休假中
 
-        //public string ProfilePicture { get; set; }      //个人照片
+        public string ProfilePicture { get; set; }      //个人照片
 
         public string Introduction { get; set; }              //个人简历
 

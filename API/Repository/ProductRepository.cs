@@ -30,7 +30,7 @@ namespace API.Repository
         //public async Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams)
         {
             return await _context.Products
-                .Include(p => p.ProductsGroupThirdProducts)
+          
                 .OrderByDescending(p=>p.UpdateDay)
                 .ToListAsync();
 

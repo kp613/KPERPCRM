@@ -32,8 +32,12 @@
     <a class="nav-link text-mute"
        data-bs-toggle="dropdown"
        aria-expanded="false">
-      <img src="{{user.profilePicture || './assets/images/user.png'}}"
-           style="max-height: 39px; border-radius: 50%;"> <span class="ms-1"
+      <img *ngIf="user.profilePicture!=null || user.profilePicture.length>=100"
+           src="data:image/jpeg;base64,{{user.profilePicture}}"
+           style="height: 39px; width: 39px; border-radius: 50%;">
+      <img *ngIf="user.profilePicture==null  || user.profilePicture.length<100"
+           src="{{'./assets/images/user.png'}}"
+           style="height: 39px; width: 39px; border-radius: 50%;"> <span class="ms-1"
             style="color: grey;">{{user.name | titlecase}}</span>
       <!--uppercase lowercase  titlecase-->
     </a>

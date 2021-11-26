@@ -15,7 +15,7 @@ namespace API.Models.ProductModels
 
         public int ClassThirdId { get; set; }
         [ForeignKey("ClassThirdId")]
-        public ICollection<ProductsGroupThird> ClassThirds { get; set; }
+        public ICollection<ProductCategoryThird> ClassThirds { get; set; }
 
 
     }

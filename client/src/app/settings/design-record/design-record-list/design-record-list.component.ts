@@ -14,7 +14,7 @@ export class DesignRecordListComponent implements OnInit {
   id: number;
   // finished: boolean = false;
   dtOptions: DataTables.Settings = {};
-  
+
   finishedForm = new FormGroup({
     finished: new FormControl(''),
     id: new FormControl('')

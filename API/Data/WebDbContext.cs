@@ -1,4 +1,5 @@
 ﻿using API.Models.CustomerModels;
+using API.Models.ProductModels;
 using API.Models.WebModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +12,14 @@ namespace API.Data
             : base(options)
         {
         }
-        public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<ProductPublishing> ProductPublishing { get; set; }
+        //public DbSet<ProductPublishing> ProductPublishing { get; set; }
+
+        public DbSet<ProductCategoryFirst> ProductCategoryFirsts { get; set; }
+        public DbSet<ProductCategorySecond> ProductCategorySeconds { get; set; }
+        public DbSet<ProductCategoryThird> ProductCategoryThirds { get; set; }
+        public DbSet<ProductsInCategory> ProductsInCategory { get; set; }
 
         public DbSet<WebUser> WebUser { get; set; }
         public DbSet<WebMessageCategory> WebMessageCategory { get; set; }

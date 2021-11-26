@@ -57,10 +57,10 @@ namespace API.Data
         //public DbSet<ProductWithCompany> ProductWithCompany { get; set; }
         //public DbSet<ProductWithNoCasNo> ProductWithNoCasNo { get; set; }
 
-        public DbSet<ProductsGroupFirst> ProductsGroupFirst { get; set; }
-        public DbSet<ProductsGroupSecond> ProductsGroupSecond { get; set; }
-        public DbSet<ProductsGroupThird> ProductsGroupThird { get; set; }
-        public DbSet<ProductsGroupThirdProducts> ProductsGroupThirdProducts { get; set; }
+        //public DbSet<ProductCategoryFirst> ProductsGroupFirst { get; set; }
+        //public DbSet<ProductCategorySecond> ProductsGroupSecond { get; set; }
+        //public DbSet<ProductCategoryThird> ProductsGroupThird { get; set; }
+        //public DbSet<ProductsGroupThirdProducts> ProductsGroupThirdProducts { get; set; }
 
         public DbSet<ProductsControlClass> ProductControlClass { get; set; }
         public DbSet<ProductsNoPublicity> ProductNoPublicity { get; set; }

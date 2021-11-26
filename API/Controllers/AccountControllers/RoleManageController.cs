@@ -1,6 +1,6 @@
 ﻿using API.Controllers;
 using API.Data;
-using API.DTOs.AdminDtos;
+using API.DTOs.AccountDtos;
 using API.Models.IdentityModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;

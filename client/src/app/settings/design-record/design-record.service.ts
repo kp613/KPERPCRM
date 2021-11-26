@@ -31,7 +31,8 @@ export class DesignRecordService {
     'members',
     'account',
     'weblayout',
-    '.design book'
+    '.design book',
+    '.productPub'
   ];
 
   constructor(private httpClient: HttpClient) { }
