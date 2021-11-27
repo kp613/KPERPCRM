@@ -2,9 +2,9 @@ import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-import { IProduct } from '../product';
+import { IProduct } from '../../product';
 import { ProductItemComponent } from '../product-item/product-item.component';
-import { ProductService } from '../product.service';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-product-detail',

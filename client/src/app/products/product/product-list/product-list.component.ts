@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/products/product';
 import { IPagination } from 'src/app/_models/pagination';
-import { ProductService } from '../product.service';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-product-list',

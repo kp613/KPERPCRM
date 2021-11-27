@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IProduct } from 'src/app/products/product';
 import { environment } from 'src/environments/environment';
-import { ProductService } from '../product.service';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-product-card',

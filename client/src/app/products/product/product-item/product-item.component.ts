@@ -3,8 +3,8 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-import { IProduct } from '../product';
-import { ProductService } from '../product.service';
+import { IProduct } from '../../product';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-product-item',

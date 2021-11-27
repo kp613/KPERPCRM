@@ -9,8 +9,6 @@ import { DesignRecordEditComponent } from './design-record/design-record-edit/de
 import { OurcompanyListComponent } from './ourcompany/ourcompany-list/ourcompany-list.component';
 import { GeneralModule } from '../_shared/general.module';
 
-
-
 @NgModule({
   declarations: [
     ViColorComponent,
@@ -23,7 +21,10 @@ import { GeneralModule } from '../_shared/general.module';
   ],
   imports: [
     SharedModule,
-    GeneralModule
+    GeneralModule,
+  ],
+  exports: [
+    SettingSidebarComponent,   //Used in ProductModule for CategpryHomeComponent
   ]
 })
 export class SettingModule { }

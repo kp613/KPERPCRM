@@ -3,10 +3,10 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { IProduct } from '../product';
+import { IProduct } from '../../product';
 import { ProductListComponent } from '../product-list/product-list.component';
-import { ProductService } from '../product.service';
-import { ProductParams } from '../productParams';
+import { ProductService } from '../../product.service';
+import { ProductParams } from '../../productParams';
 
 @Component({
   selector: 'app-product-add',
