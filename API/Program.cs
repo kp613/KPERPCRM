@@ -1,5 +1,6 @@
 using API.Data;
 using API.Data.Initializer;
+using API.Models.AppIdentityModels;
 using API.Models.IdentityModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;

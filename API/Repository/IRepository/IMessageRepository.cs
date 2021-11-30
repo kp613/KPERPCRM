@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using API.DTOs;
 using API.Models;
 using API.Helpers;
+using API.Models.IdentityModels;
+using API.Models.AppIdentityModels;
 
 namespace API.Repository.IRepository
 {

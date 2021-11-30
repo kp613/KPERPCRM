@@ -1,1 +1,55 @@
-<p>category-first works!</p>
+<div class="card-body">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+    <h2 class="card-title">产品主类别</h2>
+    <div class="btn-toolbar pb-2 mb-md-0">
+      <button type="button"
+              class="btn btn-sm btn-outline-secondary"
+              (click)="addFirst()">
+        <i class="bi bi-plus"></i>
+        <span class="ms-1">增加产品主类别</span>
+      </button>
+    </div>
+  </div>
+
+  <form [formGroup]='addGroupForm'
+        (ngSubmit)="addGroupForm.valid && onSubmit()"
+        autocomplete="off"
+        *ngIf="isAddFirst">
+
+    <div class="row">
+      <div class="col-8">
+
+        <app-text-input [formControl]='$any(addGroupForm.controls["nameCh"])'
+                        [label]='"产品主类别"'>
+        </app-text-input>
+
+        <app-text-input [formControl]='$any(addGroupForm.controls["nameEn"])'
+                        [label]='"产品主类别(英文)"'>
+        </app-text-input>
+
+      </div>
+      <div class="col-4">
+        <div class="form-floating mb-2">
+          <button type="submit"
+                  class="btn btn-success"
+                  [disabled]="addGroupForm.invalid">Submit</button>
+        </div>
+        <div class="form-floating">
+          <button type="button"
+                  class="btn btn-default"
+                  (click)="resetFirst()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ul class="list-group list-group-flush ps-3 mb-1"
+      *ngFor="let item of categoryFirsts">
+    <li class="list-group-item fs-6 nav-link text-dark border-bottom"
+        type="button"
+        routerLink="/product-category/{{item.id}}"
+        routerLinkActive="bg-yellow"
+        (click)="setFirstValue(item)"
+        #setFirst>{{item.nameCh}} || {{item.nameEn}}</li>
+  </ul>
+</div>

@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.DTOs.ProductsDtos;
 using API.Helpers;
+using API.Models.ApplicationModels.Products;
 using API.Models.ProductModels;
 using API.Repository.IRepository;
 using AutoMapper;

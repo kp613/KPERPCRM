@@ -1,8 +1,7 @@
 ﻿using API.Data;
-using API.Models.Setting;
+using API.Models.AppDevModels.Settings;
 using API.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,8 +10,8 @@ namespace API.Repository
 {
     public class DesignRecordRepository : IDesignRecordRepository 
     {
-        private readonly DevDbContext _context;
-        public DesignRecordRepository(DevDbContext context)
+        private readonly AppDevDbContext _context;
+        public DesignRecordRepository(AppDevDbContext context)
         {
             _context = context;
         }

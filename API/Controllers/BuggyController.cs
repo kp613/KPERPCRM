@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Models.AppIdentityModels;
 using API.Models.IdentityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

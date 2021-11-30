@@ -1,5 +1,5 @@
-﻿using API.Models.CustomerModels;
-using API.Models.ProductModels;
+﻿using API.Models.ApplicationModels.Products;
+using API.Models.CustomerModels;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

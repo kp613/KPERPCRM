@@ -1,1 +1,59 @@
-<p>category-third works!</p>
+<div class="card-body">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+    <h2 class="card-title">产品类别</h2>
+    <div class="btn-toolbar pb-2 mb-md-0">
+      <button type="button"
+              class="btn btn-sm btn-outline-secondary">
+        <i class="bi bi-plus"></i>
+        <span class="ms-1">增加产品类别</span>
+      </button>
+    </div>
+  </div>
+  <ul> 类别列表：
+    <li>链接到产品页</li>
+    <li>点击增加搜索关键词</li>
+    <li>点击增加排除搜索关键词</li>
+    <li>（比如搜索“盐”，但排除“氯化钠”）</li>
+    <li>链接到关键词和排除词列表</li>
+  </ul>
+  <!-- <form [formGroup]='addGroupForm'
+        (ngSubmit)="addGroupForm.valid && onSubmit()"
+        autocomplete="off"
+        *ngIf="isAddFirst">
+
+
+    <div class="row">
+      <div class="col-8">
+
+         <app-text-input [formControl]='$any(addGroupForm.controls["nameCh"])'
+                        [label]='"产品类别"'>
+        </app-text-input>
+
+        <app-text-input [formControl]='$any(addGroupForm.controls["nameEn"])'
+                        [label]='"产品类别(英文)"'>
+        </app-text-input>
+
+      </div>
+      <div class="col-4">
+        <div class="form-floating mb-2">
+          <button type="submit"
+                  class="btn btn-success"
+                  [disabled]="addGroupForm.invalid">Submit</button>
+        </div>
+        <div class="form-floating">
+          <button type="button"
+                  class="btn btn-default"
+                  (click)="reset()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ul class="list-group list-group-flush ps-3 mb-1"
+      *ngFor="let item of categoryThirds">
+    <li class="list-group-item fs-6 nav-link text-dark border-bottom"
+        type="button"
+        routerLink="/product-category/{{item.id}}"
+        routerLinkActive="bg-yellow">{{item.nameCh}} || {{item.nameEn}}</li>
+  </ul> -->
+</div>

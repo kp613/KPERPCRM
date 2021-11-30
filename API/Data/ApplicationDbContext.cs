@@ -1,9 +1,5 @@
-﻿using API.Models.AdminModels;
-using API.Models.CommonModels;
-using API.Models.ProductModels;
-using API.Models.ProjectModels;
-using API.Models.Setting;
-using API.Models.Settings;
+﻿using API.Models.ApplicationModels.Products;
+using API.Models.ApplicationModels.Settings;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -16,22 +12,17 @@ namespace API.Data
             : base(options)
         {
         }
-
-        
-
-        public DbSet<Shareholder> Shareholder { get; set; }
-        public DbSet<ShareholderForCompany> ShareholderForCompany { get; set; }
-        public DbSet<ShareInvestment> ShareInvestment { get; set; }
+      
         public DbSet<OurCompany> OurCompany { get; set; }
-        public DbSet<OurDeliveryAddress> OurDeliveryAddress { get; set; }
-        public DbSet<Warehouse> Warehouse { get; set; }
+        //public DbSet<OurDeliveryAddress> OurDeliveryAddress { get; set; }
+        //public DbSet<Warehouse> Warehouse { get; set; }
 
 
         //public DbSet<CommonCategory> CommonCategory { get; set; }
         //public DbSet<CommonSubCategory> CommonSubCategory { get; set; }
         //public DbSet<CommonContent> CommonContent { get; set; }
 
-        public DbSet<Project> Projects { get; set; }
+        //public DbSet<Project> Projects { get; set; }
 
         //public DbSet<Message> Messages { get; set; }
         //public DbSet<AuditAndAuthorization> AuditAndAuthorization { get; set; }
@@ -62,8 +53,8 @@ namespace API.Data
         //public DbSet<ProductCategoryThird> ProductsGroupThird { get; set; }
         //public DbSet<ProductsGroupThirdProducts> ProductsGroupThirdProducts { get; set; }
 
-        public DbSet<ProductsControlClass> ProductControlClass { get; set; }
-        public DbSet<ProductsNoPublicity> ProductNoPublicity { get; set; }
+        //public DbSet<ProductsControlClass> ProductControlClass { get; set; }
+        //public DbSet<ProductsNoPublicity> ProductNoPublicity { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

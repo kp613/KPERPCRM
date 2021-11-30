@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations.WebDb
 {
-    [DbContext(typeof(WebDbContext))]
+    [DbContext(typeof(AppWebDbContext))]
     partial class WebDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -19,41 +19,12 @@ namespace API.Data.Migrations.WebDb
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("API.Models.ProductModels.Product", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategoryFirst", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CasNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductNameCN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StructureUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdateDay")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryFirst", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<string>("NameCh")
                         .IsRequired()
@@ -68,30 +39,31 @@ namespace API.Data.Migrations.WebDb
                     b.ToTable("ProductCategoryFirsts");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategorySecond", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategorySecond", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NameCh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameEn")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductsGroupFirstId")
+                    b.Property<int>("ProductCategoryFirstId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductsGroupFirstId");
+                    b.HasIndex("ProductCategoryFirstId");
 
                     b.ToTable("ProductCategorySeconds");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryThird", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategoryThird", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +141,7 @@ namespace API.Data.Migrations.WebDb
                     b.ToTable("ProductCategoryThirds");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsInCategory", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductsInCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -189,111 +161,58 @@ namespace API.Data.Migrations.WebDb
                     b.ToTable("ProductsInCategory");
                 });
 
-            modelBuilder.Entity("API.Models.WebModels.WebMessage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ActiveDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("ApplyingFor")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Auditor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AuditorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Finalizer")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MsgName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PublisherId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("Updatetime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("WebMessageCategoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuditorId");
-
-                    b.HasIndex("Finalizer");
-
-                    b.HasIndex("PublisherId");
-
-                    b.HasIndex("WebMessageCategoryId");
-
-                    b.ToTable("WebMessage");
-                });
-
-            modelBuilder.Entity("API.Models.WebModels.WebMessageCategory", b =>
+            modelBuilder.Entity("API.Models.ApplicationModels.Products.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("MsgCategoryName")
+                    b.Property<string>("CasNo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductNameCN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StructureUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDay")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("WebMessageCategory");
+                    b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("API.Models.WebModels.WebUser", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategorySecond", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WebUser");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategorySecond", b =>
-                {
-                    b.HasOne("API.Models.ProductModels.ProductCategoryFirst", "ProductsGroupFirst")
+                    b.HasOne("API.Models.AppWebModels.ProductWeb.Categories.ProductCategoryFirst", "ProductCategoryFirst")
                         .WithMany("ProductsGroupSeconds")
-                        .HasForeignKey("ProductsGroupFirstId")
+                        .HasForeignKey("ProductCategoryFirstId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductsGroupFirst");
+                    b.Navigation("ProductCategoryFirst");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryThird", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategoryThird", b =>
                 {
-                    b.HasOne("API.Models.ProductModels.ProductCategorySecond", null)
+                    b.HasOne("API.Models.AppWebModels.ProductWeb.Categories.ProductCategorySecond", null)
                         .WithMany("ProductsGroupThirds")
                         .HasForeignKey("ProductCategorySecondId");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductsInCategory", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductsInCategory", b =>
                 {
-                    b.HasOne("API.Models.ProductModels.Product", "Product")
+                    b.HasOne("API.Models.ApplicationModels.Products.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -302,48 +221,14 @@ namespace API.Data.Migrations.WebDb
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("API.Models.WebModels.WebMessage", b =>
-                {
-                    b.HasOne("API.Models.WebModels.WebUser", "WebUserAuditor")
-                        .WithMany()
-                        .HasForeignKey("AuditorId");
-
-                    b.HasOne("API.Models.WebModels.WebUser", "WebUserFinalizer")
-                        .WithMany()
-                        .HasForeignKey("Finalizer");
-
-                    b.HasOne("API.Models.WebModels.WebUser", "WebUserPublisher")
-                        .WithMany()
-                        .HasForeignKey("PublisherId");
-
-                    b.HasOne("API.Models.WebModels.WebMessageCategory", "WebMessageCategory")
-                        .WithMany("WebMessages")
-                        .HasForeignKey("WebMessageCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("WebMessageCategory");
-
-                    b.Navigation("WebUserAuditor");
-
-                    b.Navigation("WebUserFinalizer");
-
-                    b.Navigation("WebUserPublisher");
-                });
-
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategoryFirst", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategoryFirst", b =>
                 {
                     b.Navigation("ProductsGroupSeconds");
                 });
 
-            modelBuilder.Entity("API.Models.ProductModels.ProductCategorySecond", b =>
+            modelBuilder.Entity("API.Models.AppWebModels.ProductWeb.Categories.ProductCategorySecond", b =>
                 {
                     b.Navigation("ProductsGroupThirds");
-                });
-
-            modelBuilder.Entity("API.Models.WebModels.WebMessageCategory", b =>
-                {
-                    b.Navigation("WebMessages");
                 });
 #pragma warning restore 612, 618
         }

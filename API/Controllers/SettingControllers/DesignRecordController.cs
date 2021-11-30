@@ -1,9 +1,8 @@
 ﻿using API.Data;
-using API.Models.Setting;
+using API.Models.AppDevModels.Settings;
 using API.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,10 +15,10 @@ namespace API.Controllers.SettingControllers
     //[ApiVersion("3.0")]
     public class DesignRecordController : ControllerBase
     {
-        private readonly DevDbContext _context;
+        private readonly AppDevDbContext _context;
         private readonly IDesignRecordRepository _repo;
 
-        public DesignRecordController(DevDbContext context, IDesignRecordRepository repo)
+        public DesignRecordController(AppDevDbContext context, IDesignRecordRepository repo)
         {
             _context = context;
             _repo = repo;

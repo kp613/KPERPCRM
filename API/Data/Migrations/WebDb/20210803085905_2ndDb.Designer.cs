@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations.WebDb
 {
-    [DbContext(typeof(WebDbContext))]
+    [DbContext(typeof(AppWebDbContext))]
     [Migration("20210803085905_2ndDb")]
     partial class _2ndDb
     {

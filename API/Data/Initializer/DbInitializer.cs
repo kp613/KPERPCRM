@@ -1,4 +1,5 @@
-﻿using API.Models.ProductModels;
+﻿using API.Models.ApplicationModels.Products;
+using API.Models.ProductModels;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

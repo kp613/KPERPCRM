@@ -84,11 +84,11 @@ namespace API
                 options.UseSqlServer(
                 _config.GetConnectionString("DefaultConnection_env"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
-                services.AddDbContext<WebDbContext>(options =>
+                services.AddDbContext<AppWebDbContext>(options =>
                 options.UseSqlServer(
                     _config.GetConnectionString("WebDefaultConnection_env"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
-                services.AddDbContext<DevDbContext>(options =>
+                services.AddDbContext<AppDevDbContext>(options =>
                 options.UseSqlServer(
                     _config.GetConnectionString("DevDefaultConnection_env"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
@@ -106,7 +106,7 @@ namespace API
                 options.UseSqlServer(
                 _config.GetConnectionString("DefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
-                services.AddDbContext<WebDbContext>(options =>
+                services.AddDbContext<AppWebDbContext>(options =>
                 options.UseSqlServer(
                     _config.GetConnectionString("WebDefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));
 

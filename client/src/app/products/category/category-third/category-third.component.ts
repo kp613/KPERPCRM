@@ -1,4 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Validators } from 'ngx-editor';
+import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from '../category.service';
+import { ICategoryThird } from './categoryThird';
 
 @Component({
   selector: 'app-category-third',
@@ -7,9 +14,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryThirdComponent implements OnInit {
 
-  constructor() { }
+  categoryThirds: ICategoryThird[];
+  categoryThird: ICategoryThird;
+
+  addGroupForm: FormGroup;
+
+  constructor(
+    private httpClient: HttpClient,
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router,
+    private categoryService: CategoryService
+  ) { }
+
+  createForm() {
+    this.addGroupForm = this.formBuilder.group({
+      productCategorySecondId: ['', [Validators.required]],
+      nameCh: ['', [Validators.required]],
+      nameEn: [''],
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  reset() {
+    this.addGroupForm.reset();
   }
 
 }

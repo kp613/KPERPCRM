@@ -17,24 +17,15 @@
       <div class="row">
         <div class="col-6">
           <div class="card mb-4 ">
-            <div>
-              <div class="card-body">
-                <h2 class="card-title">产品主类别</h2>
-                <p class="card-text text-muted ">模块下的所有组件</p>
-                <p class="card-text text-muted">模块下的所有组件</p>
-              </div>
-            </div>
+            <app-category-first></app-category-first>
+          </div>
+          <div class="card mb-4 ">
+            <app-category-second [getCategoryFirst]="categoryFirst"></app-category-second>
           </div>
         </div>
         <div class="col-6 ">
           <div class="card mb-4 ">
-            <div>
-              <div class="card-body">
-                <h2 class="card-title">库存 报价指导</h2>
-                <p class="card-text text-muted ">模块下的所有组件</p>
-                <p class="card-text text-muted">模块下的所有组件</p>
-              </div>
-            </div>
+            <app-category-third></app-category-third>
           </div>
         </div>
 

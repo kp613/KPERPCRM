@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Repository.IRepository;
+using API.Models.IdentityModels;
+using API.Models.AppIdentityModels;
 
 namespace API.Repository
 {

@@ -12,6 +12,7 @@ import { CategoryThirdComponent } from './category/category-third/category-third
 import { CategpryHomeComponent } from './category/categpry-home/categpry-home.component';
 import { SettingSidebarComponent } from '../settings/setting-sidebar/setting-sidebar.component';
 import { SettingModule } from '../settings/setting.module';
+import { GeneralModule } from '../_shared/general.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SettingModule } from '../settings/setting.module';
   imports: [
     SharedModule,
 
-    SettingModule
+    SettingModule,
+    GeneralModule
   ],
   exports: [
   ]

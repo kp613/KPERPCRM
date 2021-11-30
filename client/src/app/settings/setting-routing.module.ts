@@ -10,7 +10,7 @@ import { CategpryHomeComponent } from '../products/category/categpry-home/categp
 
 const routes: Routes = [
   { path: "vicolor", component: ViColorComponent },
-  { path: "settinghome", component: SettingHomeComponent },
+  { path: "settinghome", component: CategpryHomeComponent },
   { path: "webdesign", component: SettingHomeComponent },
   // // { path: "products/edit/:id", component: ProductEditComponent, canDeactivate: [PreventUnsavedChangesGuard] },
   { path: "ourcompany", component: OurcompanyListComponent },

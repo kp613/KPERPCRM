@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using API.Repository.IRepository;
+using API.Models.AppIdentityModels;
 
 namespace API.Repository
 {

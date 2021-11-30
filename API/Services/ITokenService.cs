@@ -1,3 +1,4 @@
+using API.Models.AppIdentityModels;
 using API.Models.IdentityModels;
 using System.Threading.Tasks;
 

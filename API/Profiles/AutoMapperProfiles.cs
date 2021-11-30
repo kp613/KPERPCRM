@@ -6,6 +6,7 @@ using API.Models.IdentityModels;
 using API.Extensions;
 using AutoMapper;
 using API.DTOs.AccountDtos;
+using API.Models.AppIdentityModels;
 
 namespace API.Profiles
 {

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations.WebDb
 {
-    [DbContext(typeof(WebDbContext))]
+    [DbContext(typeof(AppWebDbContext))]
     [Migration("20211002004010_addCustomers")]
     partial class addCustomers
     {

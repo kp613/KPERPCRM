@@ -1,1 +1,52 @@
-<p>category-second works!</p>
+<div class="card-body">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+    <h2 class="card-title">产品次类别：{{getCategoryFirst.nameCh}} | {{getCategoryFirst.nameEn}}</h2>
+    <div class="btn-toolbar pb-2 mb-md-0">
+      <button type="button"
+              class="btn btn-sm btn-outline-secondary"
+              (click)="addSecond()">
+        <i class="bi bi-plus"></i>
+        <span class="ms-1">增加产品次类别</span>
+      </button>
+    </div>
+  </div>
+
+  <form #first="ngForm"
+        [formGroup]='addGroupForm'
+        (ngSubmit)="addGroupForm.valid && onSubmit()"
+        autocomplete="off"
+        *ngIf="isAddSecond">
+
+    <div class="row">
+      <div class="col-8">
+
+        <app-text-input [formControl]='$any(addGroupForm.controls["nameCh"])'
+                        [label]='"产品主类别"'>
+        </app-text-input>
+
+        <app-text-input [formControl]='$any(addGroupForm.controls["nameEn"])'
+                        [label]='"产品主类别(英文)"'>
+        </app-text-input>
+
+      </div>
+      <div class="col-4">
+        <div class="form-floating mb-2">
+          <button type="submit"
+                  class="btn btn-success"
+                  [disabled]="addGroupForm.invalid">Submit</button>
+        </div>
+        <div class="form-floating">
+          <button type="button"
+                  class="btn btn-default"
+                  (click)="resetSecond()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ul class="list-group list-group-flush"
+      *ngFor="let categorySecond of categorySeconds">
+    <li class="list-group-item">{{categorySecond.nameCh}} </li>
+  </ul>
+
+</div>

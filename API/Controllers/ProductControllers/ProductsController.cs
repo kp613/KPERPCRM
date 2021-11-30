@@ -12,6 +12,7 @@ using API.Repository.IRepository;
 using AutoMapper;
 using API.Helpers;
 using API.Extensions;
+using API.Models.ApplicationModels.Products;
 
 namespace API.Controllers.ProductControllers
 {

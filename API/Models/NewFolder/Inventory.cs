@@ -1,4 +1,5 @@
-﻿using API.Models.CommonModels;
+﻿using API.Models.ApplicationModels.Products;
+using API.Models.CommonModels;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

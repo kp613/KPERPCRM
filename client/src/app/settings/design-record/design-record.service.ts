@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { finished } from 'stream';
 import { IDesignRecord } from './design-recore';
 
 @Injectable({
@@ -32,7 +30,7 @@ export class DesignRecordService {
     'account',
     'weblayout',
     '.design book',
-    '.productPub'
+    '.productWeb'
   ];
 
   constructor(private httpClient: HttpClient) { }

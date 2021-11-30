@@ -1,7 +1,5 @@
-﻿using API.Models.Setting;
-using System;
+﻿using API.Models.AppDevModels.Settings;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Repository.IRepository

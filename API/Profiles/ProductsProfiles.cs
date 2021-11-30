@@ -1,5 +1,7 @@
 ﻿using API.DTOs;
 using API.DTOs.ProductsDtos;
+using API.Models.ApplicationModels.Products;
+using API.Models.AppWebModels.ProductWeb.Categories;
 using API.Models.ProductModels;
 using AutoMapper;
 using System;

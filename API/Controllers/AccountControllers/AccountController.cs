@@ -1,6 +1,7 @@
 ﻿using API.Controllers;
 using API.Data;
 using API.DTOs.AccountDtos;
+using API.Models.AppIdentityModels;
 using API.Models.IdentityModels;
 using API.Services;
 using AutoMapper;

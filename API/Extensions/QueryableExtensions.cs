@@ -1,4 +1,6 @@
 ﻿using API.Models;
+using API.Models.AppIdentityModels;
+using API.Models.IdentityModels;
 using System;
 using System.Linq;
 
