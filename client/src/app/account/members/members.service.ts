@@ -5,7 +5,7 @@ import { IMember } from './member';
 import { map, take } from 'rxjs/operators';
 import { UserParams } from './userParams';
 import { AccountService } from '../account.service';
-import { getPaginatedResult, getPaginationHeaders } from '../../_services/paginationHelper';
+import { getPaginatedResult, getPaginationHeaders } from '../../_core/services/paginationHelper';
 import { Observable, of } from 'rxjs';
 import { ILoggedUser } from '../loggedUser';
 

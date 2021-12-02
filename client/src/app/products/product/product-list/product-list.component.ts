@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/products/product';
-import { IPagination } from 'src/app/_models/pagination';
+import { IPagination } from 'src/app/_core/models/pagination';
 import { ProductService } from '../../product.service';
 
 @Component({

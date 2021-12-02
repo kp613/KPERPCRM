@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { YEAR } from 'ngx-bootstrap/chronos/units/constants';
-import { DateInputComponent } from 'src/app/_shared/components/forms/date-input/date-input.component';
+import { DateInputComponent } from 'src/app/_core/shared/components/forms/date-input/date-input.component';
 import { IMember } from 'src/app/account/members/member';
 
 @Component({

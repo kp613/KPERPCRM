@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared.module';
+import { SharedModule } from '../../shared.module';
 import { TextInputComponent } from './components/forms/text-input/text-input.component';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
 import { ConfirmDialogComponent } from './components/forms/confirm-dialog/confirm-dialog.component';
 import { RolesModalComponent } from './components/forms/roles-modal/roles-modal.component';
-import { HasRoleDirective } from '../_directives/has-role.directive';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { NgxEditorComponent } from './RichText/ngx-editor/ngx-editor.component';
@@ -16,7 +15,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { TinymceAngularComponent } from './RichText/tinymce-angular/tinymce-angular.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { PipeModule } from '../_pipe/pipe.module';
+import { PipeModule } from '../pipe/pipe.module';
+import { HasRoleDirective } from '../directives/has-role.directive';
+
 
 @NgModule({
   declarations: [

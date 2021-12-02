@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ResourceLoader } from '@angular/compiler';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { event } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { DesignRecordService } from '../design-record.service';
 import { IDesignRecord } from '../design-recore';
@@ -58,15 +60,20 @@ export class DesignRecordListComponent implements OnInit {
   // }
 
   isChecked(id) {
-    // this.designRecordService.getRecordById(id).subscribe(res => {
-    //   this.designRecord = res;
-    //   this.finished = !res.finished;
-    // });
-
     this.designRecordService.setFinished(id).subscribe((res) => {
-      // res.finished = this.finished;
       this.router.navigateByUrl('/webdesign');
       this.toastr.success('修改finished成功');
+    }, (error) => {
+      this.toastr.error(error.error);
+    })
+  }
+
+  isAttention(id) {
+    this.designRecordService.setPayAttention(id).subscribe((res) => {
+      this.toastr.success('修改Pay Attention成功');
+      window.location.reload();
+      // this.router.navigateByUrl('/webdesign');
+
     }, (error) => {
       this.toastr.error(error.error);
     })

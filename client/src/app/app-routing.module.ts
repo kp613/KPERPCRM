@@ -7,14 +7,14 @@ import { MessageComponent } from './admin/message/message/message.component';
 import { OrderListComponent } from './business/order-list/order-list.component';
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
-import { AdminGuard } from './_guards/admin.guard';
-import { AuthGuard } from './_guards/auth.guard';
 import { MemberListComponent } from './account/members/member-list/member-list.component';
-import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
+import { MemberDetailedResolver } from './_core/resolvers/member-detailed.resolver';
 import { ProductRoutingModule } from './products/product-routing.module';
 import { SettingRoutingModule } from './settings/setting-routing.module';
 import { AccountRoutingModule } from './account/account-routing.module';
 import { RoleListComponent } from './account/role/role-list/role-list.component';
+import { AuthGuard } from './_core/guards/auth.guard';
+import { AdminGuard } from './_core/guards/admin.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,7 +43,7 @@ const routes: Routes = [
 
   { path: '**', component: HomeComponent, pathMatch: 'full' },
   // { path: "", redirectTo: "", pathMatch: "full" },
-  
+
 ];
 
 @NgModule({

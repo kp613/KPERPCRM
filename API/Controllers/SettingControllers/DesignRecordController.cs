@@ -87,13 +87,28 @@ namespace API.Controllers.SettingControllers
             return NoContent();
         }
 
-        [HttpPatch("patch/{id}")]
-        public async Task<IActionResult> UpdateDesignRecordWithPatch(int id)
+        [HttpPatch("finish/{id}")]
+        public async Task<IActionResult> UpdateDesignRecordFinishWithPatch(int id)
         {
             var designRecord =await _repo.GetDesignRecordByIdAsync(id);
 
             designRecord.UpdateDay = DateTime.Now;
             designRecord.Finished = !designRecord.Finished;
+
+            _repo.Update(designRecord);
+
+            await _repo.SaveAllAsync();
+
+            return NoContent();
+        }
+
+        [HttpPatch("attention/{id}")]
+        public async Task<IActionResult> UpdateDesignRecordAttentionWithPatch(int id)
+        {
+            var designRecord = await _repo.GetDesignRecordByIdAsync(id);
+
+            designRecord.UpdateDay = DateTime.Now;
+            designRecord.PayAttention = !designRecord.PayAttention;
 
             _repo.Update(designRecord);
 

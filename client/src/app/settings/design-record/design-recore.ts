@@ -7,7 +7,8 @@ export interface IDesignRecord {
   progressAndProblem: string;
   crudState: string;
   updateDay: string;
-  finished: boolean
+  finished: boolean;
+  payAttention: boolean
 }
 
 

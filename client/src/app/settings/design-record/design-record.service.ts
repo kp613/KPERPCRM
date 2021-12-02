@@ -44,7 +44,11 @@ export class DesignRecordService {
   }
 
   setFinished(id): Observable<any> {
-    return this.httpClient.patch(this.baseUrl + "/DesignRecord/patch/" + id, {});
+    return this.httpClient.patch(this.baseUrl + "/DesignRecord/finish/" + id, {});
+  }
+
+  setPayAttention(id): Observable<any> {
+    return this.httpClient.patch(this.baseUrl + "/DesignRecord/attention/" + id, {});
   }
 
   create(data: any) {

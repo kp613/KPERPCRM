@@ -1,11 +1,11 @@
-import { HomeComponent } from './../admin/home/home.component';
+import { HomeComponent } from '../../admin/home/home.component';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AccountService } from '../account/account.service';
+import { AccountService } from '../../account/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
-import { RegisterComponent } from '../account/register/register/register.component';
+import { RegisterComponent } from '../../account/register/register/register.component';
 
 @Injectable({
   providedIn: 'root'

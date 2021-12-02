@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PreventUnsavedChangesGuard } from '../_guards/prevent-unsaved-changes.guard';
+import { PreventUnsavedChangesGuard } from '../_core/guards/prevent-unsaved-changes.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterEditComponent } from './register/register-edit/register-edit.component';
 import { RegisterComponent } from './register/register/register.component';

@@ -14,7 +14,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import { MaterialModule } from './_shared/material.module';
+import { MaterialModule } from './_core/shared/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';

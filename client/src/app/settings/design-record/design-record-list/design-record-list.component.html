@@ -23,28 +23,44 @@
             data-bs-toggle="modal"
             attr.data-bs-target="#designModal{{record.id}}">{{record.componentName}}</td>
         <td class="link"
+            title="详细内容"
             data-bs-toggle="modal"
             attr.data-bs-target="#designModal{{record.id}}">
           {{record.title | slice:0:20}}
           <!-- <div [innerHTML]="record.progressAndProblem | slice:0:20"></div> -->
         </td>
         <td>{{record.crudState}}</td>
-        <td>{{record.updateDay | timeago }}</td>
+        <td data-bs-content="完成">{{record.updateDay | timeago }}</td>
 
         <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">
 
           <div class="form-check form-switch">
             <input (change)="isChecked(record.id)"
-                   class="form-check-input"
+                   class="form-check-input link me-3"
                    type="checkbox"
+                   title="完成"
                    [checked]="record.finished">
 
             <label class="form-check-label">
+              <i (click)="isAttention(record.id)"
+                 class="fas fa-exclamation-triangle text-danger"
+                 type="button"
+                 title="需要修改"
+                 *ngIf="record.payAttention"></i>
+
+              <i (click)="isAttention(record.id)"
+                 class="bi bi-check-lg"
+                 type="button"
+                 title="不需要修改"
+                 *ngIf="!record.payAttention"></i>
+
               <i class="bi bi-pen ms-3"
                  type="button"
+                 title="修改"
                  [routerLink]="['../designrecord/',record.id,{'isEdit':true}]"></i>
               <i class="bi bi-book  ms-3"
                  type="button"
+                 title="详细内容"
                  [routerLink]="['../designrecord/',record.id]"></i>
             </label>
           </div>
