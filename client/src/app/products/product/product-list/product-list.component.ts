@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { IProduct } from 'src/app/products/product';
-import { IPagination } from 'src/app/_core/models/pagination';
+import { IPagination } from '../../../_core/pagination/pagination';
+import { IProduct } from '../../../products/product';
 import { ProductService } from '../../product.service';
+import { ProductParams } from '../../productParams';
 
 @Component({
   selector: 'app-product-list',
@@ -14,44 +12,54 @@ import { ProductService } from '../../product.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  products$: Observable<IProduct[]>;
+  // products$: Observable<IProduct[]>;
   products: IProduct[] = [];
   product: IProduct;
-
-  currentPage: 1;
-  count = 0;
-  perPageItems = [12, 24, 36, 48];
-  itemsPerPage: number = 12;  //Initial items perPage
-
-  searchItem = '';
+  pagination: IPagination;
+  productParams: ProductParams;
+  // pageSize = 60;
+  // pageNumber = 1;
 
 
-  constructor(private productService: ProductService, private httpClient: HttpClient, private title: Title) { }
+  // currentPage: 1;
+  // count = 0;
+  // perPageItems = [12, 24, 36, 48];
+  // itemsPerPage: number = 12;  //Initial items perPage
+
+  // searchItem = '';
+
+
+  constructor(
+    private productService: ProductService,
+    private httpClient: HttpClient,
+    private title: Title) {
+    this.productParams = this.productService.getProductParams();
+  }
 
   ngOnInit(): void {
     this.title.setTitle("产品列表 - 科朗管理平台");
     this.loadProducts();
   }
 
-  getRequestParams(searchItem: string, currentPage: number, itemsPerPage: number): any {
-    let params: any = {};
+  // getRequestParams(searchItem: string, currentPage: number, itemsPerPage: number): any {
+  //   let params: any = {};
 
-    if (searchItem) {
-      params[`searchItem`] = searchItem;
-    }
+  //   if (searchItem) {
+  //     params[`searchItem`] = searchItem;
+  //   }
 
-    if (currentPage) {
-      params[`currentPage`] = currentPage - 1;
-      params[`itemsPerPage`] = itemsPerPage;
-      params[`searchItem`] = searchItem;
-    }
+  //   if (currentPage) {
+  //     params[`currentPage`] = currentPage - 1;
+  //     params[`itemsPerPage`] = itemsPerPage;
+  //     params[`searchItem`] = searchItem;
+  //   }
 
-    if (itemsPerPage) {
-      params[`itemsPerPage`] = itemsPerPage;
-    }
+  //   if (itemsPerPage) {
+  //     params[`itemsPerPage`] = itemsPerPage;
+  //   }
 
-    return params;
-  }
+  //   return params;
+  // }
 
   // loadProducts(): void {
   //   const params = this.getRequestParams(this.searchItem, this.itemsPerPage, this.currentPage);
@@ -67,16 +75,27 @@ export class ProductListComponent implements OnInit {
   // }
 
   loadProducts() {
-    this.products$ = this.productService.getProducts();
+    this.productService.setProductParams(this.productParams);
+    this.productService.getProducts(this.productParams).subscribe(response => {
+      this.products = response.result;
+      this.pagination = response.pagination;
+    })
+    // this.products$ = this.productService.getProducts();
   }
 
-  pageChanged(event) {
-    this.currentPage = event;
-  }
+  // pageChanged(event) {
+  //   this.currentPage = event;
+  // }
 
-  onPageItemsChange(event): void {
-    this.itemsPerPage = event.target.value;
-    this.currentPage = 1;
+  // onPageItemsChange(event): void {
+  //   this.itemsPerPage = event.target.value;
+  //   this.currentPage = 1;
+  //   this.loadProducts();
+  // }
+
+  pageChanged(event: any) {
+    this.productParams.pageNumber = event.page;
+    this.productService.setProductParams(this.productParams);
     this.loadProducts();
   }
 

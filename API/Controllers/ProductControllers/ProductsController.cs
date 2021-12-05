@@ -35,19 +35,29 @@ namespace API.Controllers.ProductControllers
             _context = context;
         }
 
+        //[HttpGet("lists")]
+        //public async Task<ActionResult> GetProducts()
+        //{
+        //    var products = await _repo.GetProductsAsync();
+        //    if (products == null || products.Count() <= 0)
+        //    {
+        //        return NotFound("没有产品信息");
+        //    }
+
+        //    var productsDto = _mapper.Map<ICollection<ProductDto>>(products);
+
+        //    return Ok(productsDto);
+        //}
         [HttpGet("lists")]
-        public async Task<ActionResult> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts([FromQuery]ProductParams productParams)
         {
-            var products = await _repo.GetProductsAsync();
-            if (products == null || products.Count() <= 0)
-            {
-                return NotFound("没有产品信息");
-            }
+            var products = await _repo.GetProductsAsync(productParams);
+            Response.AddPaginationHeader(products.CurrentPage, products.PageSize, products.TotalCount, products.TotalPages);
 
-            var productsDto = _mapper.Map<ICollection<ProductDto>>(products);
-
-            return Ok(productsDto);
+            return Ok(products);
         }
+
+
 
         //products/12345-12-1
         [HttpGet("{casno}")]

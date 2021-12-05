@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
 import { ILoggedUser } from 'src/app/account/loggedUser';
 import { IMember } from 'src/app/account/members/member';
-import { IPagination } from 'src/app/_core/models/pagination';
+
 import { UserParams } from 'src/app/account/members/userParams';
 import { MembersService } from 'src/app/account/members/members.service';
+import { IPagination } from 'src/app/_core/pagination/pagination';
 
 @Component({
   selector: 'app-member-list',

@@ -1,8 +1,6 @@
-import { ResourceLoader } from '@angular/compiler';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { event } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { DesignRecordService } from '../design-record.service';
 import { IDesignRecord } from '../design-recore';
@@ -71,9 +69,7 @@ export class DesignRecordListComponent implements OnInit {
   isAttention(id) {
     this.designRecordService.setPayAttention(id).subscribe((res) => {
       this.toastr.success('修改Pay Attention成功');
-      window.location.reload();
-      // this.router.navigateByUrl('/webdesign');
-
+      window.location.reload();  //数据修改后重新更新页面
     }, (error) => {
       this.toastr.error(error.error);
     })

@@ -13,8 +13,8 @@ namespace API.Repository.IRepository
 {
     public interface IProductRepository
     {
-        //Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams);
-        Task<ICollection<Product>> GetProductsAsync();
+        Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams);
+        //Task<ICollection<Product>> GetProductsAsync();
 
         Task<Product> GetProductByIdAsync(int id);
         Task<Product> GetProductByCasNoAsync(string casno);

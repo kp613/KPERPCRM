@@ -7,7 +7,7 @@ import { DesignRecordCreateComponent } from './design-record/design-record-creat
 import { DesignRecordListComponent } from './design-record/design-record-list/design-record-list.component';
 import { DesignRecordEditComponent } from './design-record/design-record-edit/design-record-edit.component';
 import { OurcompanyListComponent } from './ourcompany/ourcompany-list/ourcompany-list.component';
-import { GeneralModule } from '../_core/shared/general.module';
+import { GeneralModule } from '../_core/general.module';
 
 @NgModule({
   declarations: [

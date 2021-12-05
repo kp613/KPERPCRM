@@ -10,9 +10,8 @@ import { CategoryFirstComponent } from './category/category-first/category-first
 import { CategorySecondComponent } from './category/category-second/category-second.component';
 import { CategoryThirdComponent } from './category/category-third/category-third.component';
 import { CategpryHomeComponent } from './category/categpry-home/categpry-home.component';
-import { SettingSidebarComponent } from '../settings/setting-sidebar/setting-sidebar.component';
 import { SettingModule } from '../settings/setting.module';
-import { GeneralModule } from '../_core/shared/general.module';
+import { GeneralModule } from '../_core/general.module';
 
 
 @NgModule({

@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared.module';
-import { TextInputComponent } from './components/forms/text-input/text-input.component';
-import { DateInputComponent } from './components/forms/date-input/date-input.component';
-import { ConfirmDialogComponent } from './components/forms/confirm-dialog/confirm-dialog.component';
-import { RolesModalComponent } from './components/forms/roles-modal/roles-modal.component';
-import { StepperComponent } from './components/stepper/stepper.component';
+import { SharedModule } from '../shared.module';
+import { TextInputComponent } from './shared/components/forms/text-input/text-input.component';
+import { DateInputComponent } from './shared/components/forms/date-input/date-input.component';
+import { ConfirmDialogComponent } from './shared/components/forms/confirm-dialog/confirm-dialog.component';
+import { RolesModalComponent } from './shared/components/forms/roles-modal/roles-modal.component';
+import { StepperComponent } from './shared/components/stepper/stepper.component';
 import { NgxEditorModule } from 'ngx-editor';
-import { NgxEditorComponent } from './RichText/ngx-editor/ngx-editor.component';
-import { AngularEditorComponent } from './RichText/angular-editor/angular-editor.component';
+import { NgxEditorComponent } from './shared/RichText/ngx-editor/ngx-editor.component';
+import { AngularEditorComponent } from './shared/RichText/angular-editor/angular-editor.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
-import { CkeditorComponent } from './RichText/ckeditor/ckeditor.component';
+import { CkeditorComponent } from './shared/RichText/ckeditor/ckeditor.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
-import { TinymceAngularComponent } from './RichText/tinymce-angular/tinymce-angular.component';
+import { TinymceAngularComponent } from './shared/RichText/tinymce-angular/tinymce-angular.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { PipeModule } from '../pipe/pipe.module';
-import { HasRoleDirective } from '../directives/has-role.directive';
+import { PipeModule } from './pipe/pipe.module';
+import { HasRoleDirective } from './directives/has-role.directive';
 
 
 @NgModule({

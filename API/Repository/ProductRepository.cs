@@ -26,29 +26,29 @@ namespace API.Repository
             _mapper = mapper;
         }
 
-        public async Task<ICollection<Product>> GetProductsAsync()
+        //public async Task<ICollection<Product>> GetProductsAsync()
 
-        //public async Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams)
+        public async Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams)
         {
-            return await _context.Products
+            //return await _context.Products
           
-                .OrderByDescending(p=>p.UpdateDay)
-                .ToListAsync();
+            //    .OrderByDescending(p=>p.UpdateDay)
+            //    .ToListAsync();
 
-            //var query = _context.Products.AsQueryable();
+            var query = _context.Products.AsQueryable();
 
             //query = query.Where(u => u.CasNo == productrParams.CasNo);
 
-            //query = productrParams.OrderBy switch
-            //{
-            //    "updateDay" => query.OrderByDescending(u => u.UpdateDay),
-            //    //"lastActive" => query.OrderBy(u => u.LastActive),
-            //    _ => query.OrderByDescending(u => u.UpdateDay)
-            //};
+            query = productrParams.OrderBy switch
+            {
+                "updateDay" => query.OrderByDescending(u => u.UpdateDay),
+                //"lastActive" => query.OrderBy(u => u.LastActive),
+                _ => query.OrderByDescending(u => u.UpdateDay)
+            };
 
-            //return await PagedList<ProductDto>.CreateAsync(query.ProjectTo<ProductDto>(_mapper
-            //    .ConfigurationProvider).AsNoTracking(),
-            //        productrParams.PageNumber, productrParams.PageSize);
+            return await PagedList<ProductDto>.CreateAsync(query.ProjectTo<ProductDto>(_mapper
+                .ConfigurationProvider).AsNoTracking(),
+                    productrParams.PageNumber, productrParams.PageSize);
         }
 
         public void AddProduct(Product product)

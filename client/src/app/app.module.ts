@@ -13,7 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataTablesModule } from 'angular-datatables';
 import { AdminModule } from './admin/admin.module';
 import { JwtInterceptor } from './_core/interceptors/jwt.interceptor';
-import { GeneralModule } from './_core/shared/general.module';
+import { GeneralModule } from './_core/general.module';
 import { SharedModule } from './shared.module';
 import { SettingModule } from './settings/setting.module';
 import { AccountModule } from './account/account.module';

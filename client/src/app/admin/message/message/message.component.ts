@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPagination } from 'src/app/_core/models/pagination';
+import { IPagination } from 'src/app/_core/pagination/pagination';
 import { ConfirmService } from 'src/app/_core/services/confirm.service';
 import { MessageService } from 'src/app/admin/message/message.service';
 import { IMessage } from '../message';
