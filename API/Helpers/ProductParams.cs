@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Helpers
 {
-    public class ProductParams : PaginationParams
+    public class ProductParams : PageParams
     {
         public string CasNo { get; set; }
         public string Code { get; set; }

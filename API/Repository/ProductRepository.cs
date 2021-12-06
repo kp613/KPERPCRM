@@ -2,15 +2,11 @@
 using API.DTOs.ProductsDtos;
 using API.Helpers;
 using API.Models.ApplicationModels.Products;
-using API.Models.ProductModels;
 using API.Repository.IRepository;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace API.Repository
@@ -31,7 +27,7 @@ namespace API.Repository
         public async Task<PagedList<ProductDto>> GetProductsAsync(ProductParams productrParams)
         {
             //return await _context.Products
-          
+
             //    .OrderByDescending(p=>p.UpdateDay)
             //    .ToListAsync();
 
@@ -50,6 +46,7 @@ namespace API.Repository
                 .ConfigurationProvider).AsNoTracking(),
                     productrParams.PageNumber, productrParams.PageSize);
         }
+
 
         public void AddProduct(Product product)
         {

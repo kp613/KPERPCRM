@@ -1,11 +1,6 @@
 ﻿using API.DTOs.ProductsDtos;
 using API.Helpers;
 using API.Models.ApplicationModels.Products;
-using API.Models.ProductModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
