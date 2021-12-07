@@ -1,7 +1,5 @@
 ﻿using API.Data;
 using API.DTOs;
-using API.Models;
-using API.Helpers;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Repository.IRepository;
-using API.Models.IdentityModels;
 using API.Models.AppIdentityModels;
+using API.Helpers.Pagination;
+using API.Helpers.Params;
 
 namespace API.Repository
 {

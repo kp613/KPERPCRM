@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using API.Helpers.Pagination;
 
-namespace API.Helpers
+namespace API.Helpers.Params
 {
     public class ProductParams : PageParams
     {
@@ -11,6 +8,8 @@ namespace API.Helpers
         public string Code { get; set; }
         public string Name { get; set; }
         public string NameCN { get; set; }
+
+        public string searchCasNo { get; set; }
         public string OrderBy { get; set; } = "updateDay";
     }
 }

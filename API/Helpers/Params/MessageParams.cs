@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using API.Helpers.Pagination;
 
-namespace API.Helpers
+namespace API.Helpers.Params
 {
     public class MessageParams : PageParams
     {

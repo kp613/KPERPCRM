@@ -23,10 +23,10 @@ export class ProductListComponent implements OnInit {
 
   // currentPage: 1;
   // count = 0;
-  // perPageItems = [12, 24, 36, 48];
+  perPageItems = [12, 24, 36, 48];
   // itemsPerPage: number = 12;  //Initial items perPage
 
-  // searchItem = '';
+  searchItem = '';
 
 
   constructor(
@@ -83,20 +83,21 @@ export class ProductListComponent implements OnInit {
     // this.products$ = this.productService.getProducts();
   }
 
-  // pageChanged(event) {
-  //   this.currentPage = event;
-  // }
-
-  // onPageItemsChange(event): void {
-  //   this.itemsPerPage = event.target.value;
-  //   this.currentPage = 1;
-  //   this.loadProducts();
-  // }
-
-  pageChanged(event: any) {
-    this.productParams.pageNumber = event.page;
-    this.productService.setProductParams(this.productParams);
+  pageChanged(event) {
+    this.productParams.pageNumber = event;
     this.loadProducts();
   }
+
+  onPageItemsChange(event): void {
+    this.productParams.pageSize = event.target.value;
+    this.productParams.pageNumber = 1;
+    this.loadProducts();
+  }
+
+  // pageChanged(event: any) {
+  //   this.productParams.pageNumber = event.page;
+  //   this.productService.setProductParams(this.productParams);
+  //   this.loadProducts();
+  // }
 
 }

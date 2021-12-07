@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using API.DTOs;
-using API.Models;
-using API.Helpers;
-using API.Models.IdentityModels;
 using API.Models.AppIdentityModels;
+using API.Helpers.Pagination;
+using API.Helpers.Params;
 
 namespace API.Repository.IRepository
 {

@@ -1,19 +1,12 @@
-﻿using API.Data;
-using API.DTOs.UserDtos;
-using API.Models.IdentityModels;
+﻿using API.DTOs.UserDtos;
 using API.Extensions;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using API.Helpers;
-using API.DTOs.AccountDtos;
 using API.Repository.IRepository;
 using API.Controllers;
+using API.Helpers.Params;
 
 namespace API.AccountControllers.Controllers
 {

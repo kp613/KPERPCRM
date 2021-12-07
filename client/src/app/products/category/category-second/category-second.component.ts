@@ -32,7 +32,9 @@ export class CategorySecondComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService
-  ) { }
+  ) {
+    this.getCategoryFirst;
+  }
 
   ngOnInit(): void {
     this.createForm();

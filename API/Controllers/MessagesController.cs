@@ -1,16 +1,12 @@
 ﻿using API.DTOs;
-using API.Models;
 using API.Extensions;
-using API.Helpers;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Repository.IRepository;
-using API.Models.IdentityModels;
 using API.Models.AppIdentityModels;
+using API.Helpers.Params;
 
 namespace API.Controllers
 {

@@ -1,18 +1,15 @@
-using API.Models.ProductModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs.ProductsDtos;
 using System;
 using API.Repository.IRepository;
 using AutoMapper;
-using API.Helpers;
 using API.Extensions;
 using API.Models.ApplicationModels.Products;
+using API.Helpers.Params;
 
 namespace API.Controllers.ProductControllers
 {
