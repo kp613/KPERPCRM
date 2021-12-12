@@ -1,8 +1,12 @@
 ﻿using API.Data;
+using API.DTOs.SettingDtos;
 using API.Models.AppDevModels.Settings;
 using API.Repository.IRepository;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,11 +21,13 @@ namespace API.Controllers.SettingControllers
     {
         private readonly AppDevDbContext _context;
         private readonly IDesignRecordRepository _repo;
+        private readonly IMapper _mapper;
 
-        public DesignRecordController(AppDevDbContext context, IDesignRecordRepository repo)
+        public DesignRecordController(AppDevDbContext context, IDesignRecordRepository repo, IMapper mapper)
         {
             _context = context;
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -32,6 +38,9 @@ namespace API.Controllers.SettingControllers
             {
                 return NotFound("No Design Records Now");
             }
+
+            //var designRecordDto = _mapper.Map<ICollection<DesignRecordDto>>(designRecords);
+
             return Ok(designRecords);
         }
 

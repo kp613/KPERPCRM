@@ -29,6 +29,7 @@ namespace API.Services
 
             //services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             //services.AddAutoMapper(typeof(ProductsProfiles).Assembly);
+            //services.AddAutoMapper(typeof(SettingProfiles).Assembly);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //从profiles文件夹中扫描profile文件(profiles文件夹必须有)，取代上面一句？
 
 
