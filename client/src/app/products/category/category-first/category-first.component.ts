@@ -14,7 +14,7 @@ import { ICategoryFirst } from './categoryFirst';
   styleUrls: ['./category-first.component.scss']
 })
 export class CategoryFirstComponent implements OnInit {
-  // @Output() getCategoryFirstEvent = new EventEmitter<string>();
+  // @Output() getCategoryFirstEvent = new EventEmitter<string>();321``  9765
 
   isAddFirst: boolean = false;
 
@@ -67,7 +67,7 @@ export class CategoryFirstComponent implements OnInit {
   }
 
   addFirst() {
-    this.isAddFirst = true;
+    this.isAddFirst = !this.isAddFirst;
   }
 
   setFirstValue(value: any) {

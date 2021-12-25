@@ -80,6 +80,8 @@ namespace API.Models.ApplicationModels.Settings
 
         [Display(Name = "股份说明")]
         public string StockComment { get; set; }
+        public bool UsedAsBusiness { get; set; } //用于业务，比如业务员的公司选择
+        public bool UsedAsShare { get; set; }   //用于股份管理，记录所有投入资金的公司
 
         //public ICollection<Shareholder> Shareholders { get; set; }
     }

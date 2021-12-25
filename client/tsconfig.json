@@ -33,6 +33,6 @@
     "strictTemplates": true,
 
 
-   // "fullTemplateTypeCheck": false  //
+   "fullTemplateTypeCheck": true  //
   }
 }

@@ -110,6 +110,10 @@ namespace API
                 options.UseSqlServer(
                     _config.GetConnectionString("WebDefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
+                services.AddDbContext<AppDevDbContext>(options =>
+                options.UseSqlServer(
+                    _config.GetConnectionString("DevDefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));
+
             }
             services.AddHttpClient();
         }

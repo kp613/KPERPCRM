@@ -3,33 +3,40 @@
     <h2 class="card-title">产品类别</h2>
     <div class="btn-toolbar pb-2 mb-md-0">
       <button type="button"
-              class="btn btn-sm btn-outline-secondary">
+              class="btn btn-sm btn-outline-secondary"
+              (click)="addCategory()">
         <i class="bi bi-plus"></i>
         <span class="ms-1">增加产品类别</span>
       </button>
     </div>
   </div>
-  <ul> 类别列表：
-    <li>链接到产品页</li>
-    <li>点击增加搜索关键词</li>
-    <li>点击增加排除搜索关键词</li>
-    <li>（比如搜索“盐”，但排除“氯化钠”）</li>
-    <li>链接到关键词和排除词列表</li>
-  </ul>
-  <!-- <form [formGroup]='addGroupForm'
-        (ngSubmit)="addGroupForm.valid && onSubmit()"
-        autocomplete="off"
-        *ngIf="isAddFirst">
 
+  <form [formGroup]='addGroupThirdForm'
+        (ngSubmit)="addGroupThirdForm.valid && onSubmit()"
+        autocomplete="off"
+        *ngIf="isAddCategory">
 
     <div class="row">
       <div class="col-8">
+        <div class="form-floating mb-1">
+          <input required
+                 [class.is-invalid]='(addGroupThirdForm.get("nameCh").touched) &&!addGroupThirdForm.get("nameCh").dirty'
+                 type="text"
+                 class="form-control ps-3"
+                 id="nameChInput"
+                 [formControl]='$any(addGroupThirdForm.controls["nameCh"])'
+                 placeholder="输入产品类别">
+          <label for="nameChInput"
+                 class="form-label ps-2">产品类别
+            <span class="text-danger">*</span>
+          </label>
+          <div *ngIf='(addGroupThirdForm.get("nameCh").touched) && !addGroupThirdForm.get("nameCh").dirty'
+               class="invalid-feedback">
+            请输入产品类别</div>
+        </div>
+        <!-- [class.is-valid]='(addGroupThirdForm.get("nameCh").touched) &&addGroupThirdForm.get("nameCh").dirty' -->
 
-         <app-text-input [formControl]='$any(addGroupForm.controls["nameCh"])'
-                        [label]='"产品类别"'>
-        </app-text-input>
-
-        <app-text-input [formControl]='$any(addGroupForm.controls["nameEn"])'
+        <app-text-input [formControl]='$any(addGroupThirdForm.controls["nameEn"])'
                         [label]='"产品类别(英文)"'>
         </app-text-input>
 
@@ -38,7 +45,7 @@
         <div class="form-floating mb-2">
           <button type="submit"
                   class="btn btn-success"
-                  [disabled]="addGroupForm.invalid">Submit</button>
+                  [disabled]="addGroupThirdForm.invalid">Submit</button>
         </div>
         <div class="form-floating">
           <button type="button"
@@ -55,5 +62,13 @@
         type="button"
         routerLink="/product-category/{{item.id}}"
         routerLinkActive="bg-yellow">{{item.nameCh}} || {{item.nameEn}}</li>
-  </ul> -->
+  </ul>
+
+  <ul> 类别列表：
+    <li>链接到产品页</li>
+    <li>点击增加搜索关键词</li>
+    <li>点击增加排除搜索关键词</li>
+    <li>（比如搜索“盐”，但排除“氯化钠”）</li>
+    <li>链接到关键词和排除词列表</li>
+  </ul>
 </div>

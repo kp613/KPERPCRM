@@ -40,7 +40,7 @@ namespace API.Controllers.CategoryControllers
         }
 
         [HttpPost("first")]
-        public async Task<ActionResult<ProductDto>> AddCategoryFirst([FromBody] ProductCategoryFirst categoryFirst)
+        public async Task<ActionResult> AddCategoryFirst([FromBody] ProductCategoryFirst categoryFirst)
         {
             if (nameChForFirstExists(categoryFirst.NameCh)) return BadRequest("产品主类别 中文名重复");
             if (nameEnForFirstExists(categoryFirst.NameEn)) return BadRequest("产品主类别 英文名重复");
@@ -54,7 +54,25 @@ namespace API.Controllers.CategoryControllers
 
                 return Ok(firstId);
             }
-            return BadRequest("添加公司失败");            
+            return BadRequest("添加主类别失败");            
+        }
+
+        [HttpPost("second")]
+        public async Task<ActionResult<ProductDto>> AddCategorySecond([FromBody] ProductCategorySecond categorySecond)
+        {
+            if (nameChForFirstExists(categorySecond.NameCh)) return BadRequest("产品次类别 中文名重复");
+            if (nameEnForFirstExists(categorySecond.NameEn)) return BadRequest("产品次类别 英文名重复");
+
+            if (ModelState.IsValid)
+            {
+                _webDbContext.Add(categorySecond);
+                await _webDbContext.SaveChangesAsync();
+
+                var firstId = categorySecond.Id;
+
+                return Ok(firstId);
+            }
+            return BadRequest("添加公司失败");
         }
 
         [HttpGet("second/{firstId}")]

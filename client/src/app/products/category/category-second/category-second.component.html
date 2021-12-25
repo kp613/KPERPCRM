@@ -13,28 +13,65 @@
   </div>
 
   <form #first="ngForm"
-        [formGroup]='addGroupForm'
-        (ngSubmit)="addGroupForm.valid && onSubmit()"
+        [formGroup]='addGroupSecondForm'
+        (ngSubmit)="addGroupSecondForm.valid && onSubmit()"
         autocomplete="off"
         *ngIf="isAddSecond">
 
     <div class="row">
       <div class="col-8">
 
-        <app-text-input [formControl]='$any(addGroupForm.controls["nameCh"])'
-                        [label]='"产品主类别"'>
+        <div class="form-floating mb-1">
+          <input required
+                 [class.is-invalid]='(addGroupSecondForm.get("nameCh").touched) &&!addGroupSecondForm.get("nameCh").dirty'
+                 type="text"
+                 class="form-control ps-3"
+                 id="nameChSecondInput"
+                 [formControl]='$any(addGroupSecondForm.controls["nameCh"])'
+                 placeholder="输入产品次类别">
+          <label for="nameChSecondInput"
+                 class="form-label ps-2">产品次类别
+            <span class="text-danger">*</span>
+          </label>
+          <div *ngIf='(addGroupSecondForm.get("nameCh").touched) && !addGroupSecondForm.get("nameCh").dirty'
+               class="invalid-feedback">
+            请输入产品次类别</div>
+        </div>
+
+        <div class="form-floating mb-1">
+          <input required
+                 [class.is-invalid]='(addGroupSecondForm.get("nameEn").touched) &&!addGroupSecondForm.get("nameEn").dirty'
+                 type="text"
+                 class="form-control ps-3"
+                 id="nameEnSecondInput"
+                 [formControl]='$any(addGroupSecondForm.controls["nameEn"])'
+                 placeholder="输入产品次类别(英文)">
+          <label for="nameEnSecondInput"
+                 class="form-label ps-2">产品次类别(英文)
+            <span class="text-danger">*</span>
+          </label>
+          <div *ngIf='(addGroupSecondForm.get("nameEn").touched) && !addGroupSecondForm.get("nameEn").dirty'
+               class="invalid-feedback">
+            请输入产品次类别(英文)</div>
+        </div>
+
+        <input type="hidden"
+               [formControl]='$any(addGroupSecondForm.controls["productCategoryFirstId"])'
+               value="{{firstId}}">
+        <!-- <app-text-input [formControl]='$any(addGroupSecondForm.controls["nameCh"])'
+                        [label]='"产品次类别"'>
         </app-text-input>
 
-        <app-text-input [formControl]='$any(addGroupForm.controls["nameEn"])'
-                        [label]='"产品主类别(英文)"'>
-        </app-text-input>
+        <app-text-input [formControl]='$any(addGroupSecondForm.controls["nameEn"])'
+                        [label]='"产品次类别(英文)"'>
+        </app-text-input>-->
 
       </div>
       <div class="col-4">
         <div class="form-floating mb-2">
           <button type="submit"
                   class="btn btn-success"
-                  [disabled]="addGroupForm.invalid">Submit</button>
+                  [disabled]="!addGroupSecondForm.get('nameCh').dirty">Submit</button>
         </div>
         <div class="form-floating">
           <button type="button"
@@ -47,7 +84,7 @@
 
   <ul class="list-group list-group-flush"
       *ngFor="let categorySecond of categorySeconds">
-    <li class="list-group-item">{{categorySecond.nameCh}} </li>
+    <li class="list-group-item border-bottom">{{categorySecond.nameCh}} </li>
   </ul>
 
 </div>

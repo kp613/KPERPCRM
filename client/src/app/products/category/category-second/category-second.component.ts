@@ -23,7 +23,7 @@ export class CategorySecondComponent implements OnInit {
   categorySeconds: ICategorySecond[];
   categorySecond: ICategorySecond;
 
-  addGroupForm: FormGroup;
+  addGroupSecondForm: FormGroup;
 
   constructor(
     private httpClient: HttpClient,
@@ -42,7 +42,7 @@ export class CategorySecondComponent implements OnInit {
   }
 
   createForm() {
-    this.addGroupForm = this.formBuilder.group({
+    this.addGroupSecondForm = this.formBuilder.group({
       productCategoryFirstId: ['', [Validators.required]],
       nameCh: ['', [Validators.required]],
       nameEn: ['', [Validators.required]],
@@ -51,9 +51,9 @@ export class CategorySecondComponent implements OnInit {
   }
 
   onSubmit() {
-    this.categoryService.firstCreate(this.addGroupForm.value).subscribe((res: any) => {
+    this.categoryService.secondCreate(this.addGroupSecondForm.value).subscribe((res: any) => {
       this.toastr.success('增加产品次类别成功');
-      this.addGroupForm.reset();
+      this.addGroupSecondForm.reset();
     }, (error) => {
       this.toastr.error(error.error);
     })
@@ -80,11 +80,11 @@ export class CategorySecondComponent implements OnInit {
   }
 
   resetSecond() {
-    this.addGroupForm.reset();
+    this.addGroupSecondForm.reset();
   }
 
   addSecond() {
-    this.isAddSecond = true;
+    this.isAddSecond = !this.isAddSecond;
   }
 
 
