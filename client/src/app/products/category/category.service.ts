@@ -18,9 +18,9 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) { }
 
   //Get firstId and secondId
-  setCategoryFirst(value: any) {
-    this.categoryFirst.next(value);
-  }
+  // setCategoryFirst(value: any) {
+  //   this.categoryFirst.next(value);
+  // }
 
 
   //First

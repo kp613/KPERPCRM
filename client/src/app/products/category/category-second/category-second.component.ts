@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Validators } from 'ngx-editor';
 import { ToastrService } from 'ngx-toastr';
 import { ICategoryFirst } from '../category-first/categoryFirst';
@@ -13,10 +13,10 @@ import { ICategorySecond } from './categorySecond';
   templateUrl: './category-second.component.html',
   styleUrls: ['./category-second.component.scss']
 })
-export class CategorySecondComponent implements OnInit {
+export class CategorySecondComponent implements OnInit, OnChanges {
   @Input() getCategoryFirst: ICategoryFirst;
 
-  firstId: number;
+
 
   isAddSecond: boolean = false;
 
@@ -33,12 +33,12 @@ export class CategorySecondComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService
   ) {
-    this.getCategoryFirst;
+    // this.getCategoryFirst;
   }
 
   ngOnInit(): void {
     this.createForm();
-    this.loadCategorySecondList();
+
   }
 
   createForm() {
@@ -47,7 +47,7 @@ export class CategorySecondComponent implements OnInit {
       nameCh: ['', [Validators.required]],
       nameEn: ['', [Validators.required]],
     });
-    this.firstId = this.route.snapshot.params['firstId'];
+    // this.firstId = this.route.snapshot.params['firstId'];
   }
 
   onSubmit() {
@@ -59,24 +59,32 @@ export class CategorySecondComponent implements OnInit {
     })
   }
 
+  ngOnChanges(): void {
+    console.log('OnChanges called!');
+    this.loadCategorySecondList();
+  }
+
   loadCategorySecondList() {
-    this.categoryService.getSecondLists(this.firstId).subscribe(res => {
-      this.categorySeconds = res;
+    if (this.getCategoryFirst) {
+      this.categoryService.getSecondLists(this.getCategoryFirst.id).subscribe(res => {
+        this.categorySeconds = res;
 
-      //firstId改变后只刷新这个模块
-      this.router.routeReuseStrategy.shouldReuseRoute = function () {
-        return false;
-      };
-      this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          // Trick the Router into believing it's last link wasn't previously loaded
-          this.router.navigated = true;
-        }
-      });
+        //firstId改变后只刷新这个模块
+        // this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        //   return false;
+        // };
+        // this.router.events.subscribe((event) => {
+        //   if (event instanceof NavigationEnd) {
+        //     // Trick the Router into believing it's last link wasn't previously loaded
+        //     this.router.navigated = true;
+        //   }
+        // });
 
-    }, error => {
-      console.log(error);
-    })
+      }, error => {
+        console.log(error);
+      })
+    }
+    this.categorySeconds = null;
   }
 
   resetSecond() {
@@ -86,6 +94,5 @@ export class CategorySecondComponent implements OnInit {
   addSecond() {
     this.isAddSecond = !this.isAddSecond;
   }
-
 
 }

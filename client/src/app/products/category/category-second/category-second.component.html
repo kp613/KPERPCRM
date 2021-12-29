@@ -1,7 +1,7 @@
 <div class="card-body">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
     <h2 class="card-title"
-        *ngIf="getCategoryFirst.nameCh">产品次类别：{{getCategoryFirst.nameCh}} </h2>
+        *ngIf="getCategoryFirst">产品次类别：{{getCategoryFirst.nameCh}} </h2>
     <div class="btn-toolbar pb-2 mb-md-0">
       <button type="button"
               class="btn btn-sm btn-outline-secondary"
@@ -57,7 +57,7 @@
 
         <input type="hidden"
                [formControl]='$any(addGroupSecondForm.controls["productCategoryFirstId"])'
-               value="{{firstId}}">
+               value="{{getCategoryFirst.id}}">
         <!-- <app-text-input [formControl]='$any(addGroupSecondForm.controls["nameCh"])'
                         [label]='"产品次类别"'>
         </app-text-input>

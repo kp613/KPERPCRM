@@ -47,9 +47,7 @@
       *ngFor="let item of categoryFirsts">
     <li class="list-group-item nav-link text-dark border-bottom"
         type="button"
-        routerLink="/product-category/{{item.id}}"
         routerLinkActive="bg-yellow"
-        (click)="setFirstValue(item)"
-        #setFirst>{{item.nameCh}} || {{item.nameEn}}</li>
+        (click)="setFirstValue(item)">{{item.nameCh}} || {{item.nameEn}}</li>
   </ul>
 </div>

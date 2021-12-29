@@ -9,9 +9,9 @@ import { ProductAddComponent } from './product/product-add/product-add.component
 import { CategoryFirstComponent } from './category/category-first/category-first.component';
 import { CategorySecondComponent } from './category/category-second/category-second.component';
 import { CategoryThirdComponent } from './category/category-third/category-third.component';
-import { CategpryHomeComponent } from './category/categpry-home/categpry-home.component';
 import { SettingModule } from '../settings/setting.module';
 import { GeneralModule } from '../_core/general.module';
+import { CategoryComponent } from './category/category.component';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { GeneralModule } from '../_core/general.module';
     CategoryFirstComponent,
     CategorySecondComponent,
     CategoryThirdComponent,
-    CategpryHomeComponent,
+    CategoryComponent,
 
   ],
   imports: [

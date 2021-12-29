@@ -6,7 +6,7 @@ import { error } from 'console';
 import { ToastrService } from 'ngx-toastr';
 import { CategorySecondComponent } from '../category-second/category-second.component';
 import { CategoryService } from '../category.service';
-import { ICategoryFirst } from './categoryFirst';
+import { CategoryFirst, ICategoryFirst } from './categoryFirst';
 
 @Component({
   selector: 'app-category-first',
@@ -14,7 +14,7 @@ import { ICategoryFirst } from './categoryFirst';
   styleUrls: ['./category-first.component.scss']
 })
 export class CategoryFirstComponent implements OnInit {
-  // @Output() getCategoryFirstEvent = new EventEmitter<string>();321``  9765
+  @Output() firstWasSelected = new EventEmitter<CategoryFirst>();
 
   isAddFirst: boolean = false;
 
@@ -70,7 +70,7 @@ export class CategoryFirstComponent implements OnInit {
     this.isAddFirst = !this.isAddFirst;
   }
 
-  setFirstValue(value: any) {
-    this.categoryService.setCategoryFirst(value);
+  setFirstValue(categoryFirst: CategoryFirst) {
+    this.firstWasSelected.emit(categoryFirst);
   }
 }
