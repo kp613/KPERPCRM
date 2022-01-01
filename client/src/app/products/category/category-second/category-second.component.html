@@ -1,7 +1,7 @@
 <div class="card-body">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
     <h2 class="card-title"
-        *ngIf="getCategoryFirst">产品次类别：{{getCategoryFirst.nameCh}} </h2>
+        *ngIf="getCategoryFirst">{{getCategoryFirst.nameCh}} </h2>
     <div class="btn-toolbar pb-2 mb-md-0">
       <button type="button"
               class="btn btn-sm btn-outline-secondary"
@@ -12,79 +12,23 @@
     </div>
   </div>
 
-  <form #first="ngForm"
-        [formGroup]='addGroupSecondForm'
-        (ngSubmit)="addGroupSecondForm.valid && onSubmit()"
-        autocomplete="off"
-        *ngIf="isAddSecond">
+  <app-category-second-add *ngIf="!isEdit"
+                           [getCategoryFirst]="getCategoryFirst"
+                           [isAddSecond]="isAddSecond"></app-category-second-add>
 
-    <div class="row">
-      <div class="col-8">
-
-        <div class="form-floating mb-1">
-          <input required
-                 [class.is-invalid]='(addGroupSecondForm.get("nameCh").touched) &&!addGroupSecondForm.get("nameCh").dirty'
-                 type="text"
-                 class="form-control ps-3"
-                 id="nameChSecondInput"
-                 [formControl]='$any(addGroupSecondForm.controls["nameCh"])'
-                 placeholder="输入产品次类别">
-          <label for="nameChSecondInput"
-                 class="form-label ps-2">产品次类别
-            <span class="text-danger">*</span>
-          </label>
-          <div *ngIf='(addGroupSecondForm.get("nameCh").touched) && !addGroupSecondForm.get("nameCh").dirty'
-               class="invalid-feedback">
-            请输入产品次类别</div>
-        </div>
-
-        <div class="form-floating mb-1">
-          <input required
-                 [class.is-invalid]='(addGroupSecondForm.get("nameEn").touched) &&!addGroupSecondForm.get("nameEn").dirty'
-                 type="text"
-                 class="form-control ps-3"
-                 id="nameEnSecondInput"
-                 [formControl]='$any(addGroupSecondForm.controls["nameEn"])'
-                 placeholder="输入产品次类别(英文)">
-          <label for="nameEnSecondInput"
-                 class="form-label ps-2">产品次类别(英文)
-            <span class="text-danger">*</span>
-          </label>
-          <div *ngIf='(addGroupSecondForm.get("nameEn").touched) && !addGroupSecondForm.get("nameEn").dirty'
-               class="invalid-feedback">
-            请输入产品次类别(英文)</div>
-        </div>
-
-        <input type="hidden"
-               [formControl]='$any(addGroupSecondForm.controls["productCategoryFirstId"])'
-               value="{{getCategoryFirst.id}}">
-        <!-- <app-text-input [formControl]='$any(addGroupSecondForm.controls["nameCh"])'
-                        [label]='"产品次类别"'>
-        </app-text-input>
-
-        <app-text-input [formControl]='$any(addGroupSecondForm.controls["nameEn"])'
-                        [label]='"产品次类别(英文)"'>
-        </app-text-input>-->
-
-      </div>
-      <div class="col-4">
-        <div class="form-floating mb-2">
-          <button type="submit"
-                  class="btn btn-success"
-                  [disabled]="!addGroupSecondForm.get('nameCh').dirty">Submit</button>
-        </div>
-        <div class="form-floating">
-          <button type="button"
-                  class="btn btn-default"
-                  (click)="resetSecond()">Reset</button>
-        </div>
-      </div>
-    </div>
-  </form>
+  <app-category-second-edit *ngIf="isEdit"
+                            [categorySecondForEdit]="categorySecond"
+                            [isEdit]="isEdit"></app-category-second-edit>
 
   <ul class="list-group list-group-flush"
       *ngFor="let categorySecond of categorySeconds">
-    <li class="list-group-item border-bottom">{{categorySecond.nameCh}} </li>
+    <li class="list-group-item border-bottom">{{categorySecond.nameCh}} || {{categorySecond.nameEn}}
+      <i class="bi bi-pen float-end"
+         type="button"
+         title="修改"
+         (click)="onEdit(categorySecond)"></i>
+      <!-- [routerLink]="['../Category/Second/',categorySecond.id,{'isEdit':true}]" -->
+    </li>
   </ul>
 
 </div>

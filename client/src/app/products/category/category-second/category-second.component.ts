@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Validators } from 'ngx-editor';
+
 import { ToastrService } from 'ngx-toastr';
 import { ICategoryFirst } from '../category-first/categoryFirst';
 import { CategoryService } from '../category.service';
@@ -15,15 +15,12 @@ import { ICategorySecond } from './categorySecond';
 })
 export class CategorySecondComponent implements OnInit, OnChanges {
   @Input() getCategoryFirst: ICategoryFirst;
-
-
+  isEdit: boolean = false;
 
   isAddSecond: boolean = false;
 
-  categorySeconds: ICategorySecond[];
   categorySecond: ICategorySecond;
-
-  addGroupSecondForm: FormGroup;
+  categorySeconds: ICategorySecond[];
 
   constructor(
     private httpClient: HttpClient,
@@ -37,30 +34,9 @@ export class CategorySecondComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.createForm();
-
-  }
-
-  createForm() {
-    this.addGroupSecondForm = this.formBuilder.group({
-      productCategoryFirstId: ['', [Validators.required]],
-      nameCh: ['', [Validators.required]],
-      nameEn: ['', [Validators.required]],
-    });
-    // this.firstId = this.route.snapshot.params['firstId'];
-  }
-
-  onSubmit() {
-    this.categoryService.secondCreate(this.addGroupSecondForm.value).subscribe((res: any) => {
-      this.toastr.success('增加产品次类别成功');
-      this.addGroupSecondForm.reset();
-    }, (error) => {
-      this.toastr.error(error.error);
-    })
   }
 
   ngOnChanges(): void {
-    console.log('OnChanges called!');
     this.loadCategorySecondList();
   }
 
@@ -68,31 +44,22 @@ export class CategorySecondComponent implements OnInit, OnChanges {
     if (this.getCategoryFirst) {
       this.categoryService.getSecondLists(this.getCategoryFirst.id).subscribe(res => {
         this.categorySeconds = res;
-
-        //firstId改变后只刷新这个模块
-        // this.router.routeReuseStrategy.shouldReuseRoute = function () {
-        //   return false;
-        // };
-        // this.router.events.subscribe((event) => {
-        //   if (event instanceof NavigationEnd) {
-        //     // Trick the Router into believing it's last link wasn't previously loaded
-        //     this.router.navigated = true;
-        //   }
-        // });
-
       }, error => {
         console.log(error);
       })
     }
-    this.categorySeconds = null;
-  }
-
-  resetSecond() {
-    this.addGroupSecondForm.reset();
+    this.categorySeconds = null;  //当二级中没有list时为空，否则会停留在原先的list上
   }
 
   addSecond() {
     this.isAddSecond = !this.isAddSecond;
+    this.isEdit = false;
+  }
+
+  onEdit(categorySecond: any) {
+    this.isEdit = true;
+    this.isAddSecond = true;
+    this.categorySecond = categorySecond;
   }
 
 }

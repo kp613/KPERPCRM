@@ -12,6 +12,8 @@ import { CategoryThirdComponent } from './category/category-third/category-third
 import { SettingModule } from '../settings/setting.module';
 import { GeneralModule } from '../_core/general.module';
 import { CategoryComponent } from './category/category.component';
+import { CategorySecondAddComponent } from './category/category-second/category-second-add/category-second-add.component';
+import { CategorySecondEditComponent } from './category/category-second/category-second-edit/category-second-edit.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { CategoryComponent } from './category/category.component';
     CategorySecondComponent,
     CategoryThirdComponent,
     CategoryComponent,
+    CategorySecondAddComponent,
+    CategorySecondEditComponent,
 
   ],
   imports: [

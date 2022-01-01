@@ -1,0 +1,68 @@
+<form #first="ngForm"
+      [formGroup]='editGroupSecondForm'
+      (ngSubmit)="editGroupSecondForm.valid && onSubmit()"
+      autocomplete="off"
+      *ngIf="isEdit">
+
+  <div class="row">
+    <div class="col-8">
+
+      <div class="form-floating mb-1">
+        <input required
+               [class.is-invalid]='(editGroupSecondForm.get("nameCh").touched) &&!editGroupSecondForm.get("nameCh").dirty'
+               type="text"
+               class="form-control ps-3"
+               id="nameChSecondInput"
+               [formControl]='$any(editGroupSecondForm.controls["nameCh"])'
+               placeholder="输入产品次类别">
+        <label for="nameChSecondInput"
+               class="form-label ps-2">产品次类别
+          <span class="text-danger">*</span>
+        </label>
+        <div *ngIf='(editGroupSecondForm.get("nameCh").touched) && !editGroupSecondForm.get("nameCh").dirty'
+             class="invalid-feedback">
+          请输入产品次类别</div>
+      </div>
+
+      <div class="form-floating mb-1">
+        <input required
+               [class.is-invalid]='(editGroupSecondForm.get("nameEn").touched) &&!editGroupSecondForm.get("nameEn").dirty'
+               type="text"
+               class="form-control ps-3"
+               id="nameEnSecondInput"
+               formControlName="nameEn"
+               placeholder="输入产品次类别(英文)">
+        <label for="nameEnSecondInput"
+               class="form-label ps-2">产品次类别(英文)
+          <span class="text-danger">*</span>
+        </label>
+        <div *ngIf='(editGroupSecondForm.get("nameEn").touched) && !editGroupSecondForm.get("nameEn").dirty'
+             class="invalid-feedback">
+          请输入产品次类别(英文)</div>
+      </div>
+
+      <input type="hidden"
+             formControlName="productCategoryFirstId">
+      <!-- <app-text-input [formControl]='$any(editGroupSecondForm.controls["nameCh"])'
+                        [label]='"产品次类别"'>
+        </app-text-input>
+
+        <app-text-input [formControl]='$any(editGroupSecondForm.controls["nameEn"])'
+                        [label]='"产品次类别(英文)"'>
+        </app-text-input>-->
+
+    </div>
+    <div class="col-4">
+      <div class="form-floating mb-2">
+        <button type="submit"
+                class="btn btn-success"
+                [disabled]="!editGroupSecondForm.get('nameCh').dirty">保存修改</button>
+      </div>
+      <div class="form-floating">
+        <button type="button"
+                class="btn btn-default"
+                (click)="cancel()">取消修改</button>
+      </div>
+    </div>
+  </div>
+</form>
